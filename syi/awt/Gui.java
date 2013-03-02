@@ -2,10 +2,10 @@ package syi.awt;
 
 import java.awt.*;
 import java.awt.datatransfer.*;
-import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.io.*;
-import java.util.Hashtable;
+
+import syi.util.ExceptionHandler;
 import syi.util.Io;
 import syi.util.PProperties;
 
@@ -52,7 +52,7 @@ public class Gui extends Awt
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
             return null;
         }
         return new File(s1, s2);
@@ -137,8 +137,8 @@ public class Gui extends Awt
             container.validate();
         }
     }
-
-    public static boolean showDocument(String s, PProperties pproperties, Hashtable hashtable)
+    
+    public static boolean showDocument(String s, PProperties pproperties)
     {
         Runtime runtime = Runtime.getRuntime();
         try

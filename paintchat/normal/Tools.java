@@ -5,13 +5,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.StringReader;
-import java.util.EventObject;
-import java.util.Hashtable;
 import paintchat.*;
 import paintchat_client.L;
 import paintchat_client.Mi;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.normal:
 //            ToolList
@@ -19,8 +18,10 @@ import syi.awt.LComponent;
 public class Tools extends LComponent
     implements ToolBox, ActionListener
 {
-
-    Applet applet;
+	
+	private static final long serialVersionUID = 1L;
+	
+	Applet applet;
     Container parent;
     Mi mi;
     L L;
@@ -337,7 +338,7 @@ public class Tools extends LComponent
 
     public void lift()
     {
-        int _tmp = nowButton;
+//        int _tmp = nowButton;
         unSelect();
         nowButton = -1;
         repaint();
@@ -659,7 +660,7 @@ label0:
                 COLORS[l] = DEFC[l];
             } else
             {
-                int _tmp = nowColor;
+//                int _tmp = nowColor;
                 nowColor = l;
                 mg.iColor = COLORS[nowColor];
                 selPix(false);
@@ -792,7 +793,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -865,7 +866,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -997,7 +998,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -1011,7 +1012,7 @@ label0:
     {
         int l = info.getPMMax();
         Rectangle rectangle = rects[18];
-        int _tmp = rectangle.height;
+//        int _tmp = rectangle.height;
         if(k == -1)
         {
             k = (int)(((float)(j - rectangle.y) / (float)rectangle.height) * (float)l);
@@ -1081,7 +1082,7 @@ label0:
             }
             Rectangle arectangle[] = rects;
             getSize();
-            float _tmp = (float)j / (float)W;
+//            float _tmp = (float)j / (float)W;
             float f = (float)k / (float)H;
             int k1 = (int)((float)(IMH + 4) * f);
             if(!isLarge)
@@ -1233,7 +1234,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

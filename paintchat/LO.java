@@ -101,9 +101,10 @@ public class LO
                     int l2 = offset[j5 + i2];
                     int k3 = ai[i5 + i2];
                     float f = af[l2 >>> 24] * f3;
-                    int k5 = k3 >>> 16 & 0xff;
-                    int j6 = k3 >>> 8 & 0xff;
-                    int i7 = k3 & 0xff;
+                    //TODO: Figure what this method does and why these are here
+                    ///int k5 = k3 >>> 16 & 0xff;
+                    ///int j6 = k3 >>> 8 & 0xff;
+                    ///int i7 = k3 & 0xff;
                     if(f > 0.0F)
                     {
                         ai[i5 + i2] = ((k3 >>> 16 & 0xff) - (int)(af[k3 >>> 16 & 0xff] * ((float)(l2 >>> 16 & 0xff ^ 0xff) * f)) << 16) + ((k3 >>> 8 & 0xff) - (int)(af[k3 >>> 8 & 0xff] * ((float)(l2 >>> 8 & 0xff ^ 0xff) * f)) << 8) + ((k3 & 0xff) - (int)(af[k3 & 0xff] * ((float)(l2 & 0xff ^ 0xff) * f)));
@@ -544,7 +545,7 @@ public class LO
         int i1 = 0;
         int j1 = 0;
         int k1 = i;
-        int _tmp = j;
+        //int _tmp = j;
         if(k < 0)
         {
             i1 = -k;

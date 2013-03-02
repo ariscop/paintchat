@@ -5,14 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.ColorModel;
-import java.lang.reflect.Field;
-import java.util.EventObject;
-import java.util.Hashtable;
 import paintchat.*;
 import paintchat_client.L;
 import paintchat_client.Mi;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            TPalette, TPen, TPic, TBar
@@ -60,7 +58,7 @@ public class Tools
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -232,7 +230,7 @@ public class Tools
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

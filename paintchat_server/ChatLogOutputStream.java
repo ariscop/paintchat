@@ -3,6 +3,7 @@ package paintchat_server;
 import java.io.*;
 import paintchat.MgText;
 import paintchat.debug.DebugListener;
+import syi.util.ExceptionHandler;
 import syi.util.Io;
 import syi.util.Vector2;
 
@@ -136,7 +137,7 @@ public class ChatLogOutputStream extends Writer
             if(outLog == null || timeStart != 0L && l - timeStart >= 0x5265c00L)
             {
                 timeStart = l;
-                boolean _tmp = outLog == null;
+//                boolean _tmp = outLog == null;
                 if(!fDir.isDirectory())
                 {
                     fDir.mkdirs();
@@ -182,7 +183,7 @@ public class ChatLogOutputStream extends Writer
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
     }
 

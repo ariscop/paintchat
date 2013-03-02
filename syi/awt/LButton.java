@@ -2,6 +2,7 @@ package syi.awt;
 
 import java.awt.*;
 import java.awt.event.*;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            Awt
@@ -9,7 +10,9 @@ import java.awt.event.*;
 public class LButton extends Canvas
 {
 
-    private Dimension size;
+	private static final long serialVersionUID = 1L;
+	
+	private Dimension size;
     private Image BackImage;
     private String Text;
     private ActionListener listener;
@@ -175,7 +178,7 @@ public class LButton extends Canvas
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

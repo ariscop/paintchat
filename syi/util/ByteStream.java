@@ -25,7 +25,7 @@ public class ByteStream extends OutputStream
         buffer = new byte[i > 0 ? i : 512];
     }
 
-    public final void addSize(int i)
+    private final void addSize(int i)
     {
         int j = last + i;
         if(buffer.length < j)
@@ -35,21 +35,7 @@ public class ByteStream extends OutputStream
             buffer = abyte0;
         }
     }
-
-    public void gc()
-    {
-        if(buffer.length == last)
-        {
-            return;
-        }
-        byte abyte0[] = new byte[last];
-        if(last != 0)
-        {
-            System.arraycopy(buffer, 0, abyte0, 0, last);
-        }
-        buffer = abyte0;
-    }
-
+    
     public byte[] getBuffer()
     {
         return buffer;
@@ -95,7 +81,7 @@ public class ByteStream extends OutputStream
         return abyte0;
     }
 
-    public final void w(long l, int i)
+    public final void writeLong(long l, int i)
         throws IOException
     {
         for(int j = i - 1; j >= 0; j--)
@@ -105,7 +91,7 @@ public class ByteStream extends OutputStream
 
     }
 
-    public final void w2(int i)
+    public final void writeInt(int i)
         throws IOException
     {
         write(i >>> 8 & 0xff);

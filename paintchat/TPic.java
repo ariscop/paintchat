@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat:
 //            SW, M, Res, ToolBox
@@ -11,15 +12,13 @@ import syi.awt.LComponent;
 public class TPic extends LComponent
     implements SW
 {
-
-    private ToolBox ts;
-    private M.Info info;
+	private static final long serialVersionUID = 1L;
+	
+	private ToolBox ts;
     private M.User user;
     private M mg;
-    private Res r_conf;
     private int iDrag;
     private int lastMask;
-    private Color cls[];
     private static float fhsb[] = new float[3];
 
     public TPic()
@@ -32,7 +31,6 @@ public class TPic extends LComponent
         int ai[] = user.getBuffer();
         int i = 64;
         int l = 0;
-        float f1 = 0.0F;
         float f3 = 0.0F;
         float f4 = 1.0F / (float)i;
         float f = fhsb[0];
@@ -97,7 +95,7 @@ public class TPic extends LComponent
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 
@@ -141,10 +139,11 @@ public class TPic extends LComponent
     public void mSetup(ToolBox toolbox, M.Info info1, M.User user1, M m, Res res, Res res1)
     {
         ts = toolbox;
-        info = info1;
+        //TODO: never used outside of this function, but does hold a refference. safe to remove?
+        //info = info1;
+        //r_conf = res1;
         user = user1;
         mg = m;
-        r_conf = res1;
         setTitle(res1.getP("window_4"));
         setDimension(new Dimension((int)(66F * LComponent.Q), (int)(66F * LComponent.Q)), new Dimension((int)(128F * LComponent.Q), (int)(128F * LComponent.Q)), new Dimension((int)(284F * LComponent.Q), (int)(284F * LComponent.Q)));
     }

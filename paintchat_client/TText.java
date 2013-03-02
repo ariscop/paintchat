@@ -3,13 +3,21 @@ package paintchat_client;
 import java.io.IOException;
 import java.util.Hashtable;
 import paintchat.MgText;
-import paintchat.Res;
 import paintchat_server.PaintChatTalker;
 import syi.util.ByteInputStream;
 import syi.util.ByteStream;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            Pl, Data
+
+/**
+ * This class handles the chat
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
 
 public class TText extends PaintChatTalker
 {
@@ -19,14 +27,14 @@ public class TText extends PaintChatTalker
     private MgText mg;
     private ByteInputStream bin;
     private ByteStream stm;
-    private Res names;
+    private Hashtable<Integer, String> names;
 
     public TText(Pl pl1, Data data1)
     {
         mg = new MgText();
         bin = new ByteInputStream();
         stm = new ByteStream();
-        names = new Res();
+        names = new Hashtable<Integer, String>();
         pl = pl1;
         data = data1;
         super.iSendInterval = 1000;
@@ -49,7 +57,7 @@ public class TText extends PaintChatTalker
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -134,7 +142,7 @@ public class TText extends PaintChatTalker
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 }

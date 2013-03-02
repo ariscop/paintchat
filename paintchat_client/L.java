@@ -7,6 +7,7 @@ import java.awt.image.MemoryImageSource;
 import paintchat.*;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            Mi, Me
@@ -15,11 +16,13 @@ public class L extends LComponent
     implements ActionListener, ItemListener
 {
 
-    private Mi mi;
+	private static final long serialVersionUID = 1L;
+	
+	private Mi mi;
     private ToolBox tool;
     private Res res;
     private M m;
-    private int B;
+//    private int B;
     private Font bFont;
     private int bH;
     private int bW;
@@ -39,7 +42,8 @@ public class L extends LComponent
 
     public L(Mi mi1, ToolBox toolbox, Res res1, Res res2)
     {
-        B = -1;
+    	//TODO: no, srsly, whats with this B
+        //B = -1;
         layer_size = -1;
         mouse = -1;
         isASlide = false;
@@ -171,7 +175,7 @@ public class L extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -254,7 +258,7 @@ public class L extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -529,7 +533,7 @@ public class L extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

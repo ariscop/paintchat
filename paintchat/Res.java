@@ -9,14 +9,18 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import syi.awt.Awt;
 import syi.util.ByteStream;
+import syi.util.ExceptionHandler;
 
-public class Res extends Hashtable
+public class Res extends Hashtable<String, Object>
 {
 
-    private Object resBase;
+	//TODO: figure how top stop eclipse complaining about this for all classes
+	private static final long serialVersionUID = 1L;
+	
+	private Object resBase;
     private Applet applet;
     private ByteStream work;
-    private static final String EMPTY = "";
+    //private static final String EMPTY = "";
 
     public Res()
     {
@@ -52,10 +56,11 @@ public class Res extends Hashtable
         catch (ClassCastException e) {
         	return "Ayup.";
         }
+        /*
         if(s2 == null)
         {
             return s1;
-        } else
+        } else */
         {
             return s2;
         }
@@ -251,7 +256,7 @@ public class Res extends Hashtable
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
             return false;
         }
         return true;
@@ -271,7 +276,6 @@ public class Res extends Hashtable
 
     public void loadResource(Res res1, String s, String s1)
     {
-        boolean _tmp = s1 != null && s1.equals("ja");
         String s2 = s + (s1 == null || s1.length() == 0 ? "" : '_' + s1) + ".txt";
         for(int i = 0; i < 2; i++)
         {
@@ -414,7 +418,7 @@ public class Res extends Hashtable
     public void put(Res res1)
     {
         Object obj;
-        for(Enumeration enumeration = res1.keys(); enumeration.hasMoreElements(); put(obj, res1.get(obj)))
+        for(Enumeration<String> enumeration = res1.keys(); enumeration.hasMoreElements(); put(obj.toString(), res1.get(obj)))
         {
             obj = enumeration.nextElement();
         }

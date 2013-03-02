@@ -1,7 +1,6 @@
 package paintchat_frame;
 
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,16 @@ import paintchat.debug.Debug;
 import syi.awt.LTextField;
 import syi.awt.MessageBox;
 import syi.util.Io;
-import syi.util.PProperties;
+import syi.util.ExceptionHandler;
+
+/**
+ * 
+ * dialog that pops up when you click the ip address
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
 
 public class PopupMenuPaintChat
     implements ActionListener
@@ -42,7 +50,7 @@ public class PopupMenuPaintChat
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

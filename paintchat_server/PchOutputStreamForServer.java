@@ -3,7 +3,9 @@ package paintchat_server;
 import java.io.*;
 import java.util.zip.Deflater;
 import paintchat.Config;
-import syi.util.*;
+import syi.util.ExceptionHandler;
+import syi.util.Io;
+import syi.util.VectorBin;
 
 // Referenced classes of package paintchat_server:
 //            PchInputStream, PchOutputStream
@@ -56,7 +58,7 @@ public class PchOutputStreamForServer extends OutputStream
                 }
                 catch(IOException ioexception)
                 {
-                    ioexception.printStackTrace();
+                    ExceptionHandler.handleException(ioexception);
                 }
             }
         }
@@ -117,7 +119,7 @@ public class PchOutputStreamForServer extends OutputStream
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
             close();
             isLogEnable = false;
         }
@@ -150,7 +152,7 @@ public class PchOutputStreamForServer extends OutputStream
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
         out = null;
         if(isLogEnable)
@@ -166,7 +168,7 @@ public class PchOutputStreamForServer extends OutputStream
             }
             catch(IOException ioexception1)
             {
-                ioexception1.printStackTrace();
+                ExceptionHandler.handleException(ioexception1);
             }
         }
     }

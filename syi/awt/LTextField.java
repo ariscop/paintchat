@@ -2,6 +2,7 @@ package syi.awt;
 
 import java.awt.*;
 import java.awt.event.*;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            Awt, MessageBox
@@ -9,12 +10,14 @@ import java.awt.event.*;
 public class LTextField extends Component
 {
 
-    private String Title;
+	private static final long serialVersionUID = 1L;
+	
+	private String Title;
     private String Text;
     private int Gap;
     private boolean edit;
-    private Color Bk;
-    private Color BkD;
+//    private Color Bk;
+//    private Color BkD;
     private Color Fr;
     private boolean isPress;
     private Dimension size;
@@ -131,7 +134,7 @@ public class LTextField extends Component
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -176,7 +179,7 @@ public class LTextField extends Component
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -184,10 +187,16 @@ public class LTextField extends Component
     {
     }
 
+    /**
+     * Sets the background colour judging by the name
+     * actualy does nothing
+     * @param color
+     */
     public void setBk(Color color)
     {
-        Bk = color;
-        BkD = color.darker();
+    	//FIXME: the crap?
+//        Bk = color;
+//        BkD = color.darker();
     }
 
     public void setEdit(boolean flag)
@@ -237,7 +246,7 @@ public class LTextField extends Component
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 }

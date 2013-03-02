@@ -3,9 +3,8 @@ package syi.awt;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.util.EventObject;
 import java.util.Hashtable;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            TextCanvas, Awt, LButton
@@ -14,12 +13,14 @@ public class MessageBox extends Dialog
     implements ActionListener
 {
 
-    private static MessageBox message = null;
+	private static final long serialVersionUID = 1L;
+	
+	private static MessageBox message = null;
     public boolean bool;
-    private static Hashtable res;
+    private static Hashtable<String, Object> res;
     private Panel panelUnder;
-    private Panel panelUpper;
-    private Panel panelCenter;
+//    private Panel panelUpper;
+//    private Panel panelCenter;
     private LButton b_ok;
     private LButton b_cancel;
     private TextField textField;
@@ -88,7 +89,7 @@ public class MessageBox extends Dialog
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -212,7 +213,6 @@ public class MessageBox extends Dialog
         try
         {
             int i = windowevent.getID();
-            Dialog _tmp = (Dialog)windowevent.getWindow();
             if(i == 201)
             {
                 dispose();
@@ -241,7 +241,7 @@ public class MessageBox extends Dialog
         }
     }
 
-    public static void setResource(Hashtable hashtable)
+    public static void setResource(Hashtable<String, Object> hashtable)
     {
         res = hashtable;
     }

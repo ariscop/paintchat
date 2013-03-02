@@ -5,11 +5,20 @@ import java.awt.event.*;
 import paintchat.Res;
 import syi.awt.Awt;
 
+/**
+ * Login Dialog
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
+
 public class DCF extends Dialog
     implements ItemListener, ActionListener
 {
 
-    private Res res;
+	private static final long serialVersionUID = 1L;
+
+	private Res res;
     private Checkbox cbAdmin;
     private TextField tPas;
     private Label lPas;

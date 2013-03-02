@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.awt.Point;
 import java.util.Hashtable;
 
+import paintchat.Res;
+
 public class HelpWindowContent
 {
 
@@ -11,13 +13,13 @@ public class HelpWindowContent
     public String string;
     public Image image;
     boolean isResource;
-    public Hashtable res;
+    public Hashtable<String, Object> res;
     public int timeStart;
     public int timeEnd;
     private boolean isEnableVisited;
     private boolean isVisit;
 
-    public HelpWindowContent(Image image1, String s, boolean flag, Point point1, Hashtable hashtable)
+    public HelpWindowContent(Image image1, String s, boolean flag, Point point1, Hashtable<String, Object> hashtable)
     {
         string = null;
         image = null;
@@ -33,7 +35,7 @@ public class HelpWindowContent
         image = image1;
     }
 
-    public HelpWindowContent(String s, boolean flag, Point point1, Hashtable hashtable)
+    public HelpWindowContent(String s, boolean flag, Point point1, Res res2)
     {
         string = null;
         image = null;
@@ -44,7 +46,7 @@ public class HelpWindowContent
         isVisit = false;
         point = point1;
         string = s;
-        res = hashtable;
+        res = res2;
         isResource = flag;
     }
 

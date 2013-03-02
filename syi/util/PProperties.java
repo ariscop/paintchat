@@ -4,12 +4,14 @@ import java.io.*;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class PProperties extends Hashtable
+public class PProperties extends Hashtable<String, String>
 {
 
-    private static final String str_empty = "";
+    //private static final String str_empty = "";
 
-    public PProperties()
+	private static final long serialVersionUID = 1L;
+
+	public PProperties()
     {
     }
 
@@ -214,13 +216,15 @@ public class PProperties extends Hashtable
     {
         save(outputstream, null);
     }
-
-    public synchronized void save(OutputStream outputstream, Hashtable hashtable)
+    
+    
+    //TODO: is <String, Object> right?
+    public synchronized void save(OutputStream outputstream, Hashtable<String, Object> hashtable)
         throws IOException
     {
         PrintWriter printwriter = new PrintWriter(new OutputStreamWriter(outputstream), false);
         boolean flag = hashtable != null;
-        for(Enumeration enumeration = keys(); enumeration.hasMoreElements();)
+        for(Enumeration<String> enumeration = keys(); enumeration.hasMoreElements();)
         {
             String s1 = (String)enumeration.nextElement();
             if(s1 != null && s1.length() > 0 && s1.charAt(0) != '#')

@@ -2,7 +2,11 @@ package paintchat_server;
 
 import java.io.*;
 import paintchat.Res;
-import syi.util.*;
+import syi.util.ByteInputStream;
+import syi.util.ByteStream;
+import syi.util.ExceptionHandler;
+import syi.util.Io;
+import syi.util.VectorBin;
 
 public class PchInputStream
 {
@@ -93,7 +97,7 @@ public class PchInputStream
         catch(EOFException _ex) { }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
         try
         {

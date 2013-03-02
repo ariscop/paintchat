@@ -6,7 +6,9 @@ import syi.util.Io;
 public class ImageCanvas extends Canvas
 {
 
-    private Image image;
+	private static final long serialVersionUID = 1L;
+	
+	private Image image;
     private String string;
     private int imW;
     private int imH;

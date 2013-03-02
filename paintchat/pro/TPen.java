@@ -3,11 +3,11 @@ package paintchat.pro;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.*;
-import java.util.Hashtable;
 import paintchat.M;
 import paintchat.Res;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            Tools
@@ -16,7 +16,9 @@ public class TPen extends LComponent
     implements Runnable
 {
 
-    private Tools tools;
+	private static final long serialVersionUID = 1L;
+	
+	private Tools tools;
     private int iType;
     private boolean isRun;
     private LComponent cs[];
@@ -26,8 +28,8 @@ public class TPen extends LComponent
     private Res config;
     private Image image;
     private Image images[];
-    private boolean isDrag;
-    private int selButton;
+//    private boolean isDrag;
+//    private int selButton;
     private int selWhite;
     private int selPen;
     private int imW;
@@ -36,7 +38,7 @@ public class TPen extends LComponent
     private int selItem;
     private M mgs[];
     private ColorModel cmDef;
-    private int sizeTT;
+//    private int sizeTT;
 
     public TPen(Tools tools1, paintchat.M.Info info1, Res res, TPen tpen, LComponent alcomponent[])
     {
@@ -44,14 +46,14 @@ public class TPen extends LComponent
         isRun = false;
         image = null;
         images = null;
-        isDrag = false;
-        selButton = 0;
+//        isDrag = false;
+//        selButton = 0;
         selPen = 0;
         imW = 0;
         imH = 0;
         selItem = -1;
         mgs = null;
-        sizeTT = 0;
+//        sizeTT = 0;
         tools = tools1;
         info = info1;
         mg = info.m;
@@ -157,7 +159,7 @@ public class TPen extends LComponent
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 

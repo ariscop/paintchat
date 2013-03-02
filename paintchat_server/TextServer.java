@@ -5,7 +5,6 @@ import java.net.InetAddress;
 import paintchat.Config;
 import paintchat.MgText;
 import paintchat.debug.DebugListener;
-import syi.util.PProperties;
 import syi.util.Vector2;
 
 // Referenced classes of package paintchat_server:
@@ -17,11 +16,11 @@ public class TextServer
     private boolean isLive;
     private TextTalkerListener talkers[];
     private int countTalker;
-    private XMLTalker xmlTalkers[];
-    private int countXMLTalker;
+    //private XMLTalker xmlTalkers[];
+    //private int countXMLTalker;
     private ChatLogOutputStream outLog;
-    private DebugListener debug;
-    private Config config;
+    //private DebugListener debug;
+    //private Config config;
     private String strPassword;
     private Vector2 mgtexts;
     private boolean isCash;
@@ -35,8 +34,9 @@ public class TextServer
         isLive = true;
         talkers = new TextTalkerListener[10];
         countTalker = 0;
-        xmlTalkers = new XMLTalker[10];
-        countXMLTalker = 0;
+        //TODO: this looks important, why was it here?
+//        xmlTalkers = new XMLTalker[10];
+//        countXMLTalker = 0;
         mgtexts = new Vector2();
         isCash = true;
         vKillIP = new Vector2();
@@ -50,8 +50,9 @@ public class TextServer
             return;
         }
         server = server1;
-        config = config1;
-        debug = debuglistener;
+        //TODO: Unused parameters
+//        config = config1;
+//        debug = debuglistener;
         strPassword = config1.getString("Admin_Password", null);
         boolean flag = config1.getBool("Server_Log_Text", false);
         isCash = config1.getBool("Server_Cash_Text", true);

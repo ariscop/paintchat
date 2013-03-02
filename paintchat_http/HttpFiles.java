@@ -4,7 +4,7 @@ import java.io.*;
 import paintchat.Config;
 import paintchat.Res;
 import syi.util.Io;
-import syi.util.PProperties;
+//import syi.util.PProperties;
 
 public class HttpFiles
 {
@@ -13,18 +13,18 @@ public class HttpFiles
     private String STR_DOT;
     private File dirWWW;
     private File dirTmp;
-    private Config config;
+//    private Config config;
     private Res res;
     static final FileNotFoundException NOT_FOUND = new FileNotFoundException();
     private byte bErrorUpper[];
     private byte bErrorBottom[];
     private byte res_bytes[][];
-    private static final int I_OK = 0;
-    private static final int I_NOT_MODIFIED = 1;
-    private static final int I_MOVED_PERMANENTLY = 2;
-    private static final int I_NOT_FOUND = 3;
-    private static final int I_SERVER_ERROR = 4;
-    private static final int I_SERVICE_UNAVALIABLE = 5;
+//    private static final int I_OK = 0;
+//    private static final int I_NOT_MODIFIED = 1;
+//    private static final int I_MOVED_PERMANENTLY = 2;
+//    private static final int I_NOT_FOUND = 3;
+//    private static final int I_SERVER_ERROR = 4;
+//    private static final int I_SERVICE_UNAVALIABLE = 5;
 
     public HttpFiles(Config config1, Res res1)
     {
@@ -33,7 +33,7 @@ public class HttpFiles
         bErrorUpper = null;
         bErrorBottom = null;
         res_bytes = new byte[6][];
-        config = config1;
+//        config = config1;
         res = res1;
         dirWWW = new File(config1.getString("Http_Dir", "www"));
         dirTmp = new File("cnf/template/");
@@ -127,27 +127,27 @@ public class HttpFiles
         return s.lastIndexOf('.') <= i;
     }
 
-    private String replaceText(String s, String s1, String s2)
-    {
-        if(s.indexOf(s1) < 0)
-        {
-            return s;
-        }
-        try
-        {
-            int j;
-            for(int i = 0; (j = s.indexOf(s1, i)) < 0; i += j)
-            {
-                s = s.substring(0, i) + s2 + s.substring(i + s1.length());
-            }
-
-        }
-        catch(RuntimeException runtimeexception)
-        {
-            System.out.println("replace" + runtimeexception);
-        }
-        return s;
-    }
+//    private String replaceText(String s, String s1, String s2)
+//    {
+//        if(s.indexOf(s1) < 0)
+//        {
+//            return s;
+//        }
+//        try
+//        {
+//            int j;
+//            for(int i = 0; (j = s.indexOf(s1, i)) < 0; i += j)
+//            {
+//                s = s.substring(0, i) + s2 + s.substring(i + s1.length());
+//            }
+//
+//        }
+//        catch(RuntimeException runtimeexception)
+//        {
+//            System.out.println("replace" + runtimeexception);
+//        }
+//        return s;
+//    }
 
     private void setup() {
         if (bErrorUpper != null) {

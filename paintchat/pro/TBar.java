@@ -1,7 +1,6 @@
 package paintchat.pro;
 
 import java.applet.Applet;
-import java.applet.AppletContext;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.net.URL;
@@ -9,18 +8,21 @@ import paintchat.Res;
 import paintchat_client.Mi;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 public class TBar extends LComponent
 {
 
-    private boolean isOption;
+	private static final long serialVersionUID = 1L;
+	
+	private boolean isOption;
     private Res res;
     private Res config;
     private LComponent cs[];
     private String strs[];
     private boolean flags[];
     private Mi mi;
-    private URL codebase;
+    //private URL codebase;
     private String strAuthor;
     private int W;
     private int H;
@@ -80,7 +82,7 @@ public class TBar extends LComponent
     {
         isOption = true;
         mi = mi1;
-        codebase = url;
+        //codebase = url;
         byte byte0 = 2;
         strs = new String[byte0];
         flags = new boolean[byte0];
@@ -124,7 +126,7 @@ public class TBar extends LComponent
             }
             catch(Throwable throwable)
             {
-                throwable.printStackTrace();
+                ExceptionHandler.handleException(throwable);
             }
         }
     }

@@ -13,13 +13,11 @@ import java.util.zip.ZipInputStream;
 public class ClassLoaderCustom extends ClassLoader
 {
 
-    private Hashtable cash;
-    private ClassLoader cl;
+    private Hashtable<String, Class<?>> cash;
 
     public ClassLoaderCustom()
     {
-        cash = new Hashtable();
-        cl = getClass().getClassLoader();
+        cash = new Hashtable<String, Class<?>>();
     }
 
     public boolean loadArchive(String s)
@@ -53,7 +51,7 @@ public class ClassLoaderCustom extends ClassLoader
                     zipinputstream.closeEntry();
                     byte abyte1[] = bytearrayoutputstream.toByteArray();
                     String s1 = s2.substring(0, s2.length() - 6);
-                    Class class1 = defineClass(s1, abyte1, 0, abyte1.length);
+                    Class<?> class1 = defineClass(s1, abyte1, 0, abyte1.length);
                     abyte1 = (byte[])null;
                     if(class1 != null)
                     {
@@ -72,9 +70,9 @@ public class ClassLoaderCustom extends ClassLoader
         return false;
     }
 
-    public Class loadClass(String s, String s1, boolean flag)
+    public Class<?> loadClass(String s, String s1, boolean flag)
     {
-        Class class1 = (Class)cash.get(s);
+        Class<?> class1 = (Class<?>)cash.get(s);
         if(class1 == null)
         {
             if(s1 == null || !s1.startsWith("http://"))
@@ -97,10 +95,10 @@ public class ClassLoaderCustom extends ClassLoader
         return class1;
     }
 
-    protected Class loadClass(String s, boolean flag)
+    protected Class<?> loadClass(String s, boolean flag)
         throws ClassNotFoundException
     {
-        Class class1 = (Class)cash.get(s);
+        Class<?> class1 = (Class<?>)cash.get(s);
         if(class1 == null)
         {
             return findSystemClass(s);
@@ -112,14 +110,14 @@ public class ClassLoaderCustom extends ClassLoader
         return class1;
     }
 
-    private Class loadLocal(String s, String s1)
+    private Class<?> loadLocal(String s, String s1)
     {
-        Class class2;
+        Class<?> class2;
         try
         {
             if(s1 == null || s1.length() <= 0)
             {
-                Class class1 = findSystemClass(s);
+                Class<?> class1 = findSystemClass(s);
                 if(class1 != null)
                 {
                     return class1;
@@ -147,9 +145,9 @@ public class ClassLoaderCustom extends ClassLoader
         return class2;
     }
 
-    private Class loadURL(String s, String s1)
+    private Class<?> loadURL(String s, String s1)
     {
-        Class class1;
+        Class<?> class1;
         try
         {
             String s2 = replace(s, '\\', '/', true);
@@ -179,7 +177,7 @@ public class ClassLoaderCustom extends ClassLoader
         return class1;
     }
 
-    public void putClass(Class class1)
+    public void putClass(Class<?> class1)
     {
         cash.put(class1.getName(), class1);
     }

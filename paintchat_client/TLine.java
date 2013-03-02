@@ -5,10 +5,20 @@ import java.util.zip.Inflater;
 import paintchat.M;
 import paintchat_server.PaintChatTalker;
 import syi.util.ByteStream;
+import syi.util.ExceptionHandler;
 import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_client:
 //            Data
+
+/**
+ * This class handles the 'paint'
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
+
 
 public class TLine extends PaintChatTalker
 {
@@ -53,7 +63,7 @@ public class TLine extends PaintChatTalker
             case 0: // '\0'
                 synchronized(stmIn)
                 {
-                    stmIn.w2(0);
+                    stmIn.writeInt(0);
                 }
                 break;
 
@@ -103,7 +113,7 @@ public class TLine extends PaintChatTalker
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
     }
 
@@ -136,7 +146,7 @@ public class TLine extends PaintChatTalker
                 try {
                     super.canWrite = true;
                     bSendCash.reset();
-                    bSendCash.w2(2);
+                    bSendCash.writeInt(2);
                     write(bSendCash);
                     flush();
                 } catch (IOException _ex) {

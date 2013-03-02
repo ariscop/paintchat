@@ -2,11 +2,9 @@ package paintchat.normal;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.lang.reflect.Field;
-import java.util.Hashtable;
 import paintchat.M;
 import paintchat.Res;
-import paintchat_client.Mi;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.normal:
 //            Tools
@@ -15,8 +13,8 @@ public class ToolList
 {
 
     private Tools tools;
-    private Res res;
-    private Res cnf;
+//    private Res res;
+//    private Res cnf;
     boolean isField;
     boolean isClass;
     boolean isDirect;
@@ -26,7 +24,7 @@ public class ToolList
     boolean isDrawList;
     boolean isIm;
     String strField;
-    private int quality;
+//    private int quality;
     private boolean isDrag;
     public int iSelect;
     public int iSelectList;
@@ -36,9 +34,9 @@ public class ToolList
     private int items[];
     private String strs[];
     private String strings[];
-    private int length;
-    private ToolList lists[];
-    private Font font;
+//    private int length;
+//    private ToolList lists[];
+//    private Font font;
     private int base;
     private Image image;
     private int imW;
@@ -48,7 +46,7 @@ public class ToolList
 
     public ToolList()
     {
-        quality = 1;
+//        quality = 1;
         isDrag = false;
         info = null;
         mgs = null;
@@ -133,7 +131,7 @@ public class ToolList
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         return 0;
     }
@@ -143,9 +141,10 @@ public class ToolList
         try
         {
             tools = tools1;
-            res = res1;
-            cnf = res2;
-            lists = atoollist;
+            //TODO: Unused parameters. many unused parameters 
+//            res = res1;
+//            cnf = res2;
+//            lists = atoollist;
             info = m;
             String s = "t0" + i + "_";
             isDirect = res2.getP(s + "direct", false);
@@ -196,7 +195,7 @@ public class ToolList
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -284,7 +283,7 @@ public class ToolList
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

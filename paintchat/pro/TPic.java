@@ -1,36 +1,37 @@
 package paintchat.pro;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
-import paintchat.M;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            Tools
 
 public class TPic extends LComponent
 {
-
-    private Tools tools;
+	
+	private static final long serialVersionUID = 1L;
+	
+	private Tools tools;
     public Component tColor;
     private int iDrag;
-    private int sizePalette;
-    private int selPalette;
-    private int oldColor;
-    private Color cls[];
-    private int isRGB;
-    private int iColor;
+//    private int sizePalette;
+//    private int selPalette;
+//    private int oldColor;
+//    private Color cls[];
+//    private int isRGB;
+//    private int iColor;
     private static float fhsb[] = new float[3];
 
     public TPic(Tools tools1)
     {
         iDrag = -1;
-        sizePalette = 20;
-        selPalette = 0;
-        oldColor = 0;
-        isRGB = 1;
+//        sizePalette = 20;
+//        selPalette = 0;
+//        oldColor = 0;
+//        isRGB = 1;
         setDimension(new Dimension((int)(66F * LComponent.Q), (int)(66F * LComponent.Q)), new Dimension((int)(128F * LComponent.Q), (int)(128F * LComponent.Q)), new Dimension((int)(284F * LComponent.Q), (int)(284F * LComponent.Q)));
         tools = tools1;
     }
@@ -40,7 +41,7 @@ public class TPic extends LComponent
         int ai[] = tools.iBuffer;
         int i = 64;
         int l = 0;
-        float f1 = 0.0F;
+//        float f1 = 0.0F;
         float f3 = 0.0F;
         float f4 = 1.0F / (float)i;
         float f = fhsb[0];
@@ -96,7 +97,7 @@ public class TPic extends LComponent
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 

@@ -10,7 +10,9 @@ public class HelpWindow extends Window
     implements Runnable
 {
 
-    private Thread rAdd;
+	private static final long serialVersionUID = -1012639024533333245L;
+	
+	private Thread rAdd;
     private HelpWindowContent object;
     private ImageCanvas imageCanvas;
     private TextCanvas textCanvas;

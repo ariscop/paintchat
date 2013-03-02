@@ -3,18 +3,26 @@ package syi.javascript;
 import java.applet.Applet;
 import java.awt.Rectangle;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+/**
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ * interface to netscape.javascript.JSObject
+ *
+ */
 
 public class JSController
 {
 
     private boolean isCash;
-    private Class cJava;
+    //FIXME: what class should this be?
+    private Class<?> cJava;
     private Object oJava;
     private Method mGet;
     private Method mCall;
@@ -24,10 +32,11 @@ public class JSController
     private Method mGetSlot;
     private Method mEval;
     private Applet applet;
-    private Hashtable tables;
+    //FIXME: what type is this suposed to be?
+    private Hashtable<String, Object> tables;
     private SimpleDateFormat dateFormat;
-    private static final String STR_NO_SUPPORT = "No support JavaScript";
-    private static final String STR_VERSION = "JavaScript Controller (C)shi-chan 2001";
+    /*private static final String STR_NO_SUPPORT = "No support JavaScript";
+    private static final String STR_VERSION = "JavaScript Controller (C)shi-chan 2001";*/
 
     public JSController(Applet applet1)
         throws IOException
@@ -82,12 +91,12 @@ public class JSController
     public String[][] dataLoad()
         throws IOException
     {
-        Hashtable hashtable = new Hashtable();
+        Hashtable<String, String> hashtable = new Hashtable<String, String>();
         dataLoad(hashtable);
         int i = hashtable.size();
         String as[][] = new String[i][2];
         int j = 0;
-        for(Enumeration enumeration = hashtable.keys(); enumeration.hasMoreElements();)
+        for(Enumeration<String> enumeration = hashtable.keys(); enumeration.hasMoreElements();)
         {
             Object obj = enumeration.nextElement();
             as[j][0] = (String)obj;
@@ -98,7 +107,14 @@ public class JSController
         return as;
     }
 
-    public void dataLoad(Hashtable hashtable)
+    /**
+     * Retrives cookies
+     * 
+     * @param hashtable
+     * to store cookies in
+     * @throws IOException
+     */
+    public void dataLoad(Hashtable<String, String> hashtable)
         throws IOException
     {
         String s = getProperty("document.cookie");
@@ -144,7 +160,7 @@ public class JSController
     {
         try
         {
-            Hashtable hashtable = new Hashtable();
+            Hashtable<String, String> hashtable = new Hashtable<String, String>();
             for(int j = 0; j < as.length; j++)
             {
                 hashtable.put(as[j][0], as[j][1]);
@@ -158,7 +174,7 @@ public class JSController
         }
     }
 
-    public void dataSave(Hashtable hashtable, int i)
+    public void dataSave(Hashtable<String, String> hashtable, int i)
         throws IOException
     {
         if(hashtable.size() <= 0)
@@ -166,7 +182,7 @@ public class JSController
             return;
         }
         StringBuffer stringbuffer = new StringBuffer();
-        for(Enumeration enumeration = hashtable.keys(); enumeration.hasMoreElements(); stringbuffer.append("; "))
+        for(Enumeration<String> enumeration = hashtable.keys(); enumeration.hasMoreElements(); stringbuffer.append("; "))
         {
             String s = (String)enumeration.nextElement();
             stringbuffer.append(escape(s));
@@ -401,7 +417,7 @@ public class JSController
         isCash = flag;
         if(flag)
         {
-            tables = new Hashtable();
+            tables = new Hashtable<String, Object>();
         } else
         {
             tables = null;

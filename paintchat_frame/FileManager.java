@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import paintchat.Config;
 import syi.util.Io;
-import syi.util.PProperties;
+import syi.util.ExceptionHandler;
 
 public class FileManager
 {
@@ -60,7 +60,7 @@ public class FileManager
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 }

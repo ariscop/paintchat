@@ -3,11 +3,13 @@ package paintchat_server;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.Hashtable;
 import paintchat.Config;
 import paintchat.Res;
 import paintchat.debug.DebugListener;
-import syi.util.*;
+import syi.util.ByteInputStream;
+import syi.util.Io;
+import syi.util.ThreadPool;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_server:
 //            TextServer, PaintChatTalker, TextTalker, LineTalker, 
@@ -47,7 +49,7 @@ public class TalkerInstance
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
             closeSocket();
         }
     }
@@ -59,7 +61,8 @@ public class TalkerInstance
         ThreadPool.poolStartThread(talkerinstance, "sock_switch");
     }
 
-    private boolean isKillAddress(Socket socket1)
+    //TODO: Unused function
+    /*private boolean isKillAddress(Socket socket1)
     {
         try
         {
@@ -80,7 +83,7 @@ public class TalkerInstance
             debug.log(runtimeexception);
         }
         return false;
-    }
+    }*/
 
     private void switchConnection(Socket socket1)
         throws IOException

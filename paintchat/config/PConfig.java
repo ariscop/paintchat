@@ -1,15 +1,16 @@
 package paintchat.config;
 
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.Beans;
 import java.io.File;
-import java.io.PrintStream;
-import java.util.EventObject;
 import paintchat.Config;
 import syi.applet.ServerStub;
-import syi.awt.*;
+import syi.awt.Awt;
+import syi.awt.Gui;
+import syi.awt.LButton;
+import syi.awt.LTextField;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.config:
 //            ConfigApplet
@@ -18,8 +19,10 @@ public class PConfig extends ConfigApplet
     implements ActionListener
 {
 
-    private Panel ivjPanel1;
-    private GridLayout ivjPanel1GridLayout;
+	private static final long serialVersionUID = 1L;
+	
+	private Panel ivjPanel1;
+//    private GridLayout ivjPanel1GridLayout;
     private LTextField ivjAdmin_Password;
     private Checkbox ivjApp_Auto_Http;
     private Checkbox ivjApp_Auto_Lobby;
@@ -31,7 +34,7 @@ public class PConfig extends ConfigApplet
     private LButton ivjOk;
     private Panel ivjPanel2;
     private Panel ivjPanel3;
-    private GridLayout ivjPanel2GridLayout;
+//    private GridLayout ivjPanel2GridLayout;
     private Checkbox ivjApp_ShowStartHelp;
     private Button ivjButton1;
     private Checkbox ivjAdmin_ChatMaster;
@@ -40,7 +43,7 @@ public class PConfig extends ConfigApplet
     public PConfig()
     {
         ivjPanel1 = null;
-        ivjPanel1GridLayout = null;
+//        ivjPanel1GridLayout = null;
         ivjAdmin_Password = null;
         ivjApp_Auto_Http = null;
         ivjApp_Auto_Lobby = null;
@@ -52,7 +55,7 @@ public class PConfig extends ConfigApplet
         ivjOk = null;
         ivjPanel2 = null;
         ivjPanel3 = null;
-        ivjPanel2GridLayout = null;
+//        ivjPanel2GridLayout = null;
         ivjApp_ShowStartHelp = null;
         ivjButton1 = null;
         ivjAdmin_ChatMaster = null;
@@ -499,7 +502,7 @@ public class PConfig extends ConfigApplet
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 
@@ -513,7 +516,7 @@ public class PConfig extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -522,7 +525,8 @@ public class PConfig extends ConfigApplet
         try
         {
             Frame frame = new Frame();
-            Class class1 = Class.forName("paintchat.config.PConfig");
+            //TODO: remove Class load
+            Class<?> class1 = Class.forName("paintchat.config.PConfig");
             ClassLoader classloader = class1.getClassLoader();
             PConfig pconfig = (PConfig)Beans.instantiate(classloader, "paintchat.config.PConfig");
             frame.add("Center", pconfig);
@@ -541,7 +545,7 @@ public class PConfig extends ConfigApplet
         {
             System.err.println("java.applet.Applet (The) main() (An exception occurred in)"
 );
-            throwable.printStackTrace(System.out);
+            ExceptionHandler.handleException(throwable);
         }
     }
 

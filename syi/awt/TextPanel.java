@@ -1,13 +1,13 @@
 package syi.awt;
 
 import java.applet.Applet;
-import java.applet.AppletContext;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.URL;
 import paintchat.Res;
 import syi.javascript.JSController;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            Awt
@@ -16,7 +16,9 @@ public class TextPanel extends Canvas
     implements ActionListener, ItemListener
 {
 
-    public boolean isView;
+	private static final long serialVersionUID = 1L;
+
+	public boolean isView;
     private boolean isPress;
     private Font font;
     private Object lock;
@@ -34,7 +36,6 @@ public class TextPanel extends Canvas
     private int scrollMax;
     private int iSeek;
     private TextField textField;
-    private Res config;
     private Color nowColor;
     private Color beColor;
     private String strings[];
@@ -43,7 +44,6 @@ public class TextPanel extends Canvas
     private static PopupMenu popup = null;
     private int Y;
     private Dimension size;
-    private static final String strEmpty = "";
 
     public TextPanel()
     {
@@ -165,7 +165,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -209,7 +209,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -233,7 +233,6 @@ public class TextPanel extends Canvas
         if(s.charAt(0) == '$')
         {
             int i = 0;
-            boolean flag = false;
             if(s.startsWith("$js:"))
             {
                 call(s.substring(4, s.length()));
@@ -396,7 +395,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -420,7 +419,6 @@ public class TextPanel extends Canvas
                 return;
             }
             int i = Gap * 2;
-            int _tmp = strings.length;
             if(!isGetFSize)
             {
                 isGetFSize = true;
@@ -491,7 +489,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -608,7 +606,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -640,7 +638,7 @@ public class TextPanel extends Canvas
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 

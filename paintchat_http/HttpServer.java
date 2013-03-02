@@ -8,6 +8,8 @@ import paintchat.*;
 import paintchat.debug.Debug;
 import syi.util.PProperties;
 
+//TODO: This is an absolute mess, needs to be replaced
+
 // Referenced classes of package paintchat_http:
 //            HttpFiles, TalkerHttp
 
@@ -32,7 +34,7 @@ public class HttpServer
     private HttpFiles httpFiles;
     static final String STR_FILE_MIME = "./cnf/mime.cf";
     public static final String STR_VERSION = "PaintChatHTTP/3.1";
-    private static final String STR_TIME_FORMAT = "EEEE',' dd MMM yyyy HH:mm:ss 'GMT'";
+    //private static final String STR_TIME_FORMAT = "EEEE',' dd MMM yyyy HH:mm:ss 'GMT'";
 
     public HttpServer(Config config1, Debug debug1, boolean flag)
     {

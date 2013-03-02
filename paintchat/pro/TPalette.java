@@ -1,7 +1,6 @@
 package paintchat.pro;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.StringReader;
@@ -9,6 +8,7 @@ import paintchat.M;
 import paintchat.Res;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            Tools
@@ -16,16 +16,18 @@ import syi.awt.LComponent;
 public class TPalette extends LComponent
 {
 
-    private int lenColor;
+	private static final long serialVersionUID = 1L;
+
+//	private int lenColor;
     private int iDrag;
     private paintchat.M.Info info;
     private M mg;
     private Tools tools;
-    private Res res;
+//    private Res res;
     private Res config;
     private int sizePalette;
     private int selPalette;
-    private int oldColor;
+//    private int oldColor;
     private Color cls[];
     private int isRGB;
     private float fhsb[];
@@ -46,11 +48,11 @@ public class TPalette extends LComponent
 
     public TPalette()
     {
-        lenColor = 255;
+//        lenColor = 255;
         iDrag = -1;
         sizePalette = 20;
         selPalette = 0;
-        oldColor = 0;
+//        oldColor = 0;
         isRGB = 1;
         fhsb = new float[3];
         if(clRGB == null)
@@ -104,7 +106,8 @@ public class TPalette extends LComponent
     {
         info = info1;
         mg = info1.m;
-        res = res2;
+        //TODO: Unused parameter
+//        res = res2;
         config = res1;
         tools = tools1;
         setDimension(new Dimension((int)(42F * LComponent.Q), (int)(42F * LComponent.Q)), new Dimension((int)(112F * LComponent.Q), (int)(202F * LComponent.Q)), new Dimension((int)(300F * LComponent.Q), (int)(300F * LComponent.Q)));
@@ -129,7 +132,7 @@ public class TPalette extends LComponent
             int k = (int)((float)j * 1.5F);
             byte byte0 = ((byte)(j > 12 ? 2 : 0));
             int l = 0;
-            int _tmp = cls.length;
+//            int _tmp = cls.length;
             int i1 = 0;
             int j1 = 0;
             for(int k1 = 0; k1 < cls.length; k1++)
@@ -160,7 +163,7 @@ public class TPalette extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -168,7 +171,7 @@ public class TPalette extends LComponent
     {
         Dimension dimension = getSize();
         int l = dimension.width - i - 1;
-        int _tmp = dimension.height - j;
+//        int _tmp = dimension.height - j;
         Color color = getBackground();
         Color color1 = Awt.cFore;
         boolean flag = mg.isText();
@@ -329,7 +332,7 @@ public class TPalette extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

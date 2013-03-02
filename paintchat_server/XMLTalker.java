@@ -4,14 +4,17 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Enumeration;
-import java.util.Hashtable;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import paintchat.Res;
-import syi.util.*;
+import syi.util.ByteInputStream;
+import syi.util.ByteStream;
+import syi.util.Io;
+import syi.util.ThreadPool;
+import syi.util.ExceptionHandler;
 
 public abstract class XMLTalker extends DefaultHandler
     implements Runnable
@@ -34,9 +37,10 @@ public abstract class XMLTalker extends DefaultHandler
     private final String strTags[] = {
         "talk", "in", "leave", "infomation", "script", "admin"
     };
-    private final String strStartTags[] = {
+    //TODO: why's this here?
+    /*private final String strStartTags[] = {
         "<talk", "<in", "<leave", "<infomation", "<script", "<admin"
-    };
+    };*/
     private final int strHints[] = {
         0, 1, 2, 6, 8, 102
     };
@@ -179,7 +183,7 @@ public abstract class XMLTalker extends DefaultHandler
         {
             mInitInside();
             ByteInputStream byteinputstream = new ByteInputStream();
-            long l = 0L;
+//            long l = 0L;
             long l2 = 0L;
             canWrite = false;
             while(isLive) 
@@ -216,7 +220,7 @@ public abstract class XMLTalker extends DefaultHandler
         catch(InterruptedException _ex) { }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         mStop();
     }
@@ -245,7 +249,7 @@ public abstract class XMLTalker extends DefaultHandler
     {
         StringBuffer stringbuffer = new StringBuffer();
         String s;
-        for(Enumeration enumeration = res.keys(); enumeration.hasMoreElements(); write(s, res.get(s)))
+        for(Enumeration<String> enumeration = res.keys(); enumeration.hasMoreElements(); write(s, res.get(s)))
         {
             s = (String)enumeration.nextElement();
             if(stringbuffer.length() > 0)

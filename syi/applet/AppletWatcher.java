@@ -3,15 +3,11 @@ package syi.applet;
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Hashtable;
 import paintchat.Config;
 import syi.awt.Awt;
 import syi.awt.Gui;
-import syi.util.PProperties;
 
 // Referenced classes of package syi.applet:
 //            ServerStub
@@ -19,10 +15,12 @@ import syi.util.PProperties;
 public class AppletWatcher extends Frame
 {
 
-    private Applet applet;
+	private static final long serialVersionUID = 1L;
+	
+	private Applet applet;
     private boolean bool_exit;
 
-    public AppletWatcher(String s, String s1, Config config, Hashtable hashtable, boolean flag)
+    public AppletWatcher(String s, String s1, Config config, Hashtable<String, Object> hashtable, boolean flag)
         throws ClassNotFoundException, Exception, IOException
     {
         super(s1);
@@ -37,7 +35,8 @@ public class AppletWatcher extends Frame
         Awt.moveCenter(this);
     }
 
-    private PProperties getProperties(URL url)
+    //FIXME: Unused function
+    /*private PProperties getProperties(URL url)
     {
         try
         {
@@ -115,10 +114,10 @@ public class AppletWatcher extends Frame
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         return null;
-    }
+    }*/
 
     public static void main(String args[])
     {

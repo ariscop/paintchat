@@ -4,9 +4,12 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Enumeration;
-import java.util.Hashtable;
 import paintchat.Res;
-import syi.util.*;
+import syi.util.ByteInputStream;
+import syi.util.ByteStream;
+import syi.util.Io;
+import syi.util.ThreadPool;
+import syi.util.ExceptionHandler;
 
 public abstract class PaintChatTalker
     implements Runnable
@@ -153,7 +156,7 @@ public abstract class PaintChatTalker
 
     public void run()
     {
-        long l = 0L;
+//        long l = 0L;
         long l2 = 0L;
         try
         {
@@ -195,7 +198,7 @@ public abstract class PaintChatTalker
         catch(InterruptedException _ex) { }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         mStop();
     }
@@ -231,7 +234,7 @@ public abstract class PaintChatTalker
         }
         StringBuffer stringbuffer = new StringBuffer();
         String s;
-        for(Enumeration enumeration = res.keys(); enumeration.hasMoreElements(); stringbuffer.append(res.get(s)))
+        for(Enumeration<String> enumeration = res.keys(); enumeration.hasMoreElements(); stringbuffer.append(res.get(s)))
         {
             s = (String)enumeration.nextElement();
             if(stringbuffer.length() > 0)

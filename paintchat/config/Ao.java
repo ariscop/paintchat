@@ -1,17 +1,18 @@
 package paintchat.config;
 
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.Beans;
 import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.util.*;
 import paintchat.Config;
 import paintchat.Resource;
 import syi.applet.ServerStub;
-import syi.awt.*;
+import syi.awt.Awt;
+import syi.awt.Gui;
+import syi.awt.LButton;
 import syi.util.PProperties;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.config:
 //            ConfigApplet
@@ -20,12 +21,14 @@ public class Ao extends ConfigApplet
     implements ActionListener
 {
 
-    private String CF_AO_CHATINDEX;
+	private static final long serialVersionUID = 1L;
+	
+	private String CF_AO_CHATINDEX;
     private String CF_AO_SHOW_HTML;
     private Checkbox ivjao_show_html;
     private Button ivjbu_ok;
     private Button ivjButton2;
-    private GridLayout ivjAo2GridLayout;
+//    private GridLayout ivjAo2GridLayout;
     private Panel ivjPanel3;
     private LButton ivjCancel;
     private LButton ivjOk;
@@ -46,13 +49,13 @@ public class Ao extends ConfigApplet
     private Label ivjLabel6;
     private Label ivjLabel7;
     private Panel ivjleftPanel;
-    private GridLayout ivjleftPanelGridLayout;
+//    private GridLayout ivjleftPanelGridLayout;
     private Panel ivjpanelRight;
-    private GridLayout ivjpanelRightGridLayout;
+//    private GridLayout ivjpanelRightGridLayout;
     private Checkbox ivjApp_Auto_Lobby;
     private Panel ivjpanelBottom;
     private Label ivjlobby_setup;
-    private FlowLayout ivjpanelBottomFlowLayout;
+//    private FlowLayout ivjpanelBottomFlowLayout;
 
     public Ao()
     {
@@ -61,7 +64,7 @@ public class Ao extends ConfigApplet
         ivjao_show_html = null;
         ivjbu_ok = null;
         ivjButton2 = null;
-        ivjAo2GridLayout = null;
+//        ivjAo2GridLayout = null;
         ivjPanel3 = null;
         ivjCancel = null;
         ivjOk = null;
@@ -82,13 +85,13 @@ public class Ao extends ConfigApplet
         ivjLabel6 = null;
         ivjLabel7 = null;
         ivjleftPanel = null;
-        ivjleftPanelGridLayout = null;
+//        ivjleftPanelGridLayout = null;
         ivjpanelRight = null;
-        ivjpanelRightGridLayout = null;
+//        ivjpanelRightGridLayout = null;
         ivjApp_Auto_Lobby = null;
         ivjpanelBottom = null;
         ivjlobby_setup = null;
-        ivjpanelBottomFlowLayout = null;
+//        ivjpanelBottomFlowLayout = null;
     }
 
     public void actionPerformed(ActionEvent actionevent)
@@ -785,7 +788,9 @@ public class Ao extends ConfigApplet
             getResource(super.res, this);
             String s = getParameter("App_ShowHelp");
             boolean flag = true;
-            if(s != null || s.length() > 0)
+            //TODO: original line preserved, for teh lulz
+            //if(s != null || s.length() > 0)
+            if(s != null && s.length() > 0)
             {
                 switch(Character.toLowerCase(s.charAt(0)))
                 {
@@ -822,7 +827,7 @@ public class Ao extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -835,7 +840,7 @@ public class Ao extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -844,7 +849,8 @@ public class Ao extends ConfigApplet
         try
         {
             Frame frame = new Frame();
-            Class class1 = Class.forName("paintchat.config.Ao");
+            //TODO: remove class load
+            Class<?> class1 = Class.forName("paintchat.config.Ao");
             ClassLoader classloader = class1.getClassLoader();
             Ao ao = (Ao)Beans.instantiate(classloader, "paintchat.config.Ao");
             frame.add("Center", ao);
@@ -862,7 +868,7 @@ public class Ao extends ConfigApplet
         catch(Throwable throwable)
         {
             System.err.println("java.applet.Applet (The) main() (An exception occurred in)");
-            throwable.printStackTrace(System.out);
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -892,7 +898,7 @@ public class Ao extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

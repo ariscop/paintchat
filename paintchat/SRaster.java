@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.image.*;
 import java.util.Hashtable;
 import syi.awt.Awt;
+import syi.util.ExceptionHandler;
 
 public class SRaster
     implements ImageProducer
@@ -14,7 +15,7 @@ public class SRaster
     private ColorModel model;
     private int pixels[];
     private ImageConsumer consumer;
-    private static Hashtable properties = null;
+    private static Hashtable<?, ?> properties = null;
     private boolean isWin;
 
     public SRaster(ColorModel colormodel, int ai[], int i, int j)
@@ -24,9 +25,10 @@ public class SRaster
         pixels = ai;
         width = i;
         height = j;
+        //TODO: is this ever actually needed?
         if(properties == null)
         {
-            properties = new Hashtable();
+            properties = new Hashtable<Object, Object>();
             isWin = Awt.isWin();
         }
     }
@@ -38,13 +40,14 @@ public class SRaster
             consumer = imageconsumer;
             imageconsumer.setDimensions(width, height);
             imageconsumer.setColorModel(model);
+            //TODO: is this line even needed
             imageconsumer.setProperties(properties);
             imageconsumer.setHints(30);
             sendPix();
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
     }
 
@@ -103,9 +106,9 @@ public class SRaster
 
     public final void scale(int ai[], int i, int j, int k)
     {
-        boolean flag = false;
+//        boolean flag = false;
         int j1 = 0;
-        int _tmp = i * j;
+//        int _tmp = i * j;
         int j3 = k * k;
         for(int k3 = 0; k3 < j; k3 += k)
         {

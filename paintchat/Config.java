@@ -3,6 +3,8 @@ package paintchat;
 import java.io.*;
 import java.util.Enumeration;
 import java.util.Hashtable;
+
+import syi.util.ExceptionHandler;
 import syi.util.PProperties;
 
 // Referenced classes of package paintchat:
@@ -11,14 +13,16 @@ import syi.util.PProperties;
 public class Config extends PProperties
 {
 
-    private static String strSep = null;
+	private static final long serialVersionUID = 1L;
+
+	private static String strSep = null;
     public static final String CF_CHATMASTER = "Admin_ChatMaster";
-    private final String CF_CHATMASTER2 = "ChatMaster";
+    //private final String CF_CHATMASTER2 = "ChatMaster";
     public static final String CF_PASSWORD = "Admin_Password";
-    private final String CF_PASSWORD2 = "password";
+    //private final String CF_PASSWORD2 = "password";
     public static final String CF_MAX_USER = "Server_User_Max";
     public static final String CF_GUEST = "Server_User_Guest";
-    private final String CF_GUEST2 = "guest";
+    //private final String CF_GUEST2 = "guest";
     public static final String CF_CONNECT = "Connection_GrobalAddress";
     public final String CF_CONNECT2 = "co";
     public static final String CF_PORT = "Connection_Port_PaintChat";
@@ -27,26 +31,26 @@ public class Config extends PProperties
     public static final String CF_CONNECTION_MAX = "Connection_Max";
     public static final String CF_CONNECTION_TIMEOUT = "Connection_Timeout";
     public static final String CF_HOST = "Connection_Host";
-    private final String CF_HOST2 = "h";
+    //private final String CF_HOST2 = "h";
     public static final String CF_INFOMATION = "Server_Infomation";
-    private final String CF_INFOMATION2 = "i";
+    //private final String CF_INFOMATION2 = "i";
     public static final String CF_LOG_LINE = "Server_Log_Line";
     public final String CF_LOG_LINE2 = "ss";
     public static final String CF_LOG_SERVER = "Server_Log_Server";
-    private final String CF_LOG_SERVER2 = "Log";
+    //private final String CF_LOG_SERVER2 = "Log";
     public static final String CF_LOG_HTTP = "Http_Log";
     public static final String CF_SERVER_DEBUG = "Server_Debug";
     public static final String CF_LOG_TEXT = "Server_Log_Text";
-    private final String CF_LOG_TEXT2 = "Log_Text";
+    //private final String CF_LOG_TEXT2 = "Log_Text";
     public static final String CF_LOAD_LINE = "Server_Load_Line";
-    private final String CF_LOAD_LINE2 = "Load";
+    //private final String CF_LOAD_LINE2 = "Load";
     public static final String CF_LOAD_TEXT = "Server_Load_Text";
     public static final String CF_CASH_TEXT = "Server_Cash_Text";
-    private final String CF_CASH_TEXT2 = "Caches_Text";
+    //private final String CF_CASH_TEXT2 = "Caches_Text";
     public final String CF_MAX_TEXT2 = "ht";
     public final String CF_MAX_TEXT3 = "Cash_Text_Size";
     public static final String CF_CASH_LINE = "Server_Cash_Line";
-    private final String CF_CASH_LINE2 = "Caches_Line";
+    //private final String CF_CASH_LINE2 = "Caches_Line";
     public static final String CF_CASH_LINE_SIZE = "Server_Cash_Line_Size";
     public static final String CF_CASH_TEXT_SIZE = "Server_Cash_Text_Size";
     public static final String CF_LOG_LINE_DIR = "Server_Log_Line_Dir";
@@ -104,22 +108,24 @@ public class Config extends PProperties
         }
         return strSep;
     }
-
+    
+    //TODO: is this even needed?
+    public void loadConfig(Hashtable<String, String> hashtable) {
+        String obj1;
+        for(Enumeration<String> enumeration = hashtable.keys(); enumeration.hasMoreElements(); put(obj1, hashtable.get(obj1)))
+        {
+            obj1 = enumeration.nextElement();
+        }
+        
+        replaceOldKeys();
+        setDefault();
+    }
+    
     public void loadConfig(Object obj)
     {
         try
         {
-            if(obj instanceof Hashtable)
-            {
-                Hashtable hashtable = (Hashtable)obj;
-                Object obj1;
-                for(Enumeration enumeration = hashtable.keys(); enumeration.hasMoreElements(); put(obj1, hashtable.get(obj1)))
-                {
-                    obj1 = enumeration.nextElement();
-                }
-
-            } else
-            if(obj instanceof String)
+        	if(obj instanceof String)
             {
                 File file = new File((String)obj);
                 loadPut(new FileInputStream(file));
@@ -187,7 +193,7 @@ public class Config extends PProperties
         {
             for(int j = 1; j < as[i].length; j++)
             {
-                Object obj = get(as[i][j]);
+                String obj = get(as[i][j]);
                 if(obj != null)
                 {
                     put(as[i][0], obj);
@@ -207,7 +213,7 @@ public class Config extends PProperties
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

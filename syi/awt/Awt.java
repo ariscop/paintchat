@@ -1,12 +1,12 @@
 package syi.awt;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.PixelGrabber;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            LComponent
@@ -234,7 +234,7 @@ public class Awt
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -333,7 +333,7 @@ public class Awt
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         return null;
     }

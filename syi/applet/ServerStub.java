@@ -16,19 +16,17 @@ public class ServerStub
 {
 
     private Config params;
-    private Hashtable res;
     URL url_base;
     private static ServerStub default_stub = null;
 
-    public Iterator getStreamKeys()
+    public Iterator<String> getStreamKeys()
     {
         return null;
     }
-
-    public ServerStub(Config config, Hashtable hashtable)
+    
+    public ServerStub(Config config)
     {
         params = config;
-        res = hashtable;
         try
         {
             String s = System.getProperty("user.dir");
@@ -37,7 +35,7 @@ public class ServerStub
             {
                 s = s + '/';
             }
-            url_base = new URL("file:/" + s);
+            url_base = new URL("file", "", s);
         }
         catch(RuntimeException _ex) { }
         catch(IOException _ex) { }
@@ -57,7 +55,7 @@ public class ServerStub
         return this;
     }
 
-    public Enumeration getApplets()
+    public Enumeration<Applet> getApplets()
     {
         return null;
     }
@@ -88,11 +86,11 @@ public class ServerStub
         return url_base;
     }
 
-    public static ServerStub getDefaultStub(Config config, Hashtable hashtable)
+    public static ServerStub getDefaultStub(Config config, Hashtable<String, Object> hashtable)
     {
         if(default_stub == null)
         {
-            default_stub = new ServerStub(config, hashtable);
+            default_stub = new ServerStub(config);
         }
         return default_stub;
     }
@@ -136,7 +134,7 @@ public class ServerStub
 
     public void showDocument(URL url, String s)
     {
-        Gui.showDocument(url.toExternalForm(), params, res);
+        Gui.showDocument(url.toExternalForm(), params);
     }
 
     public void showStatus(String s)

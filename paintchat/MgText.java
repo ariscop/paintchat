@@ -2,6 +2,8 @@ package paintchat;
 
 import java.io.*;
 
+import syi.util.ExceptionHandler;
+
 public class MgText
 {
 
@@ -12,7 +14,7 @@ public class MgText
     private int seekMax;
     private String strData;
     public static final String ENCODE = "UTF8";
-    private static final String EMPTY = "";
+//    private static final String EMPTY = "";
     public static final byte M_TEXT = 0;
     public static final byte M_IN = 1;
     public static final byte M_OUT = 2;
@@ -253,7 +255,7 @@ public class MgText
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
         head = 100;
         ID = 0;

@@ -7,13 +7,17 @@ import java.util.Hashtable;
 import paintchat.Res;
 import paintchat.Resource;
 import syi.applet.ServerStub;
-import syi.awt.*;
+import syi.awt.HelpWindow;
+import syi.awt.HelpWindowContent;
+import syi.awt.LButton;
+import syi.awt.LTextField;
 
 public class ConfigApplet extends Applet
     implements MouseListener, FocusListener
 {
-
-    Res res;
+	private static final long serialVersionUID = 1L;
+	
+	Res res;
     private HelpWindow helpWindow;
 
     public ConfigApplet()
@@ -205,7 +209,7 @@ public class ConfigApplet extends Applet
         }
     }
 
-    protected void setParam(Component component, Hashtable hashtable)
+    protected void setParam(Component component, Hashtable<String, String> hashtable)
     {
         if(component instanceof Container)
         {

@@ -3,11 +3,12 @@ package paintchat_server;
 import java.io.*;
 import java.net.*;
 import java.util.Date;
-import java.util.Hashtable;
 import paintchat.*;
 import paintchat.admin.LocalAdmin;
 import paintchat.debug.Debug;
-import syi.util.*;
+import syi.util.Io;
+import syi.util.ThreadPool;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_server:
 //            LineServer, TextServer, TalkerInstance, TextTalkerListener, 
@@ -30,7 +31,7 @@ public class Server
     private Thread tLive;
     TextServer textServer;
     LineServer lineServer;
-
+    
     public Server(String s, Config config1, Debug debug1, boolean flag)
     {
         live = true;
@@ -100,6 +101,7 @@ public class Server
     {
         try
         {
+        	//TODO: this is the initilization function
             Thread thread = new Thread(this, "init");
             thread.setDaemon(false);
             thread.start();
@@ -112,6 +114,7 @@ public class Server
 
     public void initMakeInfomation()
     {
+    	//TODO: generates config for clients
         try
         {
             File file = new File(config.getString("File_PaintChat_Infomation", "./cnf/template/.paintchat"));
@@ -120,6 +123,7 @@ public class Server
             {
                 file1.mkdirs();
             }
+            //TODO: generates .paintchat
             int i = sSocket.getLocalPort();
             int j = config.getInt("Client_Image_Width", 1200);
             int k = config.getInt("Client_Image_Height", 1200);
@@ -142,6 +146,7 @@ public class Server
             {
                 Io.copyFile(file, file2);
             }
+            //TODO: generates config file for the flash embeds
             StringWriter stringwriter = new StringWriter();
             stringwriter.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n");
             stringwriter.write("<pchat_user_list port=\"" + i + "\" host=\"\" refresh=\"" + 15000 + "\" />\r\n");
@@ -170,9 +175,9 @@ public class Server
 
     public boolean isExecute(boolean flag)
     {
-        Object _tmp = null;
-        Object _tmp1 = null;
-        Object _tmp2 = null;
+//        Object _tmp = null;
+//        Object _tmp1 = null;
+//        Object _tmp2 = null;
         boolean flag1 = false;
         try
         {
@@ -183,7 +188,7 @@ public class Server
             flag1 = s.indexOf("version=") >= 0;
             if(flag1 && flag)
             {
-                String s1 = localadmin.getString("terminate");
+//                String s1 = localadmin.getString("terminate");
                 debug.log("server got terminated");
                 System.exit(0);
             }
@@ -197,6 +202,8 @@ public class Server
         return flag1;
     }
 
+    
+    //TODO: Yay, gui-less server
     public static void main(String args[])
     {
         try
@@ -253,19 +260,22 @@ public class Server
             return;
         }
         Config config1 = config;
-        int i = config1.getInt("Connection_Port_PaintChat", Config.DEF_PORT);
+        int port = config1.getInt("Connection_Port_PaintChat", Config.DEF_PORT);
         int j = config1.getInt("Connection_Max", 255);
         InetAddress.getLocalHost().getHostAddress();
         try
         {
-            sSocket = new ServerSocket(i, j);
+            sSocket = new ServerSocket(port, j);
         }
         catch(IOException ioexception)
         {
             debug.log("Server error:" + ioexception.getMessage());
             throw ioexception;
         }
-        i = sSocket.getLocalPort();
+        
+        //in case the port is auto
+        port = sSocket.getLocalPort();
+        
         textServer = new TextServer();
         textServer.mInit(this, config, debug);
         lineServer = new LineServer();
@@ -273,7 +283,7 @@ public class Server
         talkerInstance = new TalkerInstance(config, this, textServer, lineServer, debug);
         initMakeInfomation();
         runServer();
-        debug.log("Run ChatServer port=" + i);
+        debug.log("Run ChatServer port=" + port);
     }
 
     public void run()
@@ -287,6 +297,7 @@ public class Server
                 break;
 
             case 103: // 'g'
+            	//'Garbage Collector' thread
                 runLive();
                 break;
 
@@ -297,7 +308,7 @@ public class Server
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -309,7 +320,7 @@ public class Server
             try
             {
                 Socket socket = sSocket.accept();
-                socket.setSoTimeout(0x2bf20);
+                socket.setSoTimeout(180000);
                 if(!isLiveThread)
                 {
                     synchronized(tLive)
@@ -334,9 +345,9 @@ public class Server
 
     private void runLive()
     {
-        long l = System.currentTimeMillis();
-        long l2 = l + 0x5265c00L;
-        long l3 = l + 0x36ee80L;
+        long time = System.currentTimeMillis();
+        long time2 = time + 86400000 /* 1 Day */;
+        long time3 = time + 3600000 /* 1 Hour */;
         while(live) 
         {
             try
@@ -346,7 +357,7 @@ public class Server
                     break;
                 }
                 Thread.currentThread();
-                Thread.sleep(60000L);
+                Thread.sleep(60000L /* 1 Minute */ );
                 if(!live)
                 {
                     break;
@@ -371,14 +382,14 @@ public class Server
                     debug.log("pchat_gc:resume");
                 }
                 long l1 = System.currentTimeMillis();
-                if(l1 >= l3)
+                if(l1 >= time3)
                 {
-                    l3 = l1 + 0x36ee80L;
+                    time3 = l1 + 3600000 /* 1 Hour */;
                     debug.log((new Date()).toString());
                 }
-                if(l1 >= l2)
+                if(l1 >= time2)
                 {
-                    l2 += l1 + 0x5265c00L;
+                    time2 += l1 + 86400000 /* 1 Day */;
                     debug.newLogFile(Io.getDateString("pserv_", "log", config.getString("Server_Log_Server_Dir", "save_server")));
                     textServer.clearKillIP();
                 }
@@ -410,6 +421,7 @@ public class Server
         tLive.setDaemon(false);
         tLive.setPriority(1);
         tLive.setName("gc");
+        //TODO: Garbage collector thread started here
         tConnect.start();
         tLive.start();
     }

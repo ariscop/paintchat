@@ -13,7 +13,9 @@ public class Console extends TextPanel
     implements Runnable, DebugListener
 {
 
-    private Debug debug;
+	private static final long serialVersionUID = 1L;
+	
+	private Debug debug;
     private CharArrayWriter cOut;
     private Thread thread;
     private boolean isRun;
@@ -35,7 +37,8 @@ public class Console extends TextPanel
     {
         try
         {
-            Thread thread1 = Thread.currentThread();
+        	//TODO: must figure why this was here
+            //Thread thread1 = Thread.currentThread();
             while(isRun) 
             {
                 if(cOut.size() > 0)

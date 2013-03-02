@@ -1,7 +1,6 @@
 package syi.awt;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 
 // Referenced classes of package syi.awt:
@@ -10,7 +9,9 @@ import java.awt.event.MouseEvent;
 public abstract class LComponent extends Canvas
 {
 
-    protected static boolean isWin;
+	private static final long serialVersionUID = 1L;
+	
+	protected static boolean isWin;
     private String title;
     public boolean isUpDown;
     public boolean isGUI;
@@ -269,7 +270,6 @@ public abstract class LComponent extends Canvas
         }
         int i = iBSize;
         int j = iGap;
-        int _tmp = j * 2;
         int k = dimension.width;
         int l = dimension.height;
         if(isFrame)
@@ -352,7 +352,6 @@ public abstract class LComponent extends Canvas
                 {
                     Dimension dimension1 = getSizeW();
                     Dimension dimension2 = getSize();
-                    int _tmp = iGap * 2;
                     boolean flag = false;
                     switch(mouseevent.getID())
                     {
@@ -434,11 +433,6 @@ public abstract class LComponent extends Canvas
                     }
                     if(flag)
                     {
-                        Point point1 = getLocation();
-                        int _tmp1 = point1.x;
-                        int _tmp2 = point1.y;
-                        int _tmp3 = dimension2.width;
-                        int _tmp4 = dimension2.height;
                         if(isResize)
                         {
                             Dimension dimension4 = dL;

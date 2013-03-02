@@ -6,24 +6,37 @@ import java.awt.event.*;
 import java.awt.image.IndexColorModel;
 import java.awt.image.MemoryImageSource;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.EventObject;
-import java.util.Hashtable;
 import paintchat.*;
-import syi.awt.*;
+import syi.awt.Awt;
+import syi.awt.LButton;
+import syi.awt.LComponent;
+import syi.awt.TextPanel;
+import syi.util.ExceptionHandler;
 import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_client:
 //            IMi, Data, Mi, DCF
 
+/**
+ * 
+ * i cant write documentation :(
+ * handles controlls and the applet panel?
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
+
 public class Pl extends Panel
     implements Runnable, ActionListener, IMi, KeyListener
 {
 
-    private static final String STR_VERSION = "PaintChatClient v3.66";
-    private static final String STR_INFO = "PaintChat";
+	private static final long serialVersionUID = 1L;
+	
+//	private static final String STR_VERSION = "PaintChatClient v3.66";
+//    private static final String STR_INFO = "PaintChat";
     protected Applet applet;
     private boolean isStart;
     private int iScrollType;
@@ -32,7 +45,7 @@ public class Pl extends Panel
     public Mi mi;
     private ToolBox tool;
     private Panel tPanel;
-    private Panel tPanelB;
+//    private Panel tPanelB;
     private TextPanel tText;
     private TextField tField;
     private TextPanel tList;
@@ -41,11 +54,11 @@ public class Pl extends Panel
     private MgText mgText;
     private Dimension dPack;
     private Dimension dSize;
-    private Dimension dMax;
+//    private Dimension dMax;
     private int iGap;
     private int iCenter;
-    private int iCenterOld;
-    private Color clInfo;
+//    private int iCenterOld;
+//    private Color clInfo;
     private AudioClip sounds[];
     private int iPG;
 
@@ -57,10 +70,10 @@ public class Pl extends Panel
         tool = null;
         dPack = new Dimension();
         dSize = null;
-        dMax = new Dimension();
+//        dMax = new Dimension();
         iGap = 5;
         iCenter = 80;
-        iCenterOld = -1;
+//        iCenterOld = -1;
         sounds = null;
         iPG = 10;
         applet = applet1;
@@ -94,7 +107,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -166,7 +179,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -234,7 +247,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -321,7 +334,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -410,7 +423,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         return Cursor.getPredefinedCursor(i);
     }
@@ -465,7 +478,7 @@ public class Pl extends Panel
             "F", "FAll", "leave"
         };
         Panel panel1 = new Panel(new FlowLayout(0, 2, 1));
-        tPanelB = panel1;
+//        tPanelB = panel1;
         for(int i = 0; i < 3; i++)
         {
             LButton lbutton = new LButton(res.res(as[i]));
@@ -623,7 +636,7 @@ public class Pl extends Panel
             }
             catch(Throwable throwable1)
             {
-                throwable1.printStackTrace();
+                ExceptionHandler.handleException(throwable1);
             }
             mkTextPanel();
             tField.addKeyListener(this);
@@ -653,7 +666,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -682,24 +695,33 @@ public class Pl extends Panel
         setVisible(true);
     }
 
+    /**
+     * Thread entry point
+     * if the thread name starts with i, it initializes the gui 
+     * if p, it runs rPack to draw/update the gui
+     * otherwise it exits silently
+     * 
+     */
     public void run()
     {
         try
         {
             switch(Thread.currentThread().getName().charAt(0))
             {
-            case 105: // 'i'
+            case 'i':
+            	//Starts the Gui
                 rInit();
                 break;
 
-            case 112: // 'p'
+            case 'p':
+            	//'packs' the gui, draws it to the screen
                 rPack();
                 break;
             }
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -723,7 +745,7 @@ public class Pl extends Panel
                     int l = point.x - k1;
                     int i1 = point.y - l1;
                     int j1 = dimension.width;
-                    int _tmp = dimension.height;
+//                    int _tmp = dimension.height;
                     if(i > 0)
                     {
                         mi.m_paint(l - i, i1, i, dimension.height);
@@ -770,7 +792,8 @@ public class Pl extends Panel
         }
     }
 
-    private void setDefComponent(Container container)
+    //TODO: MOAH UNUSED PRIVATE METHODS 
+    /*private void setDefComponent(Container container)
     {
         try
         {
@@ -798,9 +821,9 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
-    }
+    }*/
 
     public void setLineSize(int i)
     {
@@ -836,7 +859,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

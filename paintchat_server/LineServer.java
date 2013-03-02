@@ -5,7 +5,6 @@ import paintchat.Config;
 import paintchat.M;
 import paintchat.debug.Debug;
 import syi.util.ByteStream;
-import syi.util.PProperties;
 
 // Referenced classes of package paintchat_server:
 //            LineTalker, PchOutputStreamForServer, PaintChatTalker, Server

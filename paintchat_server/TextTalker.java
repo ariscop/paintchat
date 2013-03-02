@@ -2,9 +2,10 @@ package paintchat_server;
 
 import java.io.IOException;
 import paintchat.MgText;
-import paintchat.Res;
 import paintchat.debug.DebugListener;
-import syi.util.*;
+import syi.util.ByteInputStream;
+import syi.util.ByteStream;
+import syi.util.Vector2;
 
 // Referenced classes of package paintchat_server:
 //            PaintChatTalker, TextTalkerListener, TextServer

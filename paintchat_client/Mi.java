@@ -4,11 +4,11 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import paintchat.*;
 import syi.awt.Awt;
 import syi.awt.LComponent;
+import syi.awt.Tab;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            Me, IMi
@@ -16,12 +16,12 @@ import syi.awt.LComponent;
 public class Mi extends LComponent
     implements ActionListener
 {
-
-    private LComponent tab;
-    private Method mGet;
-    private Method mPoll;
+	
+	private static final long serialVersionUID = 1L;
+	
+	private Tab tab;
     private IMi imi;
-    private Res res;
+//    private Res res;
     private boolean isRight;
     public TextField text;
     private boolean isText;
@@ -69,7 +69,8 @@ public class Mi extends LComponent
         sizeBar = 20;
         cPre = Color.black;
         imi = imi1;
-        res = res1;
+        //TODO: why does this take Res as an arg but never use it? 
+//        res = res1;
         super.isRepaint = false;
         super.isHide = false;
         super.isGUI = false;
@@ -114,7 +115,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         return true;
     }
@@ -150,16 +151,12 @@ public class Mi extends LComponent
                 {
                     try
                     {
-                        Class class1 = Class.forName("syi.awt.Tab");
-                        tab = (LComponent)class1.getConstructors()[0].newInstance(new Object[] {
-                            getParent(), info
-                        });
-                        mGet = class1.getMethod("strange", null);
-                        mPoll = class1.getMethod("poll", null);
+                    	//TODO: remove? want to remove syi anyway
+                        tab = new Tab(getParent(), info);
                     }
                     catch(Throwable _ex)
                     {
-                        tab = this;
+                        tab = null;
                     }
                 } else
                 {
@@ -265,7 +262,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -455,7 +452,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -518,7 +515,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -572,7 +569,7 @@ public class Mi extends LComponent
     {
         if(!flag)
         {
-            int _tmp = user.wait;
+            //int _tmp = user.wait;
             long l = user.getRect();
             m.reset(false);
             user.isPre = true;
@@ -722,7 +719,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -786,7 +783,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -852,18 +849,15 @@ public class Mi extends LComponent
     {
         try
         {
-            if(tab == null || tab == this)
+            if(tab == null)
             {
                 return 255;
             } else
             {
-                return ((Integer)mGet.invoke(tab, null)).intValue();
+                return tab.strange();
             }
         }
-        catch(Throwable _ex)
-        {
-            tab = this;
-        }
+        catch(Throwable _ex) {}
         return 255;
     }
 
@@ -969,7 +963,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -1157,26 +1151,26 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
     private final void poll()
     {
-        if(tab == null || tab == this)
+        if(tab == null)
         {
             return;
         }
         try
         {
-            if(((Boolean)mPoll.invoke(tab, null)).booleanValue())
+            if(tab.poll())
             {
                 return;
             }
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         mgInfo.iSOB = 0;
     }
@@ -1262,7 +1256,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -1449,7 +1443,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

@@ -1,13 +1,15 @@
 package paintchat_http;
 
 import java.io.*;
-import java.net.InetAddress;
+//import java.net.InetAddress;
 import java.net.Socket;
-import java.text.DateFormat;
+//import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
-import paintchat.debug.Debug;
-import syi.util.*;
+//import paintchat.debug.Debug;
+import syi.util.ByteStream;
+import syi.util.ExceptionHandler;
+import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_http:
 //            HttpServer, HttpFiles
@@ -26,33 +28,33 @@ public class TalkerHttp
     private char bC[];
     private byte bB[];
     private ByteStream bWork;
-    private String strMethod;
+//    private String strMethod;
     private String strRequest;
     private static final byte strHttp[] = "HTTP/1.0".getBytes();
-    private long sizeRequest;
+//    private long sizeRequest;
     private String strIfMod;
     private int sizeIfMod;
     private boolean isCash;
     private boolean isBody;
     private File fileRequest;
-    private static final String STR_PRAGMA = "pragma";
-    private static final String STR_LENGTH = "length=";
-    private static final String STR_IF_MODIFIED_SINCE = "if-modified-since";
-    private static final String STR_CONTENT_LENGTH = "content-length";
-    private static final String STR_DEF_MIME = "application/octet-stream";
+//    private static final String STR_PRAGMA = "pragma";
+//    private static final String STR_LENGTH = "length=";
+//    private static final String STR_IF_MODIFIED_SINCE = "if-modified-since";
+//    private static final String STR_CONTENT_LENGTH = "content-length";
+//    private static final String STR_DEF_MIME = "application/octet-stream";
     private static final String strDef[] = {
         "GET", "HEAD", "/", "HTTP/1.0", "HTTP/1.1"
     };
-    private static final String strDef2[] = {
-        "pragma", "if-modified-since", "content-length"
-    };
+//    private static final String strDef2[] = {
+//        "pragma", "if-modified-since", "content-length"
+//    };
     private static final EOFException EOF = new EOFException();
-    private static final int I_OK = 0;
-    private static final int I_NOT_MODIFIED = 1;
-    private static final int I_MOVED_PERMANENTLY = 2;
-    private static final int I_NOT_FOUND = 3;
-    private static final int I_SERVER_ERROR = 4;
-    private static final int I_SERVICE_UNAVALIABLE = 5;
+//    private static final int I_OK = 0;
+//    private static final int I_NOT_MODIFIED = 1;
+//    private static final int I_MOVED_PERMANENTLY = 2;
+//    private static final int I_NOT_FOUND = 3;
+//    private static final int I_SERVER_ERROR = 4;
+//    private static final int I_SERVICE_UNAVALIABLE = 5;
     private static final byte BYTE_RESPONCE[][] = {
         " 200 OK".getBytes(), " 304 Not Modified".getBytes(), " 301 Moved Permanently".getBytes(), " 404 Not Found".getBytes(), " 500 Internal Server Error".getBytes(), " 503 Service Unavailable".getBytes()
     };
@@ -74,7 +76,7 @@ public class TalkerHttp
         bC = new char[350];
         bB = new byte[350];
         bWork = new ByteStream();
-        sizeRequest = 0L;
+//        sizeRequest = 0L;
         strIfMod = null;
         sizeIfMod = -1;
         isCash = true;
@@ -180,10 +182,10 @@ public class TalkerHttp
         {
             while(true) 
             {
-                String s;
-                if((s = readSpace()) != null)
+//                String s;
+                if(readSpace() != null)
                 {
-                    strMethod = s;
+//                    strMethod = s;
                     break;
                 }
                 if(isLineOut)
@@ -204,8 +206,8 @@ public class TalkerHttp
                     throw EOF;
                 }
             } while(true);
-            String s2;
-            while((s2 = readSpace()) == null) 
+            
+            while(readSpace() == null) 
             {
                 if(isLineOut)
                 {
@@ -528,11 +530,11 @@ public class TalkerHttp
                 {
                     s1 = s1.substring(0, k);
                 }
-                sizeRequest = Integer.parseInt(s1);
+//                sizeRequest = Integer.parseInt(s1);
             }
             catch(NumberFormatException _ex)
             {
-                sizeRequest = 0L;
+//                sizeRequest = 0L;
             }
             return;
         }
@@ -557,7 +559,7 @@ public class TalkerHttp
             }
             catch(Exception exception)
             {
-                exception.printStackTrace();
+                ExceptionHandler.handleException(exception);
                 strIfMod = null;
                 sizeIfMod = -1;
             }
@@ -603,12 +605,14 @@ public class TalkerHttp
         fileinputstream.close();
     }
 
+    /*
     private void wln(byte abyte0[])
         throws IOException
     {
         w(abyte0);
         w(BYTE_CRLF);
     }
+    */
 
     private void writeMime(String s)
         throws IOException

@@ -5,12 +5,25 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import java.lang.reflect.Field;
-import java.util.Hashtable;
 import syi.awt.Awt;
 import syi.util.ByteStream;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat:
 //            LO, Res, SRaster
+
+//This is by far the largest class in paintchat
+//108k on disk as of 12/05/2012
+//i have no clue what it does but i assume it does something
+
+/**
+ * 
+ * appears to be the 'pen' and canvas
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
 
 public class M
 {
@@ -22,7 +35,7 @@ public class M
         private int buffer[];
         private int argb[];
         public int points[];
-        private int ps2[];
+        //private int ps2[];
         private int p[];
         private int pW;
         private int pM;
@@ -106,8 +119,8 @@ public class M
             }
             int l = info.Q;
             mkLPic(buffer, i, j, 1, 1, l);
-            int _tmp = info.L;
-            int _tmp1 = info.m.iLayer;
+            //int _tmp = info.L;
+            //int _tmp1 = info.m.iLayer;
             LO alo[] = info.layers;
             i *= l;
             j *= l;
@@ -153,52 +166,6 @@ public class M
             return image;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public User()
         {
             image = null;
@@ -206,7 +173,7 @@ public class M
             buffer = new int[0x10000];
             argb = new int[4];
             points = new int[6];
-            ps2 = null;
+            //ps2 = null;
             p = null;
             pM = -1;
             pA = -1;
@@ -396,11 +363,12 @@ public class M
             return vD;
         }
 
-        private void center(Point point)
+        //TODO: why was this here
+        /*private void center(Point point)
         {
             point.x = point.x / scale + scaleX;
             point.y = point.y / scale + scaleY;
-        }
+        }*/
 
         public int[][][] getPenMask()
         {
@@ -432,7 +400,7 @@ public class M
                     }
                     catch(IOException ioexception)
                     {
-                        ioexception.printStackTrace();
+                        ExceptionHandler.handleException(ioexception);
                     }
                 }
                 int ai[] = loadIm("tt/" + i + ".gif", false);
@@ -451,18 +419,7 @@ public class M
             }
             return bTT[i];
         }
-
-
-
-
-
-
-
-
-
-
-
-
+        
         public Info()
         {
             workOut = new ByteStream();
@@ -553,26 +510,26 @@ public class M
     public static final int M_R = 2;
     public static final int M_ADD = 3;
     public static final int M_SUB = 4;
-    private static final int F1O = 4;
-    private static final int F1C = 8;
-    private static final int F1A = 16;
-    private static final int F1S = 32;
-    private static final int F2H = 1;
-    private static final int F2PM = 2;
-    private static final int F2M = 4;
-    private static final int F2P = 8;
-    private static final int F2T = 16;
-    private static final int F2L = 32;
-    private static final int F2LS = 64;
-    private static final int F3A = 1;
-    private static final int F3C = 2;
-    private static final int F3CM = 4;
-    private static final int F3S = 8;
-    private static final int F3E = 16;
-    private static final int F3SA = 32;
-    private static final int F3SS = 64;
-    private static final int DEF_COUNT = -8;
-    private static final String ENCODE = "UTF8";
+//    private static final int F1O = 4;
+//    private static final int F1C = 8;
+//    private static final int F1A = 16;
+//    private static final int F1S = 32;
+//    private static final int F2H = 1;
+//    private static final int F2PM = 2;
+//    private static final int F2M = 4;
+//    private static final int F2P = 8;
+//    private static final int F2T = 16;
+//    private static final int F2L = 32;
+//    private static final int F2LS = 64;
+//    private static final int F3A = 1;
+//    private static final int F3C = 2;
+//    private static final int F3CM = 4;
+//    private static final int F3S = 8;
+//    private static final int F3E = 16;
+//    private static final int F3SA = 32;
+//    private static final int F3SS = 64;
+//    private static final int DEF_COUNT = -8;
+//    private static final String ENCODE = "UTF8";
     private static float b255[] = new float[256];
     static float b255d[] = new float[256];
     private static ColorModel color_model = null;
@@ -618,14 +575,15 @@ public class M
         user = user1;
     }
 
-    private final void copy(int ai[][], int ai1[][])
+    //TODO: this one too, why is it here
+    /*private final void copy(int ai[][], int ai1[][])
     {
         for(int i = 0; i < ai1.length; i++)
         {
             System.arraycopy(ai[i], 0, ai1[i], 0, ai1[i].length);
         }
 
-    }
+    }*/
 
     public final void dBuffer()
     {
@@ -646,6 +604,26 @@ public class M
             int ai[] = user.buffer;
             Color color = Color.white;
             Graphics g = info.g;
+//            if(g == null)    private static final int F1O = 4;
+//            private static final int F1C = 8;
+//            private static final int F1A = 16;
+//            private static final int F1S = 32;
+//            private static final int F2H = 1;
+//            private static final int F2PM = 2;
+//            private static final int F2M = 4;
+//            private static final int F2P = 8;
+//            private static final int F2T = 16;
+//            private static final int F2L = 32;
+//            private static final int F2LS = 64;
+//            private static final int F3A = 1;
+//            private static final int F3C = 2;
+//            private static final int F3CM = 4;
+//            private static final int F3S = 8;
+//            private static final int F3E = 16;
+//            private static final int F3SA = 32;
+//            private static final int F3SS = 64;
+//            private static final int DEF_COUNT = -8;
+//            private static final String ENCODE = "UTF8";
             if(g == null)
             {
                 return;
@@ -669,7 +647,7 @@ public class M
             k1 = k - i;
             int i3 = k1 * i1;
             int j3 = (i - j2) * i1;
-            int _tmp = i;
+            //int _tmp = i;
             int k3 = j;
             l2 = ai.length / (k1 * j1 * j1);
             do
@@ -692,7 +670,7 @@ public class M
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 
@@ -701,24 +679,24 @@ public class M
     {
         try
         {
-            int i = ai[0];
+            //int i = ai[0];
             int k = 0;
             for(int l = 1; l < 4; l++)
             {
                 float f2 = ai[l] >> 16;
                 float f4 = (short)ai[l];
-                float _tmp = (float)(i >> 16);
-                float _tmp1 = (float)(short)i;
+                //float _tmp = (float)(i >> 16);
+                //float _tmp1 = (float)(short)i;
                 k = (int)((double)k + Math.sqrt(f2 * f2 + f4 * f4));
-                i = ai[l];
+                //i = ai[l];
             }
 
             if(k <= 0)
             {
                 return;
             }
-            byte byte0 = -100;
-            byte byte1 = -100;
+            //byte byte0 = -100;
+            //byte byte1 = -100;
             int k1 = -1000;
             int l1 = -1000;
             int i2 = 0;
@@ -766,7 +744,7 @@ public class M
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 
@@ -804,7 +782,7 @@ public class M
         for(int i1 = 0; i1 < info.H; i1 += k)
         {
             int l = Math.min(info.H - i1, k);
-            int _tmp = i * l;
+            //int _tmp = i * l;
             int j1 = 0;
             LO lo3 = null;
             for(int l1 = 0; l1 < j; l1++)
@@ -858,8 +836,8 @@ public class M
 
     private void dCopy(int ai[])
     {
-        int _tmp = info.W;
-        int _tmp1 = info.H;
+        //int _tmp = info.W;
+        //int _tmp1 = info.H;
         int i = ai[0];
         int j = i >> 16;
         short word0 = (short)i;
@@ -1081,7 +1059,10 @@ public class M
         setD(0, 0, k, l);
         t();
     }
-
+    
+    
+    //TODO: ok.. the other ones i can disregard as compiler nonsence BUT THIS IS 110 LINES OF CODE
+    /*
     private final void dFLine(float f, float f1, int i)
         throws InterruptedException
     {
@@ -1196,7 +1177,7 @@ public class M
             dBuffer(!user.isDirect, k3, l3, i4, j4);
         }
         addD(k3, l3, i4, j4);
-    }
+    }*/
 
     private final void dFLine(int i, int j, int k)
         throws InterruptedException
@@ -1442,7 +1423,7 @@ public class M
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 
@@ -1452,7 +1433,7 @@ public class M
         {
             return;
         }
-        int _tmp = info.Q;
+        //int _tmp = info.Q;
         int j1 = info.W;
         int k1 = info.H;
         int l1 = user.X > 0 ? user.X : 0;
@@ -1502,7 +1483,7 @@ public class M
                     lo3 = lo1;
                     lo4 = lo2;
                 }
-                int _tmp1 = lo3.W;
+                //int _tmp1 = lo3.W;
                 LO lo5 = new LO();
                 LO lo6 = new LO();
                 lo5.setField(lo3);
@@ -1546,7 +1527,7 @@ public class M
                         for(int k3 = 0; k3 < k4; k3++)
                         {
                             int l5 = pix(l + k3, j3 + i4);
-                            int i = (j3 + i4) * j1 + l + k3;
+                            //int i = (j3 + i4) * j1 + l + k3;
                             for(int j5 = 0; j5 < 4; j5++)
                             {
                                 ai2[j5] += l5 >>> j5 * 8 & 0xff;
@@ -1667,7 +1648,7 @@ public class M
         throws InterruptedException, IOException
     {
         int i1 = info.scale;
-        int _tmp = user.pW;
+        //int _tmp = user.pW;
         i = (i / i1 + info.scaleX) * info.Q;
         j = (j / i1 + info.scaleY) * info.Q;
         if(Math.abs(i - user.pX[3]) + Math.abs(j - user.pY[3]) < l)
@@ -1717,8 +1698,8 @@ public class M
 
     private final void dPenM(int i, int j, float f)
     {
-        boolean flag = false;
-        int _tmp = info.Q;
+        //boolean flag = false;
+        //int _tmp = info.Q;
         int ai[] = getPM();
         int i2 = info.W;
         int j2 = user.pW;
@@ -1787,7 +1768,7 @@ public class M
     private final void dPY(int i, int j)
     {
         info.layers[iLayer].reserve();
-        boolean flag = false;
+        //boolean flag = false;
         int ai[] = getPM();
         int j2 = info.W;
         int k2 = user.pW;
@@ -1814,9 +1795,10 @@ public class M
             i3 += k2;
             for(int j7 = i; j7 < j3; j7++)
             {
-                int l1;
+                //int l1;
                 int j6;
-                if((l1 = ai[j1++]) == 0 || isM(j6 = ai1[k++]))
+                //if((l1 = ai[j1++]) == 0 || isM(j6 = ai1[k++]))
+                if(ai[j1++] == 0 || isM(j6 = ai1[k++]))
                 {
                     k++;
                 } else
@@ -1920,7 +1902,7 @@ public class M
         catch(InterruptedException _ex) { }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         dEnd();
     }
@@ -2189,7 +2171,7 @@ label0:
                     }
                     catch(Throwable throwable1)
                     {
-                        throwable1.printStackTrace();
+                        ExceptionHandler.handleException(throwable1);
                     }
                     break;
 
@@ -2238,7 +2220,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -2269,7 +2251,7 @@ label0:
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
         catch(InterruptedException _ex) { }
     }
@@ -2292,8 +2274,8 @@ label0:
             if(flag)
             {
                 ByteStream bytestream = getWork();
-                bytestream.w(i, 2);
-                bytestream.w(j, 2);
+                bytestream.writeLong(i, 2);
+                bytestream.writeLong(j, 2);
                 if(iSOB != 0)
                 {
                     bytestream.write(k);
@@ -2312,11 +2294,11 @@ label0:
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
         catch(InterruptedException interruptedexception)
         {
-            interruptedexception.printStackTrace();
+            ExceptionHandler.handleException(interruptedexception);
         }
     }
 
@@ -2386,7 +2368,7 @@ label0:
             int ai1[] = Awt.getPix(image);
             image.flush();
             image = null;
-            boolean flag1 = false;
+            //boolean flag1 = false;
             int l3 = Math.min(k - i, i2);
             int i4 = Math.min(l - j, j2);
             for(int j4 = 0; j4 < i4; j4++)
@@ -2410,7 +2392,7 @@ label0:
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
     }
 
@@ -2497,11 +2479,11 @@ label0:
             }
             if((l & 2) != 0)
             {
-                bytestream.w(iColor, 3);
+                bytestream.writeLong(iColor, 3);
             }
             if((l & 4) != 0)
             {
-                bytestream.w(iColorMask, 3);
+                bytestream.writeLong(iColorMask, 3);
             }
             if((l & 8) != 0)
             {
@@ -2513,24 +2495,24 @@ label0:
             }
             if((l & 0x20) != 0)
             {
-                bytestream.w(iSA, 2);
+                bytestream.writeLong(iSA, 2);
             }
             if((l & 0x40) != 0)
             {
-                bytestream.w(iSS, 2);
+                bytestream.writeLong(iSS, 2);
             }
             if(iPen == 20)
             {
-                bytestream.w2(iAlpha2);
+                bytestream.writeInt(iAlpha2);
             }
             if(isText())
             {
                 if(strHint == null)
                 {
-                    bytestream.w2(0);
+                    bytestream.writeInt(0);
                 } else
                 {
-                    bytestream.w2(strHint.length);
+                    bytestream.writeInt(strHint.length);
                     bytestream.write(strHint);
                 }
             }
@@ -2544,11 +2526,11 @@ label0:
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 
@@ -2693,7 +2675,7 @@ label0:
             int l1 = i >>> 16 & 0xff;
             int j2 = i >>> 8 & 0xff;
             int k3 = i & 0xff;
-            int _tmp = iColor;
+            //int _tmp = iColor;
             float f1 = b255[j];
             return (i1 << 24) + (Math.min(l1 + (int)((float)l1 * f1), 255) << 16) + (Math.min(j2 + (int)((float)j2 * f1), 255) << 8) + Math.min(k3 + (int)((float)k3 * f1), 255);
 
@@ -2702,16 +2684,16 @@ label0:
             int i2 = i >>> 16 & 0xff;
             int k2 = i >>> 8 & 0xff;
             int l3 = i & 0xff;
-            int _tmp1 = iColor;
+            //int _tmp1 = iColor;
             float f2 = b255[j];
             return (j1 << 24) + (Math.max(i2 - (int)((float)(255 - i2) * f2), 0) << 16) + (Math.max(k2 - (int)((float)(255 - k2) * f2), 0) << 8) + Math.max(l3 - (int)((float)(255 - l3) * f2), 0);
 
         case 8: // '\b'
-            int _tmp2 = i >>> 24;
-            int _tmp3 = i >>> 16 & 0xff;
-            int _tmp4 = i >>> 8 & 0xff;
-            int _tmp5 = i & 0xff;
-            int _tmp6 = iColor;
+//            int _tmp2 = i >>> 24;
+//            int _tmp3 = i >>> 16 & 0xff;
+//            int _tmp4 = i >>> 8 & 0xff;
+//            int _tmp5 = i & 0xff;
+//            int _tmp6 = iColor;
             float f = b255[j];
             int ai[] = user.argb;
             int ai1[] = info.layers[iLayer].offset;
@@ -2729,7 +2711,7 @@ label0:
                 for(int i5 = -1; i5 < 2; i5++)
                 {
                     int i3 = ai1[k + i5 + k4 * i4];
-                    int _tmp7 = i3 >>> 24;
+//                    int _tmp7 = i3 >>> 24;
                     for(int j5 = 0; j5 < 4; j5++)
                     {
                         ai[j5] += i3 >>> (j5 << 3) & 0xff;
@@ -3157,7 +3139,7 @@ label0:
         b255[0] = 0.0F;
         b255d[0] = 0.0F;
         int ai[][][] = info.bPen;
-        boolean flag = false;
+//        boolean flag = false;
         int j4 = 1;
         char c = '\377';
         m.iAlpha = 255;
@@ -3170,7 +3152,7 @@ label0:
             {
                 int ai2[];
                 ai1[j] = ai2 = new int[j2];
-                int k4 = j4;
+//                int k4 = j4;
                 for(int i1 = 0; i1 < j2; i1++)
                 {
                     ai2[i1] = i1 >= j4 && j2 - i1 >= j4 && i1 % j4 != 0 && i1 % j4 != j4 - 1 ? m.iAlpha : ((int) (c));
@@ -3270,7 +3252,7 @@ label0:
             for(int l = 0; l < 16; l++)
             {
                 int j3;
-                Object foo;
+//                Object foo;
                 for(j3 = 0; res.get("pm" + l + '/' + j3 + ".gif") != ""; j3++) { }
                 if(j3 > 0)
                 {
@@ -3317,7 +3299,7 @@ label0:
         int k = info.L;
         int i1 = 0;
         int k1 = 0xffffff;
-        int _tmp = info.W * j + i;
+//        int _tmp = info.W * j + i;
         for(int i2 = 0; i2 < k; i2++)
         {
             int l1 = info.layers[i2].getPixel(i, j);
@@ -3565,7 +3547,7 @@ label0:
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
             iOffset = 0;
         }
         return j + 2;
@@ -3610,7 +3592,8 @@ label0:
                             continue;
                         }
                         String s3 = s1.substring(j, k);
-                        Class class1 = field.getType();
+                        //TODO: figure out what this is loading
+                        Class<?> class1 = field.getType();
                         if(class1.equals(Integer.TYPE))
                         {
                             field.setInt(this, Integer.parseInt(s3));
@@ -3743,7 +3726,7 @@ label0:
             ByteStream bytestream = getWork();
             for(int l2 = 0; l2 < j; l2++)
             {
-                bytestream.w(ai1[l2], 4);
+                bytestream.writeLong(ai1[l2], 4);
             }
 
             if(abyte0 != null && i > 0)
@@ -3756,7 +3739,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -3831,7 +3814,7 @@ label0:
         if(i > 127 || i < -127)
         {
             bytestream.write(-128);
-            bytestream.w(i, 2);
+            bytestream.writeLong(i, 2);
         } else
         {
             bytestream.write(i);

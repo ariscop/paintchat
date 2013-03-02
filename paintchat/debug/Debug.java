@@ -2,6 +2,7 @@ package paintchat.debug;
 
 import java.io.*;
 import paintchat.Res;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.debug:
 //            DebugListener
@@ -102,7 +103,7 @@ public class Debug
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 

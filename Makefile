@@ -1,11 +1,12 @@
-JFLAGS = -g -Xlint
+#:::::NOTE:::::
+#needs java 5 classpath, running without for now
+JFLAGS = -Xlint -source 5 -target 5
 JC = javac
 .SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	./syi/jpeg/SJpegEncoder.java \
 	./syi/javascript/JSController.java \
 	./syi/awt/TextCanvas.java \
 	./syi/awt/Gui.java \
@@ -15,7 +16,6 @@ CLASSES = \
 	./syi/awt/ImageCanvas.java \
 	./syi/awt/HelpWindowContent.java \
 	./syi/awt/LComponent.java \
-	./syi/awt/LPopup.java \
 	./syi/awt/Awt.java \
 	./syi/awt/HelpWindow.java \
 	./syi/awt/TextPanel.java \
@@ -24,18 +24,10 @@ CLASSES = \
 	./syi/util/ByteInputStream.java \
 	./syi/util/ClassLoaderCustom.java \
 	./syi/util/VectorBin.java \
-	./syi/util/BitOutputStream.java \
-	./syi/util/BitInputStream.java \
 	./syi/util/Vector2.java \
-	./syi/util/CommentCutter.java \
-	./syi/util/zip/CustomDeflaterOutputStream.java \
-	./syi/util/zip/ZipOutputStreamCustom.java \
-	./syi/util/LabelLink.java \
 	./syi/util/ByteStream.java \
 	./syi/util/PProperties.java \
 	./syi/util/Io.java \
-	./syi/util/CharStream.java \
-	./syi/png/SPngEncoder.java \
 	./syi/applet/AppletWatcher.java \
 	./syi/applet/ServerStub.java \
 	./paintchat_server/TextTalker.java \
@@ -99,14 +91,28 @@ CLASSES = \
 	./paintchat/config/PConfig.java \
 	./paintchat/Config.java 
 
+#default rule
+default: pchat400_alpha.zip
 
-default: classes
+pchat400_alpha.zip: pchat.jar PaintChat.jar
+	find cnf | xargs zip -v pchat400_alpha.zip PaintChat.jar
 
-jar: classes
-	find . -iname \*\.class | xargs jar -cmf META-INF/MANIFEST.MF PaintChat.jar
+PaintChat.jar: classes
+	find . -iname \*\.class | xargs jar -cef paintchat_frame.PFrame PaintChat.jar
+
+pchat.jar: classes
+	cat pchat.list | xargs jar -cf pchat.jar
+	cp pchat.jar ./cnf/template/pchat.jar
+
+#because lazy
+spchat.jar: pchat.jar
+	jarsigner pchat.jar -signedjar spchat.jar paintchat
+
+sign: spchat.jar
+pchat: pchat.jar
 
 classes: $(CLASSES:.java=.class)
 
 clean:
-	$(RM) *.class */*.class */*/*.class */*/*/*.class PaintChat.jar
+	$(RM) `find paintchat* syi -name \*.class` PaintChat.jar pchat.jar pchat400_alpha.zip
 

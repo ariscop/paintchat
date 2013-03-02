@@ -2,11 +2,14 @@ package syi.awt;
 
 import java.awt.*;
 import java.io.CharArrayWriter;
+import syi.util.ExceptionHandler;
 
 public class TextCanvas extends Canvas
 {
 
-    String strs[];
+	private static final long serialVersionUID = 1L;
+	
+	String strs[];
     int seek;
     CharArrayWriter buffer;
     Dimension d;
@@ -94,7 +97,7 @@ public class TextCanvas extends Canvas
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 

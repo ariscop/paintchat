@@ -9,6 +9,14 @@ import syi.util.VectorBin;
 // Referenced classes of package paintchat_server:
 //            PaintChatTalker, LineServer
 
+/**
+ * 'Line's appear to be 'packets', up to 255 bytes prefixed with the length
+ * 0x00 can be used as a ping packet
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
+
 public class LineTalker extends PaintChatTalker
 {
 
@@ -79,7 +87,7 @@ public class LineTalker extends PaintChatTalker
         server.addTalker(this);
         synchronized(lines_send)
         {
-            lines_send.w2(1);
+            lines_send.writeInt(1);
             lines_send.write(0);
         }
     }

@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.DirectColorModel;
 import java.awt.image.MemoryImageSource;
-import java.util.Hashtable;
 import syi.awt.Awt;
 import syi.awt.LComponent;
 
@@ -14,37 +13,39 @@ import syi.awt.LComponent;
 public class TT extends LComponent
     implements SW, Runnable
 {
+	private static final long serialVersionUID = 1L;
 
-    private ToolBox ts;
+	//TODO: figure these unused vars
+	//private ToolBox ts;
     private M.Info info;
     private M.User user;
     private M mg;
     private boolean isRun;
     private Image images[];
-    private boolean isDrag;
-    private int selButton;
-    private int selWhite;
-    private int selPen;
+    //private boolean isDrag;
+    //private int selButton;
+    //private int selWhite;
+    //private int selPen;
     private int imW;
     private int imH;
-    private int imCount;
-    private int selItem;
-    private M mgs[];
-    private int sizeTT;
+    //private int imCount;
+    //private int selItem;
+    //private M mgs[];
+    //private int sizeTT;
     private int iLast;
 
     public TT()
     {
         isRun = false;
         images = null;
-        isDrag = false;
-        selButton = 0;
-        selPen = 0;
+        //isDrag = false;
+        //selButton = 0;
+        //selPen = 0;
         imW = 0;
         imH = 0;
-        selItem = -1;
-        mgs = null;
-        sizeTT = 0;
+        //selItem = -1;
+        //mgs = null;
+        //sizeTT = 0;
         iLast = -1;
     }
 
@@ -72,7 +73,7 @@ public class TT extends LComponent
 
     public void mSetup(ToolBox toolbox, M.Info info1, M.User user1, M m, Res res, Res res1)
     {
-        ts = toolbox;
+        //ts = toolbox;
         info = info1;
         user = user1;
         mg = m;

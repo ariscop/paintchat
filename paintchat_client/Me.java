@@ -2,15 +2,25 @@ package paintchat_client;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.EventObject;
 import paintchat.Res;
 import syi.awt.Awt;
+import syi.util.ExceptionHandler;
+
+/**
+ * 
+ * Handles dialog boxes, including confomation
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
 
 public class Me extends Dialog
     implements ActionListener
 {
-
-    private static boolean isD = false;
+	private static final long serialVersionUID = 1L;
+	
+	private static boolean isD = false;
     public static Res res;
     public static Res conf;
     private Button bOk;
@@ -91,7 +101,7 @@ public class Me extends Dialog
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         isD = false;
         return me.isOk;
@@ -121,7 +131,7 @@ public class Me extends Dialog
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         isD = false;
         return me.isOk ? me.tText.getText() : null;

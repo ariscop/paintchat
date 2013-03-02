@@ -10,12 +10,21 @@ import paintchat.*;
 //import paintchat_server.PaintChatTalker;
 
 import syi.awt.Awt;
-import syi.awt.TextPanel;
 import syi.util.ByteStream;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            TLine, TText, Pl, Mi, 
 //            Me
+
+/**
+ * 
+ * Handles the connection to the server
+ * 
+ * @author shi-chan
+ * @author Phase4
+ *
+ */
 
 public class Data
 {
@@ -27,15 +36,15 @@ public class Data
     private boolean isDestroy;
     private int Port;
     private InetAddress address;
-    private int ID;
+    //private int ID;
     private M mgDraw;
     public Mi mi;
-    private TextPanel text;
+//    private TextPanel text;
     public int imW;
     public int imH;
     public int MAX_KAIWA;
     public int MAX_KAIWA_BORDER;
-    private EOFException EOF;
+//    private EOFException EOF;
     private TLine tLine;
     private TText tText;
     public String strName;
@@ -43,9 +52,9 @@ public class Data
     public Data(Pl pl1)
     {
         isDestroy = false;
-        ID = 0;
+//        ID = 0;
         mgDraw = new M();
-        EOF = new EOFException();
+//        EOF = new EOFException();
         strName = null;
         pl = pl1;
     }
@@ -73,6 +82,12 @@ public class Data
         catch(Throwable _ex) { }
     }
 
+    
+    /**
+     * Aquire a socket to the server
+     * @return the socket
+     */
+    
     private Socket getSocket()
     {
         if(address == null)
@@ -90,18 +105,20 @@ public class Data
             {
                 inetaddress = null;
             }
-            try
-            {
-                String s1 = pl.applet.getCodeBase().getHost();
-                if(s1 == null || s1.length() <= 0)
-                {
-                    s1 = "localhost";
-                }
-                inetaddress = InetAddress.getByName(s1);
-            }
-            catch(UnknownHostException _ex)
-            {
-                inetaddress = null;
+            if(inetaddress == null) {
+	            try
+	            {
+	                String s1 = pl.applet.getCodeBase().getHost();
+	                if(s1 == null || s1.length() <= 0)
+	                {
+	                    s1 = "localhost";
+	                }
+	                inetaddress = InetAddress.getByName(s1);
+	            }
+	            catch(UnknownHostException _ex)
+	            {
+	                inetaddress = null;
+	            }
             }
             if(inetaddress == null)
             {
@@ -166,7 +183,7 @@ public class Data
             }
             catch(IOException ioexception1)
             {
-                ioexception1.printStackTrace();
+                ExceptionHandler.handleException(ioexception1);
             }
             Me.res = res;
             Me.conf = config;
@@ -188,7 +205,7 @@ public class Data
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
     }
 
@@ -327,7 +344,7 @@ public class Data
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 }

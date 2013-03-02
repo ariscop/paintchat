@@ -4,8 +4,8 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Enumeration;
-import java.util.Hashtable;
 import paintchat.Res;
+import syi.util.ExceptionHandler;
 import syi.util.Io;
 
 public class LocalAdmin
@@ -29,14 +29,14 @@ public class LocalAdmin
 
     private void doConnect(String s)
     {
-        Object obj = null;
-        Object obj1 = null;
-        Object obj2 = null;
+//        Object obj = null;
+//        Object obj1 = null;
+//        Object obj2 = null;
         bRes = null;
         try
         {
             StringBuffer stringbuffer = new StringBuffer();
-            for(Enumeration enumeration = status.keys(); enumeration.hasMoreElements();)
+            for(Enumeration<String> enumeration = status.keys(); enumeration.hasMoreElements();)
             {
                 String s1 = enumeration.nextElement().toString();
                 if(s1.length() > 0)
@@ -88,7 +88,7 @@ public class LocalAdmin
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
         return "";
     }
@@ -102,7 +102,7 @@ public class LocalAdmin
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
         return null;
     }

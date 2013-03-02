@@ -11,7 +11,9 @@ import syi.awt.Awt;
 public class ConfigDialog extends Dialog
 {
 
-    private Applet applet;
+	private static final long serialVersionUID = 1L;
+
+	private Applet applet;
 
     public ConfigDialog(String s, String s1, Config config, Res res, String s2)
         throws Exception

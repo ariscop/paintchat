@@ -4,14 +4,22 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.util.EventObject;
-import java.util.Hashtable;
+//import java.util.EventObject;
+//import java.util.Hashtable;
 import paintchat.*;
 import paintchat.debug.Debug;
 import syi.applet.AppletWatcher;
 import syi.applet.ServerStub;
-import syi.awt.*;
-import syi.util.*;
+import syi.awt.Awt;
+import syi.awt.Gui;
+import syi.awt.HelpWindow;
+import syi.awt.HelpWindowContent;
+import syi.awt.LButton;
+import syi.awt.LTextField;
+import syi.awt.MessageBox;
+import syi.util.Io;
+import syi.util.ThreadPool;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_frame:
 //            ConfigDialog, Console, Data, PopupMenuPaintChat, 
@@ -20,23 +28,25 @@ import syi.util.*;
 public class PFrame extends Frame
     implements ActionListener, ItemListener, MouseListener, WindowListener, Runnable
 {
+	
+	private static final long serialVersionUID = 1L;
 
-    public static final String STR_VERSION = "(C)And Mino, PaintChatApp v3.66";
+	public static final String STR_VERSION = "(C)And Mino, PaintChatApp v3.66";
     private Config config;
     private Res res;
     private Debug debug;
     private Panel ivjPanel3;
     private Panel ivjPanelLeft;
-    private GridLayout ivjPanelLeftGridLayout;
+//    private GridLayout ivjPanelLeftGridLayout;
     private Menu ivjMenu1;
-    private FlowLayout ivjPanel3FlowLayout;
+//    private FlowLayout ivjPanel3FlowLayout;
     private Menu ivjMenu2;
     private Menu ivjMenu3;
     private MenuItem ivjMenuItem1;
     private MenuItem ivjMenuItem2;
     private MenuItem ivjMenuItem3;
     private MenuItem ivjMenuItem4;
-    private BorderLayout ivjPFrameBorderLayout;
+//    private BorderLayout ivjPFrameBorderLayout;
     private MenuBar ivjPFrameMenuBar;
     private HelpWindow ivjHelp;
     private Console ivjConsole;
@@ -61,16 +71,16 @@ public class PFrame extends Frame
         debug = null;
         ivjPanel3 = null;
         ivjPanelLeft = null;
-        ivjPanelLeftGridLayout = null;
+//        ivjPanelLeftGridLayout = null;
         ivjMenu1 = null;
-        ivjPanel3FlowLayout = null;
+//        ivjPanel3FlowLayout = null;
         ivjMenu2 = null;
         ivjMenu3 = null;
         ivjMenuItem1 = null;
         ivjMenuItem2 = null;
         ivjMenuItem3 = null;
         ivjMenuItem4 = null;
-        ivjPFrameBorderLayout = null;
+//        ivjPFrameBorderLayout = null;
         ivjPFrameMenuBar = null;
         ivjHelp = null;
         ivjConsole = null;
@@ -91,23 +101,24 @@ public class PFrame extends Frame
         ivjMenu_FilesCopy = null;
         initialize();
     }
-
+    
+    //TODO: remove the dual constructors
     public PFrame(String s)
     {
         super(s);
         debug = null;
         ivjPanel3 = null;
         ivjPanelLeft = null;
-        ivjPanelLeftGridLayout = null;
+//        ivjPanelLeftGridLayout = null;
         ivjMenu1 = null;
-        ivjPanel3FlowLayout = null;
+//        ivjPanel3FlowLayout = null;
         ivjMenu2 = null;
         ivjMenu3 = null;
         ivjMenuItem1 = null;
         ivjMenuItem2 = null;
         ivjMenuItem3 = null;
         ivjMenuItem4 = null;
-        ivjPFrameBorderLayout = null;
+//        ivjPFrameBorderLayout = null;
         ivjPFrameMenuBar = null;
         ivjHelp = null;
         ivjConsole = null;
@@ -295,7 +306,7 @@ public class PFrame extends Frame
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
     }
 
@@ -1145,14 +1156,14 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace(System.out);
+            ExceptionHandler.handleException(throwable);
             System.exit(0);
         }
     }
 
     public void menuHelpDocument_ActionPerformed()
     {
-        Gui.showDocument("Help.html", config, res);
+        Gui.showDocument("Help.html", config);
     }
 
     public void menuItem1_ActionPerformed1()
@@ -1168,7 +1179,7 @@ public class PFrame extends Frame
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
     }
 
@@ -1328,7 +1339,7 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -1389,7 +1400,7 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -1410,7 +1421,7 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -1505,9 +1516,18 @@ public class PFrame extends Frame
     {
         try
         {
-            AppletWatcher appletwatcher = new AppletWatcher("paintchat_client.Client", "(C)And Mino, PaintChatApp v3.66", config, res, false);
-            appletwatcher.setIconImage(getIconImage());
-            appletwatcher.show();
+        	new Thread(new Runnable() {
+        		public void run() {
+        			try {
+        				AppletWatcher appletwatcher = new AppletWatcher("paintchat_client.Client", "(C)And Mino, PaintChatApp v3.66", config, res, false);
+        				appletwatcher.setIconImage(getIconImage());
+        				appletwatcher.setVisible(true);
+        			} catch(Exception e) {
+        				//ExceptionHandler.handleException(e);
+        				debug.log(e);
+        			}
+        		}
+        	}).start();
         }
         catch(Throwable throwable)
         {

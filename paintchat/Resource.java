@@ -4,13 +4,15 @@ import java.io.*;
 import java.util.Hashtable;
 import java.util.Locale;
 
+import syi.util.ExceptionHandler;
+
 // Referenced classes of package paintchat:
 //            Res
 
 public class Resource
 {
 
-    private static Hashtable table = new Hashtable();
+    private static Hashtable<String, Res> table = new Hashtable<String, Res>();
     public static final String RESOURCE = "Resource";
     public static final String CONFIG = "Config";
     public static final String APP = "Application";
@@ -89,7 +91,7 @@ public class Resource
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
     }
 
@@ -117,7 +119,7 @@ public class Resource
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
         return null;
     }

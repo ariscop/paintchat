@@ -1,9 +1,10 @@
 package paintchat;
 
 import java.awt.*;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.*;
-import java.lang.reflect.Method;
 import syi.awt.Awt;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat:
 //            SW, ToolBox, M, Res
@@ -12,7 +13,9 @@ public class TText extends Dialog
     implements SW, ActionListener, ItemListener
 {
 
-    ToolBox ts;
+	private static final long serialVersionUID = 1L;
+	
+	ToolBox ts;
     M mg;
     private Choice cName;
     private Checkbox cIT;
@@ -40,7 +43,7 @@ public class TText extends Dialog
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -60,9 +63,7 @@ public class TText extends Dialog
         String as[] = (String[])null;
         try
         {
-            Class class1 = Class.forName("java.awt.GraphicsEnvironment");
-            Object obj = class1.getMethod("getLocalGraphicsEnvironment", null).invoke(null, null);
-            as = (String[])class1.getMethod("getAvailableFontFamilyNames", null).invoke(obj, null);
+        	as = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
         }
         catch(Throwable _ex) { }
         Choice choice = new Choice();

@@ -1,17 +1,16 @@
 package paintchat.config;
 
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.Beans;
 import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.util.EventObject;
 import paintchat.Config;
 import paintchat.Resource;
 import syi.applet.ServerStub;
-import syi.awt.*;
-import syi.util.PProperties;
+import syi.awt.Gui;
+import syi.awt.LButton;
+import syi.awt.LTextField;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.config:
 //            ConfigApplet
@@ -20,10 +19,12 @@ public class ConfigServer extends ConfigApplet
     implements ActionListener
 {
 
-    private Panel ivjPanel1;
-    private GridLayout ivjPanel1GridLayout;
+	private static final long serialVersionUID = 1L;
+	
+	private Panel ivjPanel1;
+    //private GridLayout ivjPanel1GridLayout;
     private Panel ivjPanel2;
-    private GridLayout ivjPanel2GridLayout;
+    //private GridLayout ivjPanel2GridLayout;
     private Checkbox ivjServer_Load_Line;
     private Checkbox ivjServer_Log_Text;
     private Button ivjButton1;
@@ -47,9 +48,9 @@ public class ConfigServer extends ConfigApplet
     public ConfigServer()
     {
         ivjPanel1 = null;
-        ivjPanel1GridLayout = null;
+        //ivjPanel1GridLayout = null;
         ivjPanel2 = null;
-        ivjPanel2GridLayout = null;
+        //ivjPanel2GridLayout = null;
         ivjServer_Load_Line = null;
         ivjServer_Log_Text = null;
         ivjButton1 = null;
@@ -577,7 +578,8 @@ public class ConfigServer extends ConfigApplet
         try
         {
             Frame frame = new Frame();
-            Class class1 = Class.forName("paintchat.config.ConfigServer");
+            //TODO: remove this class loader? don't think it needs to be here
+            Class<?> class1 = Class.forName("paintchat.config.ConfigServer");
             ClassLoader classloader = class1.getClassLoader();
             ConfigServer configserver = (ConfigServer)Beans.instantiate(classloader, "paintchat.config.ConfigServer");
             frame.add("Center", configserver);
@@ -595,7 +597,7 @@ public class ConfigServer extends ConfigApplet
         catch(Throwable throwable)
         {
             System.err.println("paintchat.config.ConfigApplet (The) main() (An exception occurred in)");
-            throwable.printStackTrace(System.out);
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -608,7 +610,7 @@ public class ConfigServer extends ConfigApplet
         }
         catch(RuntimeException runtimeexception)
         {
-            runtimeexception.printStackTrace();
+            ExceptionHandler.handleException(runtimeexception);
         }
     }
 
@@ -622,7 +624,7 @@ public class ConfigServer extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 }

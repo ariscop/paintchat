@@ -6,17 +6,17 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
-import java.io.PrintStream;
-import java.util.EventObject;
-import java.util.Hashtable;
 import paintchat.Config;
 import paintchat.Res;
 import paintchat.debug.Debug;
 import paintchat_http.HttpServer;
 import paintchat_server.Server;
 import syi.applet.ServerStub;
-import syi.awt.*;
-import syi.util.*;
+import syi.awt.Gui;
+import syi.awt.LButton;
+import syi.awt.MessageBox;
+import syi.util.ClassLoaderCustom;
+import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_frame:
 //            ConfigDialog
@@ -35,7 +35,7 @@ public class Data
     private Applet lobby;
     private LButton bChat;
     private LButton bHttp;
-    private LButton bLobby;
+//    private LButton bLobby;
 
     public Data()
     {
@@ -119,7 +119,8 @@ public class Data
         debug = debug1;
         bChat = lbutton;
         bHttp = lbutton1;
-        bLobby = lbutton2;
+        //TODO: Unused button?
+//        bLobby = lbutton2;
         lbutton.addActionListener(this);
         lbutton1.addActionListener(this);
         lbutton2.addActionListener(this);
@@ -226,7 +227,7 @@ public class Data
             debug.log(res.get("LobbyIn"));
             if(config.getBool("ao_show_html"))
             {
-                Gui.showDocument("http://ax.sakura.ne.jp/~aotama/pchat/LobbyRoom.html", config, res);
+                Gui.showDocument("http://ax.sakura.ne.jp/~aotama/pchat/LobbyRoom.html", config);
             }
         }
         catch(Exception exception1)

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Method;
 import paintchat.M;
+import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            LComponent, Awt
@@ -11,7 +12,9 @@ import paintchat.M;
 public class Tab extends LComponent
 {
 
-    private M mg;
+	private static final long serialVersionUID = 1L;
+	
+	private M mg;
     private int iDrag;
     private int sizeBar;
     private int max;
@@ -24,7 +27,7 @@ public class Tab extends LComponent
     private final String STR[] = {
         "alpha", "size"
     };
-
+    
     public Tab(Container container, paintchat.M.Info info)
         throws Throwable
     {
@@ -37,17 +40,18 @@ public class Tab extends LComponent
             Dimension dimension = getSize();
             dimension.setSize(i * 4, 8 + i * 6);
             setDimension(dimension, dimension, dimension);
-            Class class1 = Class.forName("cello.tablet.JTablet");
+            //TODO: fix dis, get a class definition?
+            Class<?> class1 = Class.forName("cello.tablet.JTablet");
             tab = class1.newInstance();
-            mGet = class1.getMethod("getPressure", null);
-            mPoll = class1.getMethod("poll", null);
-            mEx = class1.getMethod("getPressureExtent", null);
+            mGet = class1.getMethod("getPressure");
+            mPoll = class1.getMethod("poll");
+            mEx = class1.getMethod("getPressureExtent");
             setTitle("tablet");
             container.add(this, 0);
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -115,11 +119,8 @@ public class Tab extends LComponent
         {
             int i = sizeBar;
             Dimension dimension = getSize();
-            int _tmp = mg.iSS;
             int k = dimension.width - 1;
-            int l = k - 6;
             int i1 = i * 3 + 4;
-            float _tmp1 = (float)l / 255F;
             for(int j = 0; j < 2; j++)
             {
                 boolean flag = (iSOB & j + 1) != 0;
@@ -129,13 +130,12 @@ public class Tab extends LComponent
                 g.setColor(getForeground());
                 g.drawString(STR[j] + '.' + (flag ? "On" : "Off"), i + 2, (j1 + i) - 2);
                 dBar(g, j);
-                int _tmp2 = mg.iSA;
             }
 
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
     }
 
@@ -187,12 +187,12 @@ public class Tab extends LComponent
         }
         try
         {
-            if(((Boolean)mPoll.invoke(tab, null)).booleanValue())
+            if(((Boolean)mPoll.invoke(tab)).booleanValue())
             {
                 mg.iSOB = iSOB;
                 if(max <= 0)
                 {
-                    max = ((Integer)mEx.invoke(tab, null)).intValue();
+                    max = ((Integer)mEx.invoke(tab)).intValue();
                     if(max != 0)
                     {
                         mEx = null;
@@ -211,7 +211,7 @@ public class Tab extends LComponent
         {
             if(poll())
             {
-                strange = (int)(((float)((Integer)mGet.invoke(tab, null)).intValue() / (float)max) * 255F);
+                strange = (int)(((float)((Integer)mGet.invoke(tab)).intValue() / (float)max) * 255F);
             } else
             {
                 strange = 0;
@@ -219,7 +219,7 @@ public class Tab extends LComponent
         }
         catch(Throwable throwable)
         {
-            throwable.printStackTrace();
+            ExceptionHandler.handleException(throwable);
         }
         return strange;
     }

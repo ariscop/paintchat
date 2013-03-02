@@ -3,7 +3,6 @@ package syi.util;
 import java.awt.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
 
 public class Io
@@ -62,7 +61,7 @@ public class Io
         copyDirectory(file, file1, null);
     }
 
-    public static void copyDirectory(File file, File file1, Vector vector)
+    public static void copyDirectory(File file, File file1, Vector<String> vector)
     {
         if(!file1.isDirectory())
         {
@@ -83,7 +82,7 @@ public class Io
 
     }
 
-    public static void copy(File file, File file1, Vector vector)
+    public static void copy(File file, File file1, Vector<String> vector)
     {
         if(file.isFile())
         {
@@ -123,12 +122,12 @@ public class Io
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
         return false;
     }
 
-    public static boolean copyFile(File file, File file1, Vector vector)
+    public static boolean copyFile(File file, File file1, Vector<String> vector)
     {
         try
         {
@@ -140,7 +139,7 @@ public class Io
             {
                 boolean flag = false;
                 String s = getFileName(file.getCanonicalPath()).toLowerCase();
-                for(Enumeration enumeration = vector.elements(); enumeration.hasMoreElements();)
+                for(Enumeration<String> enumeration = vector.elements(); enumeration.hasMoreElements();)
                 {
                     String s1 = enumeration.nextElement().toString();
                     if(s1.endsWith("*") || s.endsWith(s1))
@@ -160,7 +159,7 @@ public class Io
         }
         catch(IOException ioexception)
         {
-            ioexception.printStackTrace();
+            ExceptionHandler.handleException(ioexception);
         }
         return false;
     }
@@ -313,7 +312,7 @@ public class Io
         }
         catch(Exception exception)
         {
-            exception.printStackTrace();
+            ExceptionHandler.handleException(exception);
         }
         return image;
     }

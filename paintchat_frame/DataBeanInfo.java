@@ -7,13 +7,15 @@ import java.lang.reflect.Method;
 public class DataBeanInfo extends SimpleBeanInfo
 {
 
-    static Class class$1; /* synthetic field */
+	//TODO: whats a synthetic field and whats this class used for?
+	//TODO: Better question, whats the point of this class
+    static Class<?> class$1; /* synthetic field */
 
     public DataBeanInfo()
     {
     }
 
-    public static Method findMethod(Class class1, String s, int i)
+    public static Method findMethod(Class<Data> class1, String s, int i)
     {
         try
         {
@@ -38,7 +40,7 @@ public class DataBeanInfo extends SimpleBeanInfo
     public BeanInfo[] getAdditionalBeanInfo()
     {
         BeanInfo beaninfo = null;
-        Class class1;
+        Class<?> class1;
         try
         {
             class1 = getBeanDescriptor().getBeanClass().getSuperclass();
@@ -63,7 +65,7 @@ public class DataBeanInfo extends SimpleBeanInfo
         }
     }
 
-    public static Class getBeanClass()
+    public static Class<Data> getBeanClass()
     {
         return paintchat_frame.Data.class;
     }
@@ -158,7 +160,7 @@ public class DataBeanInfo extends SimpleBeanInfo
                 Method method = null;
                 try
                 {
-                    Class aclass[] = new Class[0];
+                    Class<?> aclass[] = new Class[0];
                     method = getBeanClass().getMethod("getIsNativeWindows", aclass);
                 }
                 catch(Throwable throwable2)
@@ -169,7 +171,7 @@ public class DataBeanInfo extends SimpleBeanInfo
                 Method method1 = null;
                 try
                 {
-                    Class aclass1[] = {
+                    Class<?> aclass1[] = {
                         Boolean.TYPE
                     };
                     method1 = getBeanClass().getMethod("setIsNativeWindows", aclass1);

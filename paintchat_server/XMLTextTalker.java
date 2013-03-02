@@ -4,7 +4,6 @@ import java.io.IOException;
 import paintchat.MgText;
 import paintchat.Res;
 import paintchat.debug.DebugListener;
-import syi.util.ByteInputStream;
 import syi.util.Vector2;
 
 // Referenced classes of package paintchat_server:
@@ -16,23 +15,23 @@ public class XMLTextTalker extends XMLTalker
 
     private Vector2 send_text;
     private Vector2 send_update;
-    private ByteInputStream input;
+//    private ByteInputStream input;
     private TextServer server;
     private DebugListener debug;
     private MgText mgName;
     private boolean isOnlyUserList;
     private boolean isGuest;
-    private boolean isKill;
+//    private boolean isKill;
     private int countSpeak;
 
     public XMLTextTalker(TextServer textserver, DebugListener debuglistener)
     {
         send_text = new Vector2();
         send_update = new Vector2();
-        input = new ByteInputStream();
+//        input = new ByteInputStream();
         isOnlyUserList = false;
         isGuest = false;
-        isKill = false;
+//        isKill = false;
         countSpeak = 0;
         server = textserver;
         debug = debuglistener;
@@ -215,15 +214,17 @@ public class XMLTextTalker extends XMLTalker
         }
     }
 
-    private boolean equalsPassword()
+    //TODO: unused function
+    /*private boolean equalsPassword()
     {
         String s = server.getPassword();
         return s == null || s.length() <= 0 || !getStatus().get("password").equals(s);
-    }
+    }*/
 
+    //TODO: this does nothing, should it do something?
     public void kill()
     {
-        isKill = true;
+//        isKill = true;
     }
 
     public int getSpeakCount()
