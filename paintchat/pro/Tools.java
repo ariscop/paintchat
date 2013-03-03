@@ -1,11 +1,21 @@
 package paintchat.pro;
 
 import java.applet.Applet;
-import java.awt.*;
+
+import java.awt.CheckboxMenuItem;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.ColorModel;
-import paintchat.*;
+
+import paintchat.M;
+import paintchat.Res;
+import paintchat.SRaster;
+import paintchat.ToolBox;
 import paintchat_client.L;
 import paintchat_client.Mi;
 import syi.awt.Awt;

@@ -1,7 +1,10 @@
 package paintchat;
 
 import java.awt.Image;
-import java.awt.image.*;
+import java.awt.image.ColorModel;
+import java.awt.image.ImageConsumer;
+import java.awt.image.ImageProducer;
+
 import java.util.Hashtable;
 import syi.awt.Awt;
 import syi.util.ExceptionHandler;

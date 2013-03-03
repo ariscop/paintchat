@@ -1,9 +1,23 @@
 package syi.awt;
 
-import java.awt.*;
-import java.awt.datatransfer.*;
+
+
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseEvent;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 
 import syi.util.ExceptionHandler;
 import syi.util.Io;

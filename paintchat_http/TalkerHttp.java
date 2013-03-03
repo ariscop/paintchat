@@ -1,7 +1,14 @@
 package paintchat_http;
 
-import java.io.*;
+
 //import java.net.InetAddress;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 //import java.text.DateFormat;
 import java.text.ParseException;

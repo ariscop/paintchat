@@ -1,10 +1,20 @@
 package paintchat_http;
 
-import java.io.*;
-import java.net.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InterruptedIOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import paintchat.*;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import paintchat.Config;
+import paintchat.Res;
+import paintchat.Resource;
 import paintchat.debug.Debug;
 import syi.util.PProperties;
 

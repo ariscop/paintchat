@@ -1,9 +1,20 @@
 package paintchat_server;
 
-import java.io.*;
-import java.net.*;
+
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Date;
-import paintchat.*;
+
+import paintchat.Config;
+import paintchat.MgText;
+import paintchat.Res;
 import paintchat.admin.LocalAdmin;
 import paintchat.debug.Debug;
 import syi.util.Io;

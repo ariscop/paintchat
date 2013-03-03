@@ -1,9 +1,22 @@
 package paintchat;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.image.*;
-import java.io.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.ColorModel;
+import java.awt.image.DirectColorModel;
+import java.awt.image.MemoryImageSource;
+
+
+
+import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import syi.awt.Awt;
 import syi.util.ByteStream;

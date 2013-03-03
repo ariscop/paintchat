@@ -1,12 +1,42 @@
 package paintchat_frame;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Checkbox;
+import java.awt.CheckboxMenuItem;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.Panel;
+import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+
 import java.io.IOException;
 //import java.util.EventObject;
 //import java.util.Hashtable;
-import paintchat.*;
+
+import paintchat.Config;
+import paintchat.Res;
+import paintchat.Resource;
 import paintchat.debug.Debug;
 import syi.applet.AppletWatcher;
 import syi.applet.ServerStub;

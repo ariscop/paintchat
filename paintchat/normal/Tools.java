@@ -1,11 +1,33 @@
 package paintchat.normal;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.AWTEvent;
+import java.awt.CheckboxMenuItem;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Menu;
+import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.Rectangle;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+
+
 import java.io.BufferedReader;
 import java.io.StringReader;
-import paintchat.*;
+
+import paintchat.LO;
+import paintchat.M;
+import paintchat.Res;
+import paintchat.SW;
+import paintchat.ToolBox;
 import paintchat_client.L;
 import paintchat_client.Mi;
 import syi.awt.Awt;

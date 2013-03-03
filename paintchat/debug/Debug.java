@@ -1,6 +1,10 @@
 package paintchat.debug;
 
-import java.io.*;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import paintchat.Res;
 import syi.util.ExceptionHandler;
 

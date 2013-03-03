@@ -1,7 +1,19 @@
 package syi.awt;
 
-import java.awt.*;
-import java.awt.event.*;
+
+
+import java.awt.AWTEvent;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.MouseEvent;
+
 import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:

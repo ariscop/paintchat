@@ -1,6 +1,10 @@
 package paintchat;
 
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.image.DirectColorModel;
 import java.awt.image.MemoryImageSource;

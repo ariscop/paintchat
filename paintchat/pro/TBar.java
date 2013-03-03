@@ -1,7 +1,12 @@
 package paintchat.pro;
 
 import java.applet.Applet;
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import paintchat.Res;

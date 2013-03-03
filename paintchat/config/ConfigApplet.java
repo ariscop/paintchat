@@ -1,8 +1,19 @@
 package paintchat.config;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Checkbox;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.Point;
+import java.awt.TextField;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+
 import java.util.Hashtable;
 import paintchat.Res;
 import paintchat.Resource;

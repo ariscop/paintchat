@@ -1,10 +1,25 @@
 package paintchat_client;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+
+
 import java.io.IOException;
-import paintchat.*;
+
+import paintchat.M;
+import paintchat.Res;
+
 import syi.awt.Awt;
 import syi.awt.LComponent;
 import syi.awt.Tab;

@@ -1,7 +1,17 @@
 package paintchat;
 
 import java.applet.Applet;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.CharArrayWriter;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;

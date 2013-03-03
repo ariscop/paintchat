@@ -1,7 +1,10 @@
 package syi.applet;
 
 import java.applet.Applet;
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.Hashtable;

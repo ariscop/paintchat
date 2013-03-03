@@ -1,7 +1,19 @@
 package syi.awt;
 
-import java.awt.*;
-import java.awt.event.*;
+
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dialog;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.Point;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.Window;
 import java.io.IOException;
 import java.util.Hashtable;
 import syi.util.ExceptionHandler;

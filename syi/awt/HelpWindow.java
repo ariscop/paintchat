@@ -1,6 +1,11 @@
 package syi.awt;
 
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Frame;
+import java.awt.Window;
+
 import syi.util.ThreadPool;
 
 // Referenced classes of package syi.awt:

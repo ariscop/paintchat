@@ -1,6 +1,10 @@
 package paintchat_server;
 
-import java.io.*;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import paintchat.Config;

@@ -1,9 +1,22 @@
 package syi.awt;
 
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.image.PixelGrabber;
-import java.io.*;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import syi.util.ExceptionHandler;

@@ -1,10 +1,19 @@
 package syi.applet;
 
-import java.applet.*;
+
+import java.applet.Applet;
+import java.applet.AppletContext;
+import java.applet.AppletStub;
+import java.applet.AudioClip;
 import java.awt.Image;
-import java.io.*;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Iterator;
+
 import paintchat.Config;
 //import sun.applet.AppletAudioClip;
 import syi.awt.Awt;

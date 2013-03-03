@@ -1,9 +1,25 @@
 package syi.util;
 
-import java.awt.*;
-import java.io.*;
+import java.awt.Component;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.RandomAccessFile;
+import java.io.Reader;
+import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.GregorianCalendar;
+import java.util.Vector;
+
 
 public class Io
 {

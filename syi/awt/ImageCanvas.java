@@ -1,6 +1,13 @@
 package syi.awt;
 
-import java.awt.*;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+
 import syi.util.Io;
 
 public class ImageCanvas extends Canvas

@@ -1,6 +1,10 @@
 package paintchat_server;
 
-import java.io.*;
+
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.InputStream;
+
 import paintchat.Res;
 import syi.util.ByteInputStream;
 import syi.util.ByteStream;

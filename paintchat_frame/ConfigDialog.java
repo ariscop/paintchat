@@ -1,7 +1,10 @@
 package paintchat_frame;
 
 import java.applet.Applet;
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Dialog;
+import java.awt.Window;
 import java.awt.event.WindowEvent;
 import paintchat.Config;
 import paintchat.Res;

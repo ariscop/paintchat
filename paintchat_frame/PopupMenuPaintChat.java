@@ -1,11 +1,19 @@
 package paintchat_frame;
 
-import java.awt.*;
+
+import java.awt.PopupMenu;
+import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
-import java.net.*;
+import java.awt.Container;
+import java.io.BufferedInputStream;
+import java.io.EOFException;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.URL;
+
 import paintchat.Config;
 import paintchat.Res;
 import paintchat.debug.Debug;

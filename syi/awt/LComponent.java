@@ -1,6 +1,16 @@
 package syi.awt;
 
-import java.awt.*;
+
+import java.awt.AWTEvent;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 // Referenced classes of package syi.awt:

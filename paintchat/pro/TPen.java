@@ -1,8 +1,15 @@
 package paintchat.pro;
 
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
-import java.awt.image.*;
+import java.awt.image.ColorModel;
+import java.awt.image.DirectColorModel;
+import java.awt.image.MemoryImageSource;
+
 import paintchat.M;
 import paintchat.Res;
 import syi.awt.Awt;

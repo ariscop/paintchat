@@ -1,6 +1,10 @@
 package paintchat.normal;
 
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import paintchat.M;
 import paintchat.Res;

@@ -1,7 +1,15 @@
 package paintchat_frame;
 
 import java.awt.Image;
-import java.beans.*;
+import java.beans.BeanDescriptor;
+import java.beans.BeanInfo;
+import java.beans.EventSetDescriptor;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.MethodDescriptor;
+import java.beans.PropertyDescriptor;
+import java.beans.SimpleBeanInfo;
+
 import java.lang.reflect.Method;
 
 public class DataBeanInfo extends SimpleBeanInfo

@@ -1,6 +1,10 @@
 package syi.awt;
 
-import java.awt.*;
+
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.io.CharArrayWriter;
 import syi.util.ExceptionHandler;
 

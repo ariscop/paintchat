@@ -1,12 +1,21 @@
 package paintchat_client;
 
 import java.applet.Applet;
-import java.io.*;
-import java.net.*;
+
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.URL;
+import java.net.UnknownHostException;
 //import java.util.Hashtable;
 import java.util.Locale;
 
-import paintchat.*;
+import paintchat.M;
+import paintchat.MgText;
+import paintchat.Res;
+
+
 //import paintchat_server.PaintChatTalker;
 
 import syi.awt.Awt;

@@ -1,6 +1,9 @@
 package syi.awt;
 
-import java.awt.*;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Method;
 import paintchat.M;

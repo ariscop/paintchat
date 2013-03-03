@@ -1,10 +1,32 @@
 package paintchat_client;
 
-import java.awt.*;
-import java.awt.event.*;
+
+
+import java.awt.CheckboxMenuItem;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Panel;
+import java.awt.PopupMenu;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
 import java.awt.image.DirectColorModel;
 import java.awt.image.MemoryImageSource;
-import paintchat.*;
+
+import paintchat.LO;
+import paintchat.M;
+import paintchat.Res;
+import paintchat.ToolBox;
+
 import syi.awt.Awt;
 import syi.awt.LComponent;
 import syi.util.ExceptionHandler;

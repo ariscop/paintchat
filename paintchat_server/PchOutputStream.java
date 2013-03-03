@@ -1,6 +1,11 @@
 package paintchat_server;
 
-import java.io.*;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import syi.util.Io;
 
 public class PchOutputStream extends OutputStream
