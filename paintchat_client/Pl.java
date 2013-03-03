@@ -28,7 +28,6 @@ import java.awt.event.MouseEvent;
 import java.awt.image.IndexColorModel;
 import java.awt.image.MemoryImageSource;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.URL;
 
 import paintchat.M;
@@ -375,82 +374,61 @@ public class Pl extends Panel
 
     private Cursor loadCursor(String s, int i)
     {
-        try
+        if(s != null && s.length() > 0)
         {
-            if(s != null && s.length() > 0)
+            boolean flag = s.equals("none");
+            int j;
+            int k;
+            int l;
+            int i1;
+            Image image;
+            if(!flag)
             {
-                boolean flag = s.equals("none");
-                int j;
-                int k;
-                int l;
-                int i1;
-                Image image;
-                if(!flag)
+                image = getToolkit().createImage((byte[])dd.config.getRes(s));
+                if(image == null)
                 {
-                    image = getToolkit().createImage((byte[])dd.config.getRes(s));
-                    if(image == null)
-                    {
-                        return Cursor.getPredefinedCursor(i);
-                    }
-                    Awt.wait(image);
-                    l = image.getWidth(null);
-                    i1 = image.getHeight(null);
-                    j = s.indexOf('x');
-                    if(j == -1)
-                    {
-                        j = j != -1 ? Integer.parseInt(s.substring(j + 1, s.indexOf('x', j + 1))) : l / 2 - 1;
-                    }
-                    k = s.indexOf('y');
-                    if(k == -1)
-                    {
-                        k = k != -1 ? Integer.parseInt(s.substring(k + 1, s.indexOf('y', k + 1))) : i1 / 2 - 1;
-                    }
-                } else
-                {
-                    j = k = 7;
-                    l = i1 = 16;
-                    image = null;
+                    return Cursor.getPredefinedCursor(i);
                 }
-                try
+                Awt.wait(image);
+                l = image.getWidth(null);
+                i1 = image.getHeight(null);
+                j = s.indexOf('x');
+                if(j == -1)
                 {
-                    if(image == null)
-                    {
-                        IndexColorModel indexcolormodel = new IndexColorModel(8, 2, new byte[2], new byte[2], new byte[2], 0);
-                        image = createImage(new MemoryImageSource(l, i1, indexcolormodel, new byte[l * i1], 0, l));
-                    }
-                    Toolkit toolkit = getToolkit();
-                    toolkit.getClass();
-                    Method method = java.awt.Toolkit.class.getMethod("createCustomCursor", new Class[] {
-                        java.awt.Image.class, java.awt.Point.class, java.lang.String.class
-                    });
-                    Method method1 = java.awt.Toolkit.class.getMethod("getBestCursorSize", new Class[] {
-                        Integer.TYPE, Integer.TYPE
-                    });
-                    Dimension dimension = (Dimension)method1.invoke(toolkit, new Object[] {
-                        new Integer(l), new Integer(i1)
-                    });
-                    if(dimension.width != 0 && dimension.height != 0)
-                    {
-                        return (Cursor)method.invoke(toolkit, new Object[] {
-                            image, new Point((int)(((float)l / (float)dimension.width) * (float)j), (int)(((float)i1 / (float)dimension.height) * (float)k)), "custum"
-                        });
-                    }
+                    j = j != -1 ? Integer.parseInt(s.substring(j + 1, s.indexOf('x', j + 1))) : l / 2 - 1;
                 }
-                catch(NoSuchMethodException _ex)
+                k = s.indexOf('y');
+                if(k == -1)
                 {
-                    if(image == null)
-                    {
-                        image = createImage(new MemoryImageSource(l, i1, new int[l * i1], 0, l));
-                    }
-                    return (Cursor)Class.forName("com.ms.awt.CursorX").getConstructors()[0].newInstance(new Object[] {
-                        image, new Integer(j), new Integer(k)
-                    });
+                    k = k != -1 ? Integer.parseInt(s.substring(k + 1, s.indexOf('y', k + 1))) : i1 / 2 - 1;
                 }
+            } else
+            {
+                j = k = 7;
+                l = i1 = 16;
+                image = null;
             }
-        }
-        catch(Throwable throwable)
-        {
-            ExceptionHandler.handleException(throwable);
+
+            if(image == null)
+            {
+                IndexColorModel indexcolormodel = new IndexColorModel(8, 2, new byte[2], new byte[2], new byte[2], 0);
+                image = createImage(new MemoryImageSource(l, i1, indexcolormodel, new byte[l * i1], 0, l));
+            }
+            Toolkit toolkit = getToolkit();
+            toolkit.getClass();
+            
+            //getBestCursorSize
+            Dimension dimension = toolkit.getBestCursorSize(l, i1);
+            if(dimension.width != 0 && dimension.height != 0)
+            {
+            	//createCustomCursor
+                return toolkit.createCustomCursor(
+                    image, 
+                    new Point((int)(((float)l / (float)dimension.width) * (float)j),
+                    (int)(((float)i1 / (float)dimension.height) * (float)k)),
+                    "custum"
+                );
+            }
         }
         return Cursor.getPredefinedCursor(i);
     }
