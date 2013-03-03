@@ -84,12 +84,18 @@ public class Config extends PProperties
     public static final String CF_CLIENT_IMAGE_HEIGHT = "Client_Image_Height";
     public static final String CF_CLIENT_PERMISSION = "Client_Permission";
 
-    public Config(Object obj)
+    public Config(String obj)
         throws IOException
     {
         loadConfig(obj);
     }
 
+    public Config(File obj)
+    	throws IOException
+    {
+    	loadConfig(obj);
+    }
+    
     public void appendParam(StringBuffer stringbuffer, String s)
     {
         stringbuffer.append("<param name=\"");
@@ -121,25 +127,20 @@ public class Config extends PProperties
         setDefault();
     }
     
-    public void loadConfig(Object obj)
+    public void loadConfig(String filename) {
+    	loadConfig(new File(filename));
+    }
+    
+    public void loadConfig(File file)
     {
         try
         {
-        	if(obj instanceof String)
-            {
-                File file = new File((String)obj);
-                loadPut(new FileInputStream(file));
-                put("File_Config", file.getCanonicalPath());
-            } else
-            if(obj instanceof File)
-            {
-                loadPut(new FileInputStream((File)obj));
-                put("File_Config", ((File)obj).getCanonicalPath());
-            }
+            loadPut(new FileInputStream(file));
+            put("File_Config", file.getCanonicalPath());
         }
         catch(IOException _ex)
         {
-            put("File_Config", obj.toString());
+            put("File_Config", file.toString());
         }
         replaceOldKeys();
         setDefault();
