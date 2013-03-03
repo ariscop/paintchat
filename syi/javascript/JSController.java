@@ -3,10 +3,10 @@ package syi.javascript;
 import java.applet.Applet;
 import java.awt.Rectangle;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import netscape.javascript.JSObject;
 
 /**
  * 
@@ -18,22 +18,10 @@ import java.util.*;
  */
 
 public class JSController
-{
-
-    private boolean isCash;
-    //FIXME: what class should this be?
-    private Class<?> cJava;
-    private Object oJava;
-    private Method mGet;
-    private Method mCall;
-    private Method mGetMember;
-    private Method mSetMember;
-    private Method mSetSlot;
-    private Method mGetSlot;
-    private Method mEval;
+{    
+    private JSObject oJava;
     private Applet applet;
-    //FIXME: what type is this suposed to be?
-    private Hashtable<String, Object> tables;
+    
     private SimpleDateFormat dateFormat;
     /*private static final String STR_NO_SUPPORT = "No support JavaScript";
     private static final String STR_VERSION = "JavaScript Controller (C)shi-chan 2001";*/
@@ -41,10 +29,8 @@ public class JSController
     public JSController(Applet applet1)
         throws IOException
     {
-        isCash = false;
-        cJava = null;
-        oJava = null;
-        tables = null;
+//        isCash = false;
+//        tables = null;
         dateFormat = null;
         System.out.println("JavaScript Controller (C)shi-chan 2001");
         applet = applet1;
@@ -64,15 +50,7 @@ public class JSController
     {
         try
         {
-            if(mCall == null)
-            {
-                mCall = cJava.getMethod("call", new Class[] {
-                    java.lang.String.class, java.lang.Object[].class
-                });
-            }
-            return mCall.invoke(oJava, new Object[] {
-                s, aobj
-            }).toString();
+            return oJava.call(s, aobj).toString();
         }
         catch(Throwable _ex)
         {
@@ -212,97 +190,50 @@ public class JSController
         }
     }
 
-    private final Object getArray(Object obj, Object aobj[])
+    private final JSObject getArray(JSObject obj, String s)
         throws IOException
     {
-        if(mGetSlot == null)
-        {
-            try
-            {
-                mGetSlot = cJava.getMethod("getSlot", new Class[] {
-                    Integer.TYPE
-                });
-            }
-            catch(NoSuchMethodException _ex)
-            {
-                throw new IOException("No support JavaScript");
-            }
-        }
-        Object aobj1[] = new Object[1];
-        String s = (String)aobj[0];
         int i = s.indexOf('[');
         String s1 = s.substring(0, i);
-        aobj1[0] = s1;
-        obj = getMember(obj, aobj1);
-        try
-        {
-            aobj1[0] = Integer.decode(s.substring(i + 1, s.indexOf(']')));
-            return mGetSlot.invoke(obj, aobj1);
-        }
-        catch(IllegalAccessException _ex) { }
-        catch(InvocationTargetException _ex) { }
-        throw new IOException("No support JavaScript");
+        obj = getMember(obj, s1);
+        return (JSObject)obj.getSlot(
+        	Integer.decode(s.substring(i + 1, s.indexOf(']')))
+        );
     }
 
-    private final Object getEndObject(String s, StringBuffer stringbuffer)
+    private final JSObject getEndObject(String s, StringBuffer stringbuffer)
         throws IOException
     {
-        if(isCash)
-        {
-            int j = s.lastIndexOf('.');
-            String s1 = j >= 0 ? s.substring(0, j) : s;
-            Object obj = tables.get(s1);
-            if(obj != null)
-            {
-                return obj;
-            }
-        }
-        Object obj1 = oJava;
+        JSObject obj1 = oJava;
         int i = 0;
         int k = 0;
         s.length();
-        Object aobj[] = new Object[1];
         while((k = s.indexOf('.', i)) >= 0) 
         {
             String s2 = s.substring(i, k);
-            aobj[0] = s2;
-            obj1 = getMember(obj1, aobj);
+            obj1 = getMember(obj1, s2);
             i = k + 1;
         }
         stringbuffer.append(s.substring(i));
         return obj1;
     }
 
-    private final Object getMember(Object obj, Object aobj[])
+    private final JSObject getMember(JSObject obj, String s)
         throws IOException
     {
-        String s = (String)aobj[0];
-        if(mGetMember == null)
-        {
-            try
-            {
-                mGetMember = cJava.getMethod("getMember", new Class[] {
-                    java.lang.String.class
-                });
-            }
-            catch(NoSuchMethodException _ex)
-            {
-                throw new IOException("No support JavaScript");
-            }
-        }
         try
         {
             if(s.indexOf('[') >= 0)
             {
-                return getArray(obj, aobj);
+                return getArray(obj, s);
             } else
             {
-                return mGetMember.invoke(obj, aobj);
+                return (JSObject)obj.getMember(s);
             }
         }
         catch(Throwable _ex)
         {
-            throw new IOException("can't get " + aobj[0]);
+            throw new IOException("can't get " + s);
         }
     }
 
@@ -310,10 +241,10 @@ public class JSController
         throws IOException
     {
         StringBuffer stringbuffer = new StringBuffer();
-        Object obj = getEndObject(s, stringbuffer);
-        return getMember(obj, new Object[] {
-            stringbuffer.toString()
-        }).toString();
+        JSObject obj = getEndObject(s, stringbuffer);
+        return getMember(
+        		obj, stringbuffer.toString()
+        ).toString();
     }
 
     public void openWindow(String s, String s1, Rectangle rectangle, boolean flag, boolean flag1, boolean flag2, boolean flag3, 
@@ -349,24 +280,9 @@ public class JSController
     public final String runScript(String s)
         throws IOException
     {
-        if(mEval == null)
-        {
-            try
-            {
-                mEval = cJava.getMethod("eval", new Class[] {
-                    java.lang.String.class
-                });
-            }
-            catch(NoSuchMethodException _ex)
-            {
-                throw new IOException("No support JavaScript");
-            }
-        }
         try
         {
-            Object obj = mEval.invoke(oJava, new Object[] {
-                s
-            });
+            Object obj = oJava.eval(s);
             return obj != null ? obj.toString() : "";
         }
         catch(Throwable _ex)
@@ -411,54 +327,25 @@ public class JSController
 
         return stringbuffer.toString();
     }
-
-    public synchronized void setCash(boolean flag)
-    {
-        isCash = flag;
-        if(flag)
-        {
-            tables = new Hashtable<String, Object>();
-        } else
-        {
-            tables = null;
-        }
-    }
-
+    
     public void setProperty(String s, Object obj)
         throws IOException
     {
-        if(mSetMember == null)
-        {
-            try
-            {
-                mSetMember = cJava.getMethod("setMember", new Class[] {
-                    java.lang.String.class, java.lang.Object.class
-                });
-                mSetSlot = cJava.getMethod("setSlot", new Class[] {
-                    Integer.TYPE, java.lang.Object.class
-                });
-            }
-            catch(NoSuchMethodException _ex)
-            {
-                throw new IOException("Not found Java script");
-            }
-        }
         StringBuffer stringbuffer = new StringBuffer();
-        Object obj1 = getEndObject(s, stringbuffer);
+        JSObject obj1 = getEndObject(s, stringbuffer);
         String s1 = stringbuffer.toString();
         stringbuffer = null;
         try
         {
             if(s1.indexOf('[') >= 0)
             {
-                mSetSlot.invoke(obj1, new Object[] {
-                    s1, obj
-                });
-            } else
+            	//TODO: imposible code?
+                //obj1.setSlot(s1, obj);
+            	throw new Exception("Invalid argument for setSlot");
+            }
+            else
             {
-                mSetMember.invoke(obj1, new Object[] {
-                    s1, obj
-                });
+                obj1.setMember(s1, obj);
             }
             return;
         }
@@ -473,16 +360,7 @@ public class JSController
     {
         try
         {
-            if(cJava == null)
-            {
-                cJava = Class.forName("netscape.javascript.JSObject");
-                mGet = cJava.getMethod("getWindow", new Class[] {
-                    java.applet.Applet.class
-                });
-            }
-            oJava = mGet.invoke(null, new Object[] {
-                applet
-            });
+            oJava = JSObject.getWindow(applet);
         }
         catch(Throwable _ex)
         {
