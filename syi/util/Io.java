@@ -3,22 +3,14 @@ package syi.util;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.MediaTracker;
-import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.RandomAccessFile;
-import java.io.Reader;
-import java.io.Writer;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Enumeration;
 import java.util.GregorianCalendar;
-import java.util.Vector;
 
 
 public class Io
@@ -26,88 +18,6 @@ public class Io
 
     public Io()
     {
-    }
-
-    public static void close(Object obj)
-    {
-        if(obj == null)
-        {
-            return;
-        }
-        try
-        {
-            if(obj instanceof InputStream)
-            {
-                ((InputStream)obj).close();
-                return;
-            }
-            if(obj instanceof OutputStream)
-            {
-                ((OutputStream)obj).close();
-                return;
-            }
-            if(obj instanceof Reader)
-            {
-                ((Reader)obj).close();
-                return;
-            }
-            if(obj instanceof Writer)
-            {
-                ((Writer)obj).close();
-                return;
-            }
-            if(obj instanceof RandomAccessFile)
-            {
-                ((RandomAccessFile)obj).close();
-                return;
-            }
-        }
-        catch(IOException _ex) { }
-        try
-        {
-            obj.getClass().getMethod("close", new Class[0]).invoke(obj, new Object[0]);
-        }
-        catch(NoSuchMethodException _ex) { }
-        catch(IllegalAccessException _ex) { }
-        catch(InvocationTargetException _ex) { }
-    }
-
-    public static void copyDirectory(File file, File file1)
-    {
-        copyDirectory(file, file1, null);
-    }
-
-    public static void copyDirectory(File file, File file1, Vector<String> vector)
-    {
-        if(!file1.isDirectory())
-        {
-            file1.mkdirs();
-        }
-        String as[] = file.list();
-        for(int i = 0; i < as.length; i++)
-        {
-            File file2 = new File(file, as[i]);
-            if(file2.isFile())
-            {
-                copyFile(new File(file, as[i]), file1, vector);
-            } else
-            {
-                copyDirectory(new File(file, as[i]), new File(file1, as[i]), vector);
-            }
-        }
-
-    }
-
-    public static void copy(File file, File file1, Vector<String> vector)
-    {
-        if(file.isFile())
-        {
-            copyFile(file, file1, vector);
-        } else
-        if(file.isDirectory())
-        {
-            copyDirectory(file, file1, vector);
-        }
     }
 
     public static boolean copyFile(File file, File file1)
@@ -141,52 +51,6 @@ public class Io
             ExceptionHandler.handleException(ioexception);
         }
         return false;
-    }
-
-    public static boolean copyFile(File file, File file1, Vector<String> vector)
-    {
-        try
-        {
-            if(file.isDirectory())
-            {
-                throw new IOException("src is directory");
-            }
-            if(vector != null)
-            {
-                boolean flag = false;
-                String s = getFileName(file.getCanonicalPath()).toLowerCase();
-                for(Enumeration<String> enumeration = vector.elements(); enumeration.hasMoreElements();)
-                {
-                    String s1 = enumeration.nextElement().toString();
-                    if(s1.endsWith("*") || s.endsWith(s1))
-                    {
-                        flag = true;
-                        break;
-                    }
-                }
-
-                if(!flag)
-                {
-                    return false;
-                }
-            }
-            copyFile(file, file1);
-            return true;
-        }
-        catch(IOException ioexception)
-        {
-            ExceptionHandler.handleException(ioexception);
-        }
-        return false;
-    }
-
-    public static void copyFiles(File afile[], File file)
-    {
-        for(int i = 0; i < afile.length; i++)
-        {
-            copyFile(afile[i], file);
-        }
-
     }
 
     public static void copyFiles(String as[], String s)
@@ -301,19 +165,6 @@ public class Io
         }
     }
 
-    public static void initFile(File file)
-    {
-        try
-        {
-            File file1 = getDirectory(file);
-            if(!file1.isDirectory())
-            {
-                file1.mkdirs();
-            }
-        }
-        catch(RuntimeException _ex) { }
-    }
-
     public static Image loadImageNow(Component component, String s)
     {
         Image image = null;
@@ -333,20 +184,6 @@ public class Io
         return image;
     }
 
-    public static String loadString(File file)
-        throws IOException
-    {
-        StringBuffer stringbuffer = new StringBuffer();
-        BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
-        int i;
-        while((i = bufferedreader.read()) != -1) 
-        {
-            stringbuffer.append((char)i);
-        }
-        bufferedreader.close();
-        return stringbuffer.toString();
-    }
-
     public static File makeFile(String s, String s1)
     {
         File file = toDir(s);
@@ -355,16 +192,6 @@ public class Io
             file.mkdirs();
         }
         return new File(file, s1);
-    }
-
-    public static final void moveFile(File file, File file1)
-        throws Throwable
-    {
-        if(!file.renameTo(file1))
-        {
-            copyFile(file, file1);
-            file.delete();
-        }
     }
 
     public static final int r(InputStream inputstream)
@@ -377,36 +204,6 @@ public class Io
         } else
         {
             return i;
-        }
-    }
-
-    public static final int readInt(InputStream inputstream)
-        throws IOException
-    {
-        int i = inputstream.read();
-        int j = inputstream.read();
-        int k = inputstream.read();
-        int l = inputstream.read();
-        if((i | j | k | l) < 0)
-        {
-            throw new EOFException();
-        } else
-        {
-            return (i << 24) + (j << 16) + (k << 8) + l;
-        }
-    }
-
-    public static final short readShort(InputStream inputstream)
-        throws IOException
-    {
-        int i = inputstream.read();
-        int j = inputstream.read();
-        if((i | j) < 0)
-        {
-            throw new EOFException();
-        } else
-        {
-            return (short)((i << 8) + j);
         }
     }
 
@@ -454,15 +251,6 @@ public class Io
             s = s + '/';
         }
         return new File(s);
-    }
-
-    public static final void wInt(OutputStream outputstream, int i)
-        throws IOException
-    {
-        outputstream.write(i >>> 24);
-        outputstream.write(i >>> 16 & 0xff);
-        outputstream.write(i >>> 8 & 0xff);
-        outputstream.write(i & 0xff);
     }
 
     public static final void wShort(OutputStream outputstream, int i)
