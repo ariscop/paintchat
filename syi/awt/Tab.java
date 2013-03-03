@@ -2,9 +2,10 @@ package syi.awt;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.lang.reflect.Method;
 import paintchat.M;
 import syi.util.ExceptionHandler;
+
+import cello.tablet.JTablet;
 
 // Referenced classes of package syi.awt:
 //            LComponent, Awt
@@ -19,10 +20,7 @@ public class Tab extends LComponent
     private int sizeBar;
     private int max;
     private int strange;
-    private Object tab;
-    private Method mGet;
-    private Method mPoll;
-    private Method mEx;
+    private JTablet tab;
     private byte iSOB;
     private final String STR[] = {
         "alpha", "size"
@@ -40,12 +38,7 @@ public class Tab extends LComponent
             Dimension dimension = getSize();
             dimension.setSize(i * 4, 8 + i * 6);
             setDimension(dimension, dimension, dimension);
-            //TODO: fix dis, get a class definition?
-            Class<?> class1 = Class.forName("cello.tablet.JTablet");
-            tab = class1.newInstance();
-            mGet = class1.getMethod("getPressure");
-            mPoll = class1.getMethod("poll");
-            mEx = class1.getMethod("getPressureExtent");
+            tab = new JTablet();
             setTitle("tablet");
             container.add(this, 0);
         }
@@ -187,16 +180,12 @@ public class Tab extends LComponent
         }
         try
         {
-            if(((Boolean)mPoll.invoke(tab)).booleanValue())
+            if(tab.poll())
             {
                 mg.iSOB = iSOB;
                 if(max <= 0)
                 {
-                    max = ((Integer)mEx.invoke(tab)).intValue();
-                    if(max != 0)
-                    {
-                        mEx = null;
-                    }
+                    max = tab.getPressureExtent();
                 }
                 return true;
             }
@@ -211,7 +200,7 @@ public class Tab extends LComponent
         {
             if(poll())
             {
-                strange = (int)(((float)((Integer)mGet.invoke(tab)).intValue() / (float)max) * 255F);
+                strange = (int)(((float)tab.getPressure() / (float)max) * 255F);
             } else
             {
                 strange = 0;
