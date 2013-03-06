@@ -36,5 +36,6 @@ clean:
 	       PaintChat.jar \
 	       pchat.jar \
 	       pchat400_alpha.zip \
-	       res.zip
+	       res.zip \
+	       tt_def.zip
 
