@@ -1,6 +1,5 @@
 #:::::NOTE:::::
-#needs java 5 classpath, running without for now
-JFLAGS = -Xlint -source 5 -target 5
+JFLAGS = -Xlint
 JC = javac
 
 .SUFFIXES: .java .class
