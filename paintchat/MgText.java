@@ -13,11 +13,11 @@ import syi.util.ExceptionHandler;
 public class MgText
 {
 
-    public byte head;
-    public int ID;
+    public byte head = 100;
+    public int ID = 0;
     public byte bName[];
     private byte data[];
-    private int seekMax;
+    private int seekMax = 0;
     private String strData;
     public static final String ENCODE = "UTF8";
 //    private static final String EMPTY = "";
@@ -34,44 +34,20 @@ public class MgText
 
     public MgText()
     {
-        head = 100;
-        ID = 0;
-        bName = null;
-        data = null;
-        seekMax = 0;
-        strData = null;
     }
 
     public MgText(int i, byte byte0, byte abyte0[])
     {
-        head = 100;
-        ID = 0;
-        bName = null;
-        data = null;
-        seekMax = 0;
-        strData = null;
         setData(i, byte0, abyte0);
     }
 
     public MgText(int i, byte byte0, String s)
     {
-        head = 100;
-        ID = 0;
-        bName = null;
-        data = null;
-        seekMax = 0;
-        strData = null;
         setData(i, byte0, s);
     }
 
     public MgText(MgText mgtext)
     {
-        head = 100;
-        ID = 0;
-        bName = null;
-        data = null;
-        seekMax = 0;
-        strData = null;
         setData(mgtext);
     }
 

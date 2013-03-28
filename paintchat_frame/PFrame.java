@@ -98,75 +98,7 @@ public class PFrame extends Frame
 
     public PFrame()
     {
-        debug = null;
-        ivjPanel3 = null;
-        ivjPanelLeft = null;
-//        ivjPanelLeftGridLayout = null;
-        ivjMenu1 = null;
-//        ivjPanel3FlowLayout = null;
-        ivjMenu2 = null;
-        ivjMenu3 = null;
-        ivjMenuItem1 = null;
-        ivjMenuItem2 = null;
-        ivjMenuItem3 = null;
-        ivjMenuItem4 = null;
-//        ivjPFrameBorderLayout = null;
-        ivjPFrameMenuBar = null;
-        ivjHelp = null;
-        ivjConsole = null;
-        ivjMenuItem6 = null;
-        ivjMenuHelpDocument = null;
-        ivjMenuShowConsole = null;
-        ivjMenuShowHelp = null;
-        ivjData = null;
-        ivjHttp_Port = null;
-        ivjIp = null;
-        ivjLobby_Button = null;
-        ivjPaintchat_Port = null;
-        ivjHttp_Button = null;
-        ivjPaintchat_Button = null;
-        ivjMenu_Help_Update = null;
-        ivjMenuItem9 = null;
-        ivjMenuItem10 = null;
-        ivjMenu_FilesCopy = null;
         initialize();
-    }
-    
-    //TODO: remove the dual constructors
-    public PFrame(String s)
-    {
-        super(s);
-        debug = null;
-        ivjPanel3 = null;
-        ivjPanelLeft = null;
-//        ivjPanelLeftGridLayout = null;
-        ivjMenu1 = null;
-//        ivjPanel3FlowLayout = null;
-        ivjMenu2 = null;
-        ivjMenu3 = null;
-        ivjMenuItem1 = null;
-        ivjMenuItem2 = null;
-        ivjMenuItem3 = null;
-        ivjMenuItem4 = null;
-//        ivjPFrameBorderLayout = null;
-        ivjPFrameMenuBar = null;
-        ivjHelp = null;
-        ivjConsole = null;
-        ivjMenuItem6 = null;
-        ivjMenuHelpDocument = null;
-        ivjMenuShowConsole = null;
-        ivjMenuShowHelp = null;
-        ivjData = null;
-        ivjHttp_Port = null;
-        ivjIp = null;
-        ivjLobby_Button = null;
-        ivjPaintchat_Port = null;
-        ivjHttp_Button = null;
-        ivjPaintchat_Button = null;
-        ivjMenu_Help_Update = null;
-        ivjMenuItem9 = null;
-        ivjMenuItem10 = null;
-        ivjMenu_FilesCopy = null;
     }
 
     public void actionPerformed(ActionEvent actionevent)

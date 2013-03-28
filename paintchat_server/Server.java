@@ -39,7 +39,7 @@ public class Server
     public Debug debug;
     private ServerSocket sSocket;
     private Thread tConnect;
-    private Thread tLive;
+    private Thread gcThread;
     TextServer textServer;
     LineServer lineServer;
     
@@ -50,7 +50,7 @@ public class Server
         config = null;
         debug = null;
         tConnect = null;
-        tLive = null;
+        gcThread = null;
         config = config1;
         isOnlyServer = flag;
         if(s != null && s.length() > 0)
@@ -88,12 +88,12 @@ public class Server
                 }
                 catch(Exception _ex) { }
             }
-            if(tLive != null && tLive != thread)
+            if(gcThread != null && gcThread != thread)
             {
                 try
                 {
-                    tLive.interrupt();
-                    tLive = null;
+                    gcThread.interrupt();
+                    gcThread = null;
                 }
                 catch(Exception _ex) { }
             }
@@ -243,9 +243,10 @@ public class Server
                     }
                 }
             }
-            System.out.println((new File(s)).getCanonicalPath());
-            Config config1 = new Config(s);
-            Server server = new Server(s1, config1, null, true);
+            File configFile = new File(s);
+            System.out.println(configFile.getCanonicalPath());
+            Config config = new Config(configFile);
+            Server server = new Server(s1, config, null, true);
             if(server.isExecute(flag))
             {
                 throw new Exception("(Has already started.)");
@@ -303,16 +304,17 @@ public class Server
         {
             switch(Thread.currentThread().getName().charAt(0))
             {
-            case 99: // 'c'
+            case 'c': // 'c'
                 runConnect();
                 break;
 
-            case 103: // 'g'
+            case 'g': // 'gc'
             	//'Garbage Collector' thread
                 runLive();
                 break;
 
-            case 105: // 'i'
+            case 'i': //'init'
+            	
                 rInit();
                 break;
             }
@@ -334,9 +336,9 @@ public class Server
                 socket.setSoTimeout(180000);
                 if(!isLiveThread)
                 {
-                    synchronized(tLive)
+                    synchronized(gcThread)
                     {
-                        tLive.notify();
+                        gcThread.notify();
                     }
                 }
                 talkerInstance.newTalker(socket);
@@ -363,7 +365,7 @@ public class Server
         {
             try
             {
-                if(tLive == null)
+                if(gcThread == null)
                 {
                     break;
                 }
@@ -383,11 +385,11 @@ public class Server
                 textServer.clearDeadTalker();
                 if(textServer.getUserCount() <= 0 && lineServer.getUserCount() <= 0)
                 {
-                    synchronized(tLive)
+                    synchronized(gcThread)
                     {
                         debug.log("pchat_gc:suspend");
                         isLiveThread = false;
-                        tLive.wait();
+                        gcThread.wait();
                         isLiveThread = true;
                     }
                     debug.log("pchat_gc:resume");
@@ -424,17 +426,17 @@ public class Server
 
     private void runServer()
     {
-        tConnect = new Thread(this);
+        tConnect = new Thread(this, "connection");
         tConnect.setDaemon(true);
         tConnect.setPriority(1);
-        tConnect.setName("connection");
-        tLive = new Thread(this);
-        tLive.setDaemon(false);
-        tLive.setPriority(1);
-        tLive.setName("gc");
+        
+        gcThread = new Thread(this, "gc");
+        gcThread.setDaemon(false);
+        gcThread.setPriority(1);
+        
         //TODO: Garbage collector thread started here
         tConnect.start();
-        tLive.start();
+        gcThread.start();
     }
 
     public MgText getInfomation()

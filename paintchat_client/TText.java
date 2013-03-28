@@ -85,7 +85,7 @@ public class TText extends PaintChatTalker
                 break;
 
             case 0: // '\0'
-                pl.addText(mg.bName == null ? (String)names.get(integer) : mg.getUserName(), s, true);
+                pl.addText(mg.bName == null ? names.get(integer) : mg.getUserName(), s, true);
                 pl.dSound(1);
                 break;
 

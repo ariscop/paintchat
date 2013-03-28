@@ -47,7 +47,7 @@ public class Tools extends LComponent
     Container parent;
     Mi mi;
     L L;
-    paintchat.M.Info info;
+    M.Info info;
     M mg;
     Res res;
     Res config;

@@ -95,33 +95,33 @@ public class M
             }
         }
 
-        public void setIm(M m)
-        {
-            if(m.isText())
-            {
-                return;
-            }
-            if(pM != m.iPenM || pA != m.iAlpha || pS != m.iSize)
-            {
-                int ai[] = m.info.bPen[m.iPenM][m.iSize];
-                int i = ai.length;
-                if(p == null || p.length < i)
-                {
-                    p = new int[i];
-                }
-                float f = M.b255[m.iAlpha];
-                for(int j = 0; j < i; j++)
-                {
-                    float f1 = (float)ai[j] * f;
-                    p[j] = f1 > 1.0F || f1 <= 0.0F ? (int)f1 : 1;
-                }
-
-                pW = m.iPen = (int)Math.sqrt(i);
-                pM = m.iPenM;
-                pA = m.iAlpha;
-                pS = m.iSize;
-            }
-        }
+//        public void setIm(M m)
+//        {
+//            if(m.isText())
+//            {
+//                return;
+//            }
+//            if(pM != m.iPenM || pA != m.iAlpha || pS != m.iSize)
+//            {
+//                int ai[] = m.info.bPen[m.iPenM][m.iSize];
+//                int i = ai.length;
+//                if(p == null || p.length < i)
+//                {
+//                    p = new int[i];
+//                }
+//                float f = M.b255[m.iAlpha];
+//                for(int j = 0; j < i; j++)
+//                {
+//                    float f1 = (float)ai[j] * f;
+//                    p[j] = f1 > 1.0F || f1 <= 0.0F ? (int)f1 : 1;
+//                }
+//
+//                pW = m.iPen = (int)Math.sqrt(i);
+//                pM = m.iPenM;
+//                pA = m.iAlpha;
+//                pS = m.iSize;
+//            }
+//        }
 
         public int getPixel(int i, int j)
         {
@@ -132,7 +132,7 @@ public class M
             }
             int l = info.Q;
             mkLPic(buffer, i, j, 1, 1, l);
-            //int _tmp = info.L;
+            //int _tmp = info.L;then
             //int _tmp1 = info.m.iLayer;
             LO alo[] = info.layers;
             i *= l;
@@ -523,26 +523,26 @@ public class M
     public static final int M_R = 2;
     public static final int M_ADD = 3;
     public static final int M_SUB = 4;
-//    private static final int F1O = 4;
-//    private static final int F1C = 8;
-//    private static final int F1A = 16;
-//    private static final int F1S = 32;
-//    private static final int F2H = 1;
-//    private static final int F2PM = 2;
-//    private static final int F2M = 4;
-//    private static final int F2P = 8;
-//    private static final int F2T = 16;
-//    private static final int F2L = 32;
-//    private static final int F2LS = 64;
-//    private static final int F3A = 1;
-//    private static final int F3C = 2;
-//    private static final int F3CM = 4;
-//    private static final int F3S = 8;
-//    private static final int F3E = 16;
-//    private static final int F3SA = 32;
-//    private static final int F3SS = 64;
-//    private static final int DEF_COUNT = -8;
-//    private static final String ENCODE = "UTF8";
+    private static final int F1O = 4;
+    private static final int F1C = 8;
+    private static final int F1A = 16;
+    private static final int F1S = 32;
+    private static final int F2H = 1;
+    private static final int F2PM = 2;
+    private static final int F2M = 4;
+    private static final int F2P = 8;
+    private static final int F2T = 16;
+    private static final int F2L = 32;
+    private static final int F2LS = 64;
+    private static final int F3A = 1;
+    private static final int F3C = 2;
+    private static final int F3CM = 4;
+    private static final int F3S = 8;
+    private static final int F3E = 16;
+    private static final int F3SA = 32;
+    private static final int F3SS = 64;
+    private static final int DEF_COUNT = -8;
+    private static final String ENCODE = "UTF8";
     private static float b255[] = new float[256];
     static float b255d[] = new float[256];
     private static ColorModel color_model = null;
@@ -563,7 +563,7 @@ public class M
         iMask = 0;
         iSize = 0;
         iSS = 65280;
-        iCount = -8;
+        iCount = DEF_COUNT;
         isCount = true;
     }
 
@@ -582,7 +582,7 @@ public class M
         iMask = 0;
         iSize = 0;
         iSS = 65280;
-        iCount = -8;
+        iCount = DEF_COUNT;
         isCount = true;
         info = info1;
         user = user1;
@@ -609,34 +609,14 @@ public class M
         {
             int i1 = info.scale;
             int j1 = info.Q;
-            int k1 = info.W;
-            int l1 = info.H;
-            int j2 = info.scaleX;
-            int k2 = info.scaleY;
+            int iW = info.W;
+            int iH = info.H;
+            int scaleX = info.scaleX;
+            int scaleW = info.scaleY;
             boolean flag1 = i1 == 1;
             int ai[] = user.buffer;
             Color color = Color.white;
             Graphics g = info.g;
-//            if(g == null)    private static final int F1O = 4;
-//            private static final int F1C = 8;
-//            private static final int F1A = 16;
-//            private static final int F1S = 32;
-//            private static final int F2H = 1;
-//            private static final int F2PM = 2;
-//            private static final int F2M = 4;
-//            private static final int F2P = 8;
-//            private static final int F2T = 16;
-//            private static final int F2L = 32;
-//            private static final int F2LS = 64;
-//            private static final int F3A = 1;
-//            private static final int F3C = 2;
-//            private static final int F3CM = 4;
-//            private static final int F3S = 8;
-//            private static final int F3E = 16;
-//            private static final int F3SA = 32;
-//            private static final int F3SS = 64;
-//            private static final int DEF_COUNT = -8;
-//            private static final String ENCODE = "UTF8";
             if(g == null)
             {
                 return;
@@ -645,24 +625,24 @@ public class M
             j /= j1;
             k /= j1;
             l /= j1;
-            i = i > j2 ? i : j2;
-            j = j > k2 ? j : k2;
-            int l2 = info.vWidth / i1 + j2;
+            i = i > scaleX ? i : scaleX;
+            j = j > scaleW ? j : scaleW;
+            int l2 = info.vWidth / i1 + scaleX;
             k = k <= l2 ? k : l2;
-            k = k <= k1 ? k : k1;
-            l2 = info.vHeight / i1 + k2;
+            k = k <= iW ? k : iW;
+            l2 = info.vHeight / i1 + scaleW;
             l = l <= l2 ? l : l2;
-            l = l <= l1 ? l : l1;
+            l = l <= iH ? l : iH;
             if(k <= i || l <= j)
             {
                 return;
             }
-            k1 = k - i;
-            int i3 = k1 * i1;
-            int j3 = (i - j2) * i1;
+            iW = k - i;
+            int i3 = iW * i1;
+            int j3 = (i - scaleX) * i1;
             //int _tmp = i;
             int k3 = j;
-            l2 = ai.length / (k1 * j1 * j1);
+            l2 = ai.length / (iW * j1 * j1);
             do
             {
                 int i2 = Math.min(l2, l - k3);
@@ -670,13 +650,13 @@ public class M
                 {
                     break;
                 }
-                Image image = flag ? mkMPic(i, k3, k1, i2, j1) : mkLPic(null, i, k3, k1, i2, j1);
+                Image image = flag ? mkMPic(i, k3, iW, i2, j1) : mkLPic(null, i, k3, iW, i2, j1);
                 if(flag1)
                 {
-                    g.drawImage(image, j3, k3 - k2, color, null);
+                    g.drawImage(image, j3, k3 - scaleW, color, null);
                 } else
                 {
-                    g.drawImage(image, j3, (k3 - k2) * i1, i3, i2 * i1, color, null);
+                    g.drawImage(image, j3, (k3 - scaleW) * i1, i3, i2 * i1, color, null);
                 }
                 k3 += i2;
             } while(true);
@@ -2100,7 +2080,7 @@ label0:
 
             case 8: // '\b'
             case 12: // '\f'
-                String s1 = new String(offset, iSeek, iOffset - iSeek, "UTF8");
+                String s1 = new String(offset, iSeek, iOffset - iSeek, ENCODE);
                 int k1 = s1.indexOf('\0');
                 dText(s1.substring(k1 + 1), i1, word0);
                 break;
@@ -2165,7 +2145,7 @@ label0:
                             image = toolkit.createImage(offset, iSeek, iOffset - iSeek);
                         } else
                         {
-                            image = toolkit.createImage((byte[])info.cnf.getRes(new String(offset, iSeek, iOffset - iSeek, "UTF8")));
+                            image = toolkit.createImage((byte[])info.cnf.getRes(new String(offset, iSeek, iOffset - iSeek, ENCODE)));
                         }
                         if(image == null)
                         {
@@ -2205,7 +2185,7 @@ label0:
                     break;
 
                 case 10: // '\n'
-                    lo.name = new String(offset, 4, iOffset - 4, "UTF8");
+                    lo.name = new String(offset, 4, iOffset - 4, ENCODE);
                     break;
                 }
                 setD(0, 0, j, k);
@@ -2422,7 +2402,10 @@ label0:
             int j1 = i >>> 16 & 0xff;
             int k1 = i >>> 8 & 0xff;
             int l1 = i & 0xff;
-            return i1 << 24 | j1 + (int)((float)((j >>> 16 & 0xff) - j1) * f) << 16 | k1 + (int)((float)((j >>> 8 & 0xff) - k1) * f) << 8 | l1 + (int)((float)((j & 0xff) - l1) * f);
+            return   i1 << 24                   
+                   | j1 + (int)((float)((j >>> 16 & 0xff) - j1) * f) << 16
+                   | k1 + (int)((float)((j >>> 8 & 0xff) - k1) * f) << 8
+                   | l1 + (int)((float)((j & 0xff) - l1) * f);
         }
     }
 
@@ -3438,22 +3421,22 @@ label0:
         {
             int l = 0;
             boolean flag = false;
-            int i1 = abyte0[i++] & 0xff;
-            int j1 = abyte0[i++] & 0xff;
-            int k1 = abyte0[i++] & 0xff;
-            isAllL = (i1 & 1) != 0;
-            isAFix = (i1 & 2) != 0;
-            isOver = (i1 & 4) != 0;
-            isCount = (i1 & 8) != 0;
-            isAnti = (i1 & 0x10) != 0;
-            iSOB = i1 >>> 6;
-            if((j1 & 1) != 0)
+            int f1 = abyte0[i++] & 0xff;
+            int f2 = abyte0[i++] & 0xff;
+            int f3 = abyte0[i++] & 0xff;
+            isAllL = (f1 & 1) != 0;
+            isAFix = (f1 & 2) != 0;
+            isOver = (f1 & 4) != 0;
+            isCount = (f1 & 8) != 0;
+            isAnti = (f1 & 16) != 0;
+            iSOB = f1 >>> 6;
+            if((f2 & 1) != 0)
             {
                 l = abyte0[i++] & 0xff;
                 flag = true;
                 iHint = l >>> 4;
             }
-            if((j1 & 2) != 0)
+            if((f2 & 2) != 0)
             {
                 if(!flag)
                 {
@@ -3465,7 +3448,7 @@ label0:
                 }
                 flag = !flag;
             }
-            if((j1 & 4) != 0)
+            if((f2 & 4) != 0)
             {
                 if(!flag)
                 {
@@ -3477,50 +3460,50 @@ label0:
                 }
                 flag = !flag;
             }
-            if((j1 & 8) != 0)
+            if((f2 & 8) != 0)
             {
                 iPen = abyte0[i++] & 0xff;
             }
-            if((j1 & 0x10) != 0)
+            if((f2 & 0x10) != 0)
             {
                 iTT = abyte0[i++] & 0xff;
             }
-            if((j1 & 0x20) != 0)
+            if((f2 & 0x20) != 0)
             {
                 iLayer = abyte0[i++] & 0xff;
             }
-            if((j1 & 0x40) != 0)
+            if((f2 & 0x40) != 0)
             {
                 iLayerSrc = abyte0[i++] & 0xff;
             }
-            if((k1 & 1) != 0)
+            if((f3 & 1) != 0)
             {
                 iAlpha = abyte0[i++] & 0xff;
             }
-            if((k1 & 2) != 0)
+            if((f3 & 2) != 0)
             {
                 iColor = r(abyte0, i, 3);
                 i += 3;
             }
-            if((k1 & 4) != 0)
+            if((f3 & 4) != 0)
             {
                 iColorMask = r(abyte0, i, 3);
                 i += 3;
             }
-            if((k1 & 8) != 0)
+            if((f3 & 8) != 0)
             {
                 iSize = abyte0[i++] & 0xff;
             }
-            if((k1 & 0x10) != 0)
+            if((f3 & 0x10) != 0)
             {
                 iCount = abyte0[i++];
             }
-            if((k1 & 0x20) != 0)
+            if((f3 & 0x20) != 0)
             {
                 iSA = r(abyte0, i, 2);
                 i += 2;
             }
-            if((k1 & 0x40) != 0)
+            if((f3 & 0x40) != 0)
             {
                 iSS = r(abyte0, i, 2);
                 i += 2;
@@ -3845,7 +3828,7 @@ label0:
         {
             if(strHint != null)
             {
-                return Font.decode(new String(strHint, "UTF8") + i);
+                return Font.decode(new String(strHint, ENCODE) + i);
             }
         }
         catch(IOException _ex) { }

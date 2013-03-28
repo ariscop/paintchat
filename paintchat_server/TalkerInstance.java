@@ -95,7 +95,7 @@ public class TalkerInstance
         ByteInputStream byteinputstream = new ByteInputStream();
         InputStream inputstream = socket1.getInputStream();
         In = inputstream;
-        isAscii = Io.r(inputstream) != 98;
+        isAscii = Io.r(inputstream) != 'b';
         if(isAscii)
         {
             switchAsciiConnection();
