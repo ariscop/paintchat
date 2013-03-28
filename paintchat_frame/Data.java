@@ -55,7 +55,7 @@ public class Data
         try
         {
             Object obj = actionevent.getSource();
-            ThreadPool.poolStartThread(this, obj != bChat ? ((char) (obj != bHttp ? 'l' : 'h')) : 'c');
+            ThreadPool.poolStartThread(this, obj != bChat ? ((obj != bHttp ? "lobby" : "http")) : "chat");
         }
         catch(Throwable throwable)
         {
@@ -126,14 +126,14 @@ public class Data
         lbutton2.addActionListener(this);
         if(config1.getBool("App_Auto_Http"))
         {
-            ThreadPool.poolStartThread(this, 'h');
+            ThreadPool.poolStartThread(this, "http");
         } else
         {
             lbutton1.setText(res1.get("Http_Button_Start"));
         }
         if(config1.getBool("App_Auto_Paintchat"))
         {
-            ThreadPool.poolStartThread(this, 'c');
+            ThreadPool.poolStartThread(this, "chat");
         } else
         {
             lbutton.setText(res1.get("Paintchat_Button_Start"));
@@ -154,15 +154,15 @@ public class Data
     {
         switch(Thread.currentThread().getName().charAt(0))
         {
-        case 99: // 'c'
+        case 'c':
             runPaintChat();
             break;
 
-        case 104: // 'h'
+        case 'h':
             runHttp();
             break;
 
-        case 108: // 'l'
+        case 'l':
             runLobby();
             break;
         }
@@ -268,7 +268,7 @@ public class Data
     {
         if(flag)
         {
-            ThreadPool.poolStartThread(this, 'h');
+            ThreadPool.poolStartThread(this, "http");
         } else
         {
             runHttp();
@@ -279,7 +279,7 @@ public class Data
     {
         if(flag)
         {
-            ThreadPool.poolStartThread(this, 'l');
+            ThreadPool.poolStartThread(this, "lobby");
         } else
         {
             runLobby();
@@ -290,7 +290,7 @@ public class Data
     {
         if(flag)
         {
-            ThreadPool.poolStartThread(this, 'c');
+            ThreadPool.poolStartThread(this, "chat");
         } else
         {
             runPaintChat();

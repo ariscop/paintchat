@@ -18,27 +18,22 @@ public abstract class PaintChatTalker
     implements Runnable
 {
 
-    private boolean isLive;
-    protected boolean canWrite;
-    private boolean doWrite;
-    protected int iSendInterval;
+    private boolean isLive = true;
+    private boolean doWrite = false;
+    private boolean isConnect = false;
+    protected int iSendInterval = 2000;
+    protected boolean canWrite = true;
+    protected String talkerName = "PaintChatTalker";
+    private ByteStream stm_buffer = new ByteStream();
     private OutputStream Out;
     private InputStream In;
     private Socket socket;
-    private ByteStream stm_buffer;
     private Res status;
     long lTime;
-    private boolean isConnect;
+  
 
     public PaintChatTalker()
     {
-        isLive = true;
-        canWrite = true;
-        doWrite = false;
-        iSendInterval = 2000;
-        stm_buffer = new ByteStream();
-        status = null;
-        isConnect = false;
     }
 
     private void mInitInside()
@@ -85,8 +80,10 @@ public abstract class PaintChatTalker
         In = inputstream;
         Out = outputstream;
         status = res != null ? res : new Res();
-        socket1.getInetAddress().getHostName();
-        ThreadPool.poolStartThread(this, 'l');
+        String name = res.get("name");
+        if(name == null)
+        	name = socket1.getInetAddress().getHostName();
+        ThreadPool.poolStartThread(this, "Talker:"+name+":"+talkerName);
     }
 
     public synchronized void mConnect(Socket socket1, Res res)

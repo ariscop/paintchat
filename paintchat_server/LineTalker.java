@@ -20,25 +20,19 @@ import syi.util.VectorBin;
 public class LineTalker extends PaintChatTalker
 {
 
-    ByteStream lines_send;
-    VectorBin lines_log;
+    ByteStream lines_send = new ByteStream();
+    VectorBin lines_log = new VectorBin();
     LineServer server;
     DebugListener debug;
-    private M mgRead;
-    private ByteStream workReceive;
-    private ByteStream workReceive2;
-    private M mgSend;
-    private int countDraw;
+    private M mgRead = new M();
+    private ByteStream workReceive = new ByteStream();
+    private ByteStream workReceive2 = new ByteStream();
+    private M mgSend = null;
+    private int countDraw = 0;
 
     public LineTalker(LineServer lineserver, DebugListener debuglistener)
     {
-        lines_send = new ByteStream();
-        lines_log = new VectorBin();
-        mgRead = new M();
-        workReceive = new ByteStream();
-        workReceive2 = new ByteStream();
-        mgSend = null;
-        countDraw = 0;
+        talkerName = "LineTalker";
         server = lineserver;
         debug = debuglistener;
     }

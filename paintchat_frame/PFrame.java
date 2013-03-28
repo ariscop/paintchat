@@ -1130,7 +1130,7 @@ public class PFrame extends Frame
 
     public void menuItem1_ActionPerformed1()
     {
-        ThreadPool.poolStartThread(getData(), 'h');
+        ThreadPool.poolStartThread(getData(), "http");
     }
 
     public void menuItem10_ActionPerformed(ActionEvent actionevent)

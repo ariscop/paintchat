@@ -14,26 +14,20 @@ public class TextTalker extends PaintChatTalker
     implements TextTalkerListener
 {
 
-    private Vector2 sendText;
-    private MgText sendUpdate[];
+    private Vector2 sendText = new Vector2();
+    private MgText sendUpdate[] = null;
     private TextServer server;
     private DebugListener debug;
     private MgText mgName;
-    private MgText mgRead;
-    private ByteInputStream bin;
-    private int countSpeak;
-    private boolean isGuest;
-    private boolean isKill;
+    private MgText mgRead = new MgText();
+    private ByteInputStream bin = new ByteInputStream();
+    private int countSpeak = 0;
+    private boolean isGuest = false;
+    private boolean isKill = false;
 
     public TextTalker(TextServer textserver, DebugListener debuglistener)
     {
-        sendText = new Vector2();
-        sendUpdate = null;
-        mgRead = new MgText();
-        bin = new ByteInputStream();
-        countSpeak = 0;
-        isGuest = false;
-        isKill = false;
+        talkerName = "TextTalker";
         debug = debuglistener;
         server = textserver;
     }

@@ -26,20 +26,20 @@ public abstract class XMLTalker extends DefaultHandler
     implements Runnable
 {
 
-    private boolean isLive;
-    private boolean isInit;
-    private boolean canWrite;
-    private boolean doWrite;
-    protected int iSendInterval;
+    private boolean isLive = true;
+    private boolean isInit = false;
+    private boolean canWrite = true;
+    private boolean doWrite = false;
+    protected int iSendInterval = 2000;
     private BufferedWriter Out;
     private BufferedInputStream In;
     private Socket socket;
-    private ByteStream stm_buffer;
+    private ByteStream stm_buffer = new ByteStream();
     private Res status;
     long lTime;
-    private SAXParser saxParser;
+    private SAXParser saxParser = null;
     private String strTag;
-    private Res res_att;
+    private Res res_att = new Res();
     private final String strTags[] = {
         "talk", "in", "leave", "infomation", "script", "admin"
     };
@@ -53,14 +53,6 @@ public abstract class XMLTalker extends DefaultHandler
 
     public XMLTalker()
     {
-        isLive = true;
-        isInit = false;
-        canWrite = true;
-        doWrite = false;
-        iSendInterval = 2000;
-        stm_buffer = new ByteStream();
-        saxParser = null;
-        res_att = new Res();
     }
 
     private synchronized void mInitInside()

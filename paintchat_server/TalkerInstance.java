@@ -95,6 +95,7 @@ public class TalkerInstance
         ByteInputStream byteinputstream = new ByteInputStream();
         InputStream inputstream = socket1.getInputStream();
         In = inputstream;
+        //TODO: inverse? is not ascii?
         isAscii = Io.r(inputstream) != 'b';
         if(isAscii)
         {
@@ -116,18 +117,21 @@ public class TalkerInstance
             switchLocalAdmin(socket1, res);
             return;
         }
-        Object obj = null;
+        PaintChatTalker talker = null;
         String s = res.get("protocol", "");
         if(s.equals("paintchat.text"))
         {
-            obj = new TextTalker(textServer, debug);
+            talker = new TextTalker(textServer, debug);
         }
         if(s.equals("paintchat.line"))
         {
-            obj = new LineTalker(lineServer, debug);
+            talker = new LineTalker(lineServer, debug);
         }
-        s.equals("paintchat.infomation");
-        if(obj != null)
+        /*if(s.equals("paintchat.infomation"))
+        {
+        	//TODO: figure what this was for
+        }*/
+        if(talker != null)
         {
             if(strPassword.length() > 0 && strPassword.equals(res.get("password", "")))
             {
@@ -136,7 +140,7 @@ public class TalkerInstance
             {
                 res.put("permission", serverStatus.get("Client_Permission"));
             }
-            ((PaintChatTalker) (obj)).mStart(socket, inputstream, null, res);
+            talker.mStart(socket, inputstream, null, res);
         }
     }
 
