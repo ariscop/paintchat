@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
-import syi.util.ExceptionHandler;
 
 public class MgText
 {
@@ -237,7 +236,7 @@ public class MgText
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
         head = 100;
         ID = 0;

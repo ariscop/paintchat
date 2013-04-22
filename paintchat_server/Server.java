@@ -19,7 +19,6 @@ import paintchat.admin.LocalAdmin;
 import paintchat.debug.Debug;
 import syi.util.Io;
 import syi.util.ThreadPool;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_server:
 //            LineServer, TextServer, TalkerInstance, TextTalkerListener, 
@@ -321,7 +320,7 @@ public class Server
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

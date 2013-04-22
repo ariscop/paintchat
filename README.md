@@ -8,11 +8,9 @@ Changes:
 - Re-encoded all the japanese in utf-8, no more broken ?'s (was in shift_jis)
 - Translated the ui, with google translate. better than nothing
 - Minor bugfixes
-- Minor performance improvments (removed a few threads :D)
+- Minor performance improvments
 - Fixed the undocumented Connection_Host property, so the client and server
   can be on different domains
-- Added 'ExceptionHandler' which will show an anoying popup when exceptions
-  happen. will remove that eventually.
 
 also extended the makefile, it properly packages everything into a zip similar
 to the original release (pchat400_alpha.zi)

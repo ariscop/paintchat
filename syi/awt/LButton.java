@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            Awt
@@ -191,7 +190,7 @@ public class LButton extends Canvas
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

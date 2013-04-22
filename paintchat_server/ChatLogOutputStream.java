@@ -13,7 +13,6 @@ import java.io.Writer;
 
 import paintchat.MgText;
 import paintchat.debug.DebugListener;
-import syi.util.ExceptionHandler;
 import syi.util.Io;
 import syi.util.Vector2;
 
@@ -193,7 +192,7 @@ public class ChatLogOutputStream extends Writer
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
     }
 

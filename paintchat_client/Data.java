@@ -20,7 +20,6 @@ import paintchat.Res;
 
 import syi.awt.Awt;
 import syi.util.ByteStream;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            TLine, TText, Pl, Mi, 
@@ -192,7 +191,7 @@ public class Data
             }
             catch(IOException ioexception1)
             {
-                ExceptionHandler.handleException(ioexception1);
+                ioexception1.printStackTrace();
             }
             Me.res = res;
             Me.conf = config;
@@ -214,7 +213,7 @@ public class Data
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
     }
 
@@ -353,7 +352,7 @@ public class Data
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 }

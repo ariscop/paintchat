@@ -12,7 +12,6 @@ import paintchat.M;
 import paintchat.Res;
 import syi.awt.Awt;
 import syi.awt.LComponent;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            Tools
@@ -167,7 +166,7 @@ public class TPalette extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -336,7 +335,7 @@ public class TPalette extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

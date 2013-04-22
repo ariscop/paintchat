@@ -39,7 +39,6 @@ import syi.awt.Awt;
 import syi.awt.LButton;
 import syi.awt.LComponent;
 import syi.awt.TextPanel;
-import syi.util.ExceptionHandler;
 import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_client:
@@ -133,7 +132,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -205,7 +204,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -273,7 +272,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -360,7 +359,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -641,7 +640,7 @@ public class Pl extends Panel
             }
             catch(Throwable throwable1)
             {
-                ExceptionHandler.handleException(throwable1);
+                throwable1.printStackTrace();
             }
             mkTextPanel();
             tField.addKeyListener(this);
@@ -671,7 +670,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -726,7 +725,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -826,7 +825,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }*/
 
@@ -864,7 +863,7 @@ public class Pl extends Panel
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

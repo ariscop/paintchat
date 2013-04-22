@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import syi.util.ExceptionHandler;
 import syi.util.PProperties;
 
 // Referenced classes of package paintchat:
@@ -218,7 +217,7 @@ public class Config extends PProperties
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

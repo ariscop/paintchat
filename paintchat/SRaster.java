@@ -7,7 +7,6 @@ import java.awt.image.ImageProducer;
 
 import java.util.Hashtable;
 import syi.awt.Awt;
-import syi.util.ExceptionHandler;
 
 public class SRaster
     implements ImageProducer
@@ -50,7 +49,7 @@ public class SRaster
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
     }
 

@@ -13,7 +13,6 @@ import paintchat.debug.DebugListener;
 import syi.util.ByteInputStream;
 import syi.util.Io;
 import syi.util.ThreadPool;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_server:
 //            TextServer, PaintChatTalker, TextTalker, LineTalker, 
@@ -53,7 +52,7 @@ public class TalkerInstance
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
             closeSocket();
         }
     }

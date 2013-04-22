@@ -28,7 +28,6 @@ import java.io.StringReader;
 import java.net.URL;
 import paintchat.Res;
 import syi.javascript.JSController;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            Awt
@@ -186,7 +185,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -230,7 +229,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -416,7 +415,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -510,7 +509,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -627,7 +626,7 @@ public class TextPanel extends Canvas
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -659,7 +658,7 @@ public class TextPanel extends Canvas
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 

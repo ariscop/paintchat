@@ -48,7 +48,7 @@ public class Io
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
         return false;
     }
@@ -179,7 +179,7 @@ public class Io
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
         return image;
     }

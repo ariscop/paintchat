@@ -3,7 +3,6 @@ package paintchat_client;
 import java.applet.Applet;
 import java.awt.BorderLayout;
 
-import syi.util.ExceptionHandler;
 import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_client:
@@ -37,20 +36,17 @@ public class Client extends Applet
 
     public void init()
     {
-    	new ExceptionHandler(true);
         try
         {
             setLayout(new BorderLayout());
             pl = new Pl(this);
             add(pl, "Center");
             validate();
-            //ThreadPool.poolStartThread(pl, 'i');
-            ThreadPool.currentThread().setName("i");
-            pl.run();
+            ThreadPool.poolStartThread(pl, 'i');
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 }

@@ -9,7 +9,6 @@ import java.net.Socket;
 import java.util.Enumeration;
 
 import paintchat.Res;
-import syi.util.ExceptionHandler;
 import syi.util.Io;
 
 public class LocalAdmin
@@ -92,7 +91,7 @@ public class LocalAdmin
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
         return "";
     }
@@ -106,7 +105,7 @@ public class LocalAdmin
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
         return null;
     }

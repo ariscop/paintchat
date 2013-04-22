@@ -49,7 +49,6 @@ import syi.awt.LTextField;
 import syi.awt.MessageBox;
 import syi.util.Io;
 import syi.util.ThreadPool;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_frame:
 //            ConfigDialog, Console, Data, PopupMenuPaintChat, 
@@ -268,7 +267,7 @@ public class PFrame extends Frame
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
     }
 
@@ -1118,7 +1117,7 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
             System.exit(0);
         }
     }
@@ -1141,7 +1140,7 @@ public class PFrame extends Frame
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
     }
 
@@ -1301,7 +1300,7 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -1362,7 +1361,7 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -1383,7 +1382,7 @@ public class PFrame extends Frame
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -1485,7 +1484,7 @@ public class PFrame extends Frame
         				appletwatcher.setIconImage(getIconImage());
         				appletwatcher.setVisible(true);
         			} catch(Exception e) {
-        				//ExceptionHandler.handleException(e);
+        				//e.printStackTrace();
         				debug.log(e);
         			}
         		}

@@ -17,7 +17,6 @@ import java.awt.event.WindowEvent;
 
 import paintchat.Res;
 import syi.awt.Awt;
-import syi.util.ExceptionHandler;
 
 /**
  * 
@@ -114,7 +113,7 @@ public class Me extends Dialog
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         isD = false;
         return me.isOk;
@@ -144,7 +143,7 @@ public class Me extends Dialog
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         isD = false;
         return me.isOk ? me.tText.getText() : null;

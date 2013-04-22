@@ -20,7 +20,6 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import syi.awt.Awt;
 import syi.util.ByteStream;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat:
 //            LO, Res, SRaster
@@ -413,7 +412,7 @@ public class M
                     }
                     catch(IOException ioexception)
                     {
-                        ExceptionHandler.handleException(ioexception);
+                        ioexception.printStackTrace();
                     }
                 }
                 int ai[] = loadIm("tt/" + i + ".gif", false);
@@ -663,7 +662,7 @@ public class M
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 
@@ -737,7 +736,7 @@ public class M
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 
@@ -1416,7 +1415,7 @@ public class M
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 
@@ -1895,7 +1894,7 @@ public class M
         catch(InterruptedException _ex) { }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         dEnd();
     }
@@ -2164,7 +2163,7 @@ label0:
                     }
                     catch(Throwable throwable1)
                     {
-                        ExceptionHandler.handleException(throwable1);
+                        throwable1.printStackTrace();
                     }
                     break;
 
@@ -2213,7 +2212,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -2244,7 +2243,7 @@ label0:
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
         catch(InterruptedException _ex) { }
     }
@@ -2287,11 +2286,11 @@ label0:
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
         catch(InterruptedException interruptedexception)
         {
-            ExceptionHandler.handleException(interruptedexception);
+            interruptedexception.printStackTrace();
         }
     }
 
@@ -2385,7 +2384,7 @@ label0:
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
     }
 
@@ -2522,11 +2521,11 @@ label0:
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 
@@ -3543,7 +3542,7 @@ label0:
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
             iOffset = 0;
         }
         return j + 2;
@@ -3735,7 +3734,7 @@ label0:
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

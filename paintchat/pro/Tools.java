@@ -20,7 +20,6 @@ import paintchat_client.L;
 import paintchat_client.Mi;
 import syi.awt.Awt;
 import syi.awt.LComponent;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            TPalette, TPen, TPic, TBar
@@ -68,7 +67,7 @@ public class Tools
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -240,7 +239,7 @@ public class Tools
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

@@ -9,7 +9,6 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import syi.awt.Awt;
 import syi.awt.LComponent;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            Tools
@@ -102,7 +101,7 @@ public class TPic extends LComponent
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 

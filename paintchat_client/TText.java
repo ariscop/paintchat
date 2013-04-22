@@ -6,7 +6,6 @@ import paintchat.MgText;
 import paintchat_server.PaintChatTalker;
 import syi.util.ByteInputStream;
 import syi.util.ByteStream;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            Pl, Data
@@ -57,7 +56,7 @@ public class TText extends PaintChatTalker
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -142,7 +141,7 @@ public class TText extends PaintChatTalker
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 }

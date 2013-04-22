@@ -14,7 +14,6 @@ import paintchat.M;
 import paintchat.Res;
 import syi.awt.Awt;
 import syi.awt.LComponent;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.pro:
 //            Tools
@@ -166,7 +165,7 @@ public class TPen extends LComponent
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 

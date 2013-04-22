@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            Awt, MessageBox
@@ -146,7 +145,7 @@ public class LTextField extends Component
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -191,7 +190,7 @@ public class LTextField extends Component
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -258,7 +257,7 @@ public class LTextField extends Component
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 }

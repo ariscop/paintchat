@@ -13,7 +13,6 @@ import paintchat.Res;
 import paintchat_client.Mi;
 import syi.awt.Awt;
 import syi.awt.LComponent;
-import syi.util.ExceptionHandler;
 
 public class TBar extends LComponent
 {
@@ -131,7 +130,7 @@ public class TBar extends LComponent
             }
             catch(Throwable throwable)
             {
-                ExceptionHandler.handleException(throwable);
+                throwable.printStackTrace();
             }
         }
     }

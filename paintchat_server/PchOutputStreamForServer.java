@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.zip.Deflater;
 import paintchat.Config;
-import syi.util.ExceptionHandler;
 import syi.util.Io;
 import syi.util.VectorBin;
 
@@ -65,7 +64,7 @@ public class PchOutputStreamForServer extends OutputStream
                 }
                 catch(IOException ioexception)
                 {
-                    ExceptionHandler.handleException(ioexception);
+                    ioexception.printStackTrace();
                 }
             }
         }
@@ -126,7 +125,7 @@ public class PchOutputStreamForServer extends OutputStream
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
             close();
             isLogEnable = false;
         }
@@ -159,7 +158,7 @@ public class PchOutputStreamForServer extends OutputStream
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
         out = null;
         if(isLogEnable)
@@ -175,7 +174,7 @@ public class PchOutputStreamForServer extends OutputStream
             }
             catch(IOException ioexception1)
             {
-                ExceptionHandler.handleException(ioexception1);
+                ioexception1.printStackTrace();
             }
         }
     }

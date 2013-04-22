@@ -23,7 +23,6 @@ import paintchat.Res;
 import syi.awt.Awt;
 import syi.awt.LComponent;
 import syi.awt.Tab;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            Me, IMi
@@ -130,7 +129,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         return true;
     }
@@ -277,7 +276,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -467,7 +466,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -530,7 +529,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -734,7 +733,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -798,7 +797,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -978,7 +977,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -1166,7 +1165,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -1185,7 +1184,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         mgInfo.iSOB = 0;
     }
@@ -1271,7 +1270,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -1458,7 +1457,7 @@ public class Mi extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

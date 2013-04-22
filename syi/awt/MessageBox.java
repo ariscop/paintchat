@@ -16,7 +16,6 @@ import java.awt.event.WindowEvent;
 import java.awt.Window;
 import java.io.IOException;
 import java.util.Hashtable;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            TextCanvas, Awt, LButton
@@ -101,7 +100,7 @@ public class MessageBox extends Dialog
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

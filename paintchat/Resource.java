@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Locale;
 
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat:
 //            Res
@@ -95,7 +94,7 @@ public class Resource
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
     }
 
@@ -123,7 +122,7 @@ public class Resource
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
         return null;
     }

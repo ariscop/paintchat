@@ -117,7 +117,7 @@ public class AppletWatcher extends Frame
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         return null;
     }*/

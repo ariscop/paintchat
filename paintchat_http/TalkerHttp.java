@@ -15,7 +15,6 @@ import java.text.ParseException;
 import java.util.Date;
 //import paintchat.debug.Debug;
 import syi.util.ByteStream;
-import syi.util.ExceptionHandler;
 import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_http:
@@ -566,7 +565,7 @@ public class TalkerHttp
             }
             catch(Exception exception)
             {
-                ExceptionHandler.handleException(exception);
+                exception.printStackTrace();
                 strIfMod = null;
                 sizeIfMod = -1;
             }

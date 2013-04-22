@@ -19,7 +19,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import syi.awt.Awt;
 import syi.util.ByteStream;
-import syi.util.ExceptionHandler;
 
 public class Res extends Hashtable<String, Object>
 {
@@ -266,7 +265,7 @@ public class Res extends Hashtable<String, Object>
         }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
             return false;
         }
         return true;

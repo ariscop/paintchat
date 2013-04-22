@@ -5,7 +5,6 @@ import java.util.zip.Inflater;
 import paintchat.M;
 import paintchat_server.PaintChatTalker;
 import syi.util.ByteStream;
-import syi.util.ExceptionHandler;
 import syi.util.ThreadPool;
 
 // Referenced classes of package paintchat_client:
@@ -113,7 +112,7 @@ public class TLine extends PaintChatTalker
         }
         catch(Exception exception)
         {
-            ExceptionHandler.handleException(exception);
+            exception.printStackTrace();
         }
     }
 

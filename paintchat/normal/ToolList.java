@@ -8,7 +8,6 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import paintchat.M;
 import paintchat.Res;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.normal:
 //            Tools
@@ -135,7 +134,7 @@ public class ToolList
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         return 0;
     }
@@ -199,7 +198,7 @@ public class ToolList
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -287,7 +286,7 @@ public class ToolList
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

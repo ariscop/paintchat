@@ -17,7 +17,6 @@ import java.awt.event.ItemListener;
 import java.awt.event.WindowEvent;
 
 import syi.awt.Awt;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat:
 //            SW, ToolBox, M, Res
@@ -56,7 +55,7 @@ public class TText extends Dialog
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

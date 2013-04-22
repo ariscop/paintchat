@@ -8,7 +8,6 @@ import java.io.InputStream;
 import paintchat.Res;
 import syi.util.ByteInputStream;
 import syi.util.ByteStream;
-import syi.util.ExceptionHandler;
 import syi.util.Io;
 import syi.util.VectorBin;
 
@@ -101,7 +100,7 @@ public class PchInputStream
         catch(EOFException _ex) { }
         catch(IOException ioexception)
         {
-            ExceptionHandler.handleException(ioexception);
+            ioexception.printStackTrace();
         }
         try
         {

@@ -78,7 +78,7 @@ public class ThreadPool extends Thread
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -203,7 +203,7 @@ public class ThreadPool extends Thread
                 }
             }
         } catch (RuntimeException runtimeexception) {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
         return null;
     }

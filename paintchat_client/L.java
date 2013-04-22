@@ -29,7 +29,6 @@ import paintchat.ToolBox;
 
 import syi.awt.Awt;
 import syi.awt.LComponent;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat_client:
 //            Mi, Me
@@ -197,7 +196,7 @@ public class L extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -280,7 +279,7 @@ public class L extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -555,7 +554,7 @@ public class L extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

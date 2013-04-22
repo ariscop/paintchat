@@ -27,7 +27,6 @@ import syi.awt.Awt;
 import syi.awt.Gui;
 import syi.awt.LButton;
 import syi.util.PProperties;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.config:
 //            ConfigApplet
@@ -842,7 +841,7 @@ public class Ao extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -855,7 +854,7 @@ public class Ao extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -883,7 +882,7 @@ public class Ao extends ConfigApplet
         catch(Throwable throwable)
         {
             System.err.println("java.applet.Applet (The) main() (An exception occurred in)");
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -913,7 +912,7 @@ public class Ao extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

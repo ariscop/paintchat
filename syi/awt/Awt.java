@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            LComponent
@@ -247,7 +246,7 @@ public class Awt
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -346,7 +345,7 @@ public class Awt
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         return null;
     }

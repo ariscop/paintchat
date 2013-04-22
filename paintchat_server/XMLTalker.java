@@ -20,7 +20,6 @@ import syi.util.ByteInputStream;
 import syi.util.ByteStream;
 import syi.util.Io;
 import syi.util.ThreadPool;
-import syi.util.ExceptionHandler;
 
 public abstract class XMLTalker extends DefaultHandler
     implements Runnable
@@ -218,7 +217,7 @@ public abstract class XMLTalker extends DefaultHandler
         catch(InterruptedException _ex) { }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         mStop();
     }

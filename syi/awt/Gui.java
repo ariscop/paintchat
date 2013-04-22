@@ -19,7 +19,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-import syi.util.ExceptionHandler;
 import syi.util.Io;
 import syi.util.PProperties;
 
@@ -66,7 +65,7 @@ public class Gui extends Awt
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
             return null;
         }
         return new File(s1, s2);

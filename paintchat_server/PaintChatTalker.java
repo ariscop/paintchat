@@ -12,7 +12,6 @@ import syi.util.ByteInputStream;
 import syi.util.ByteStream;
 import syi.util.Io;
 import syi.util.ThreadPool;
-import syi.util.ExceptionHandler;
 
 public abstract class PaintChatTalker
     implements Runnable
@@ -198,7 +197,7 @@ public abstract class PaintChatTalker
         catch(InterruptedException _ex) { }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         mStop();
     }

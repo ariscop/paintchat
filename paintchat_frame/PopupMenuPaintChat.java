@@ -20,7 +20,6 @@ import paintchat.debug.Debug;
 import syi.awt.LTextField;
 import syi.awt.MessageBox;
 import syi.util.Io;
-import syi.util.ExceptionHandler;
 
 /**
  * 
@@ -58,7 +57,7 @@ public class PopupMenuPaintChat
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.io.CharArrayWriter;
-import syi.util.ExceptionHandler;
 
 public class TextCanvas extends Canvas
 {
@@ -101,7 +100,7 @@ public class TextCanvas extends Canvas
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 

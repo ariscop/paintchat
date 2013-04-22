@@ -25,7 +25,6 @@ import syi.applet.ServerStub;
 import syi.awt.Gui;
 import syi.awt.LButton;
 import syi.awt.LTextField;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package paintchat.config:
 //            ConfigApplet
@@ -612,7 +611,7 @@ public class ConfigServer extends ConfigApplet
         catch(Throwable throwable)
         {
             System.err.println("paintchat.config.ConfigApplet (The) main() (An exception occurred in)");
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -625,7 +624,7 @@ public class ConfigServer extends ConfigApplet
         }
         catch(RuntimeException runtimeexception)
         {
-            ExceptionHandler.handleException(runtimeexception);
+            runtimeexception.printStackTrace();
         }
     }
 
@@ -639,7 +638,7 @@ public class ConfigServer extends ConfigApplet
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 }

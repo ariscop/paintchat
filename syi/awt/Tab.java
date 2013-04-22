@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Method;
 import paintchat.M;
-import syi.util.ExceptionHandler;
 
 // Referenced classes of package syi.awt:
 //            LComponent, Awt
@@ -54,7 +53,7 @@ public class Tab extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -138,7 +137,7 @@ public class Tab extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
     }
 
@@ -222,7 +221,7 @@ public class Tab extends LComponent
         }
         catch(Throwable throwable)
         {
-            ExceptionHandler.handleException(throwable);
+            throwable.printStackTrace();
         }
         return strange;
     }
