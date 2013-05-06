@@ -39,13 +39,6 @@ public class Data
 
     public Data()
     {
-        res = null;
-        config = null;
-        debug = null;
-        fieldIsNativeWindows = false;
-        server = null;
-        http = null;
-        lobby = null;
         File file = new File("cnf/temp.tmp");
         setIsNativeWindows(file.isFile());
     }
