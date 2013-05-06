@@ -261,6 +261,7 @@ public class ThreadPool extends Thread
         }
         catch(Throwable _ex) { }
         runnable = null;
+        this.setName("Pool thread");
     }
     
 }
