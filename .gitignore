@@ -1,9 +1,9 @@
-*~
-*.class
+# App dumps confiuration here while running
+# changes need to be added explicitly
+/cnf/*
+/www
 
-cnf/*
-
-#eclipse ignores
-.project
-.settings
-
+# netbeans ignores
+/nbproject/private/
+/build/
+/dist/
