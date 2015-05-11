@@ -1201,7 +1201,7 @@ public class Mi extends LComponent
             default:
                 break;
 
-            case 401: 
+            case KeyEvent.KEY_PRESSED:
                 switch(keyevent.getKeyCode())
                 {
                 case 32: // ' '
@@ -1258,7 +1258,7 @@ public class Mi extends LComponent
                 }
                 break;
 
-            case 402: 
+            case KeyEvent.KEY_RELEASED:
                 switch(keyevent.getKeyCode())
                 {
                 case 32: // ' '
