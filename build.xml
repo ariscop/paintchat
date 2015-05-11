@@ -70,4 +70,21 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="-post-compile">
+        <copy todir="${dist.dir}/" overwrite="true">
+            <fileset dir="" includes="cnf/" />
+        </copy>
+        <zip destfile="${dist.dir}/cnf/template/res.zip"
+             basedir="res/"/>
+        <zip destfile="${dist.dir}/cnf/template/tt_def.zip"
+             basedir="tt/"/>
+        <jar destfile="${dist.dir}/cnf/template/pchat.jar"
+             basedir="${build.dir}/classes">
+          <!-- TODO: pchat doesn't need all class files -->
+          <manifest>
+                <attribute name="Main-Class"
+                          value="paintchat_client.Client"/>
+          </manifest>
+        </jar>
+    </target>
 </project>

@@ -36,23 +36,21 @@ public class FileManager
         try
         {
             String s1 = Io.getCurrent();
-            String s2 = "cnf" + File.separatorChar + "template" + File.separatorChar;
-            String s3 = "index.html";
-            new File(s2);
-            File file = new File(config.getString("File_PaintChatClient_Dir", "www"));
-            if(!file.isDirectory())
-            {
-                file.mkdirs();
-            }
-            String as[] = {
-                "pchat.jar", "pchat_user_list.swf", "entrance_normal.html", "entrance_pro.html", s3
+            String template = "cnf" + File.separatorChar + "template" + File.separatorChar;
+            File www = new File(config.getString("File_PaintChatClient_Dir", "www"));
+            if(!www.isDirectory())
+                www.mkdirs();
+
+            String files[] = {
+                "pchat.jar",
+                "pchat_user_list.swf",
+                "entrance_normal.html",
+                "entrance_pro.html",
+                "index.html"
             };
-            for(int i = 0; i < as.length; i++)
-            {
-                if(as[i] != s3 || config.getBool("App_Get_Index", true))
-                {
-                    String s = as[i];
-                    Io.copyFile(Io.makeFile(s1, s2 + s), new File(file, s));
+            for (String file : files) {
+                if (file != "index.html" || config.getBool("App_Get_Index", true)) {
+                    Io.copyFile(Io.makeFile(s1, template + file), new File(www, file));
                 }
             }
 

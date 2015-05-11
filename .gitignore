@@ -1,8 +1,3 @@
-# App dumps confiuration here while running
-# changes need to be added explicitly
-/cnf/*
-/www
-
 # netbeans ignores
 /nbproject/private/
 /build/

@@ -12,11 +12,4 @@ Changes:
 - Fixed the undocumented Connection_Host property, so the client and server
   can be on different domains
 
-also extended the makefile, it properly packages everything into a zip similar
-to the original release (pchat400_alpha.zi)
-
-Current working build is here
-https://www.ariscop.net/files/pchat400_alpha.zip
-
-to build yourself requires make, javac, zip and prefferably a unix environment.
-mingw should be suitable for windows users.
+Requires ant or netbeans to build, packages everything into dist/
