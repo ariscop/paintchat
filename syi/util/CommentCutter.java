@@ -207,10 +207,10 @@ class CommentCutter
     {
         try
         {
-            String s = "c:\\Windows\\\uFF83\uFF9E\uFF7D\uFF78\uFF84\uFF6F\uFF8C\uFF9F\\";
+            String s = "c:\\Windows\\ﾃﾞｽｸﾄｯﾌﾟ\\";
             String s1 = "";
-            FileDialog filedialog = new FileDialog(new Frame(), "\u30B3\u30E1\u30F3\u30C8\u3092\u30AB\u30C3\u30C8\u3059\u308B\u30D5\u30A1\u30A4\u30EB" +
-"\u3092\u6307\u5B9A"
+            FileDialog filedialog = new FileDialog(new Frame(), "コメントをカットするファイル" +
+"を指定"
 , 0);
             filedialog.setDirectory(s);
             filedialog.setFile(s1);
@@ -223,8 +223,8 @@ class CommentCutter
             }
             File file = new File(s, s1);
             filedialog.setMode(1);
-            filedialog.setTitle("\u30AB\u30C3\u30C8\u3057\u305F\u30D5\u30A1\u30A4\u30EB\u3092\u4FDD\u5B58\u3059\u308B" +
-"\u5834\u6240\u3092\u6307\u5B9A"
+            filedialog.setTitle("カットしたファイルを保存する" +
+"場所を指定"
 );
             filedialog.show();
             s = filedialog.getDirectory();
